@@ -36,13 +36,13 @@
 
 | Task ID | Task | Component | Assigned To | Status | Completed By | Date Completed | AI Assistance | Evidence |
 |---|---|---|---|---|---|---|---|---|
-| T001 | Create GitHub repository and add all members | Repo | P1 | Pending | — | — | No | — |
-| T002 | Define and commit folder structure (`app.py`, `mock_data.py`, `templates/`, `static/`, `docs/`) | Repo | P1 | Pending | — | — | No | — |
+| T001 | Create GitHub repository and add all members | Repo | P1 | Done | Prachi | — | No | — |
+| T002 | Define and commit folder structure (`app.py`, `mock_data.py`, `templates/`, `static/`, `docs/`) | Repo | P1 | done | Prachi| — | No | — |
 | T003 | Write `requirements.txt` with Flask, python-dotenv, requests | Repo | P2 | Pending | — | — | No | — |
 | T004 | Write `.env.example` with `ANTHROPIC_API_KEY`, `ODOO_URL`, `ODOO_DB`, `ODOO_USERNAME`, `ODOO_PASSWORD` | Config | P2 | Pending | — | — | No | — |
-| T005 | Write `README.md` with setup instructions (clone → venv → install → run) | Docs | P1 | Pending | — | — | Yes | — |
-| T006 | Commit `docs/architecture.md` (existing document) | Docs | P1 | Pending | — | — | No | — |
-| T007 | Create this file (`docs/project-implementation.md`) and commit it | Docs | P1 | Pending | — | — | No | — |
+| T005 | Write `README.md` with setup instructions (clone → venv → install → run) | Docs | P1 | Done | Vaibhavi and Prachi | — | Yes | — |
+| T006 | Commit `docs/architecture.md` (existing document) | Docs | P1 | Done | Vaibhavi | — | No | — |
+| T007 | Create this file (`docs/project-implementation.md`) and commit it | Docs | P1 | Done | Prachi | — | No | — |
 
 ---
 
@@ -52,11 +52,11 @@
 
 | Task ID | Task | Component | Assigned To | Status | Completed By | Date Completed | AI Assistance | Evidence |
 |---|---|---|---|---|---|---|---|---|
-| T008 | Write `mock_data.py` — `STOCK_LEVELS` list with fields: product, sku, location, qty, min_qty | Data | P4 | Pending | — | — | Yes | — |
-| T009 | Write `mock_data.py` — `TRANSFERS` list with fields: ref, due, state, type, assigned_to | Data | P4 | Pending | — | — | Yes | — |
-| T010 | Write `mock_data.py` — `CUSTOMERS` list with fields: name, email, orders, spent, status, segment | Data | P4 | Pending | — | — | Yes | — |
-| T011 | Write `mock_data.py` — `SALES_ORDERS` list with fields: ref, customer, amount, status, date, items | Data | P4 | Pending | — | — | Yes | — |
-| T012 | Write `mock_data.py` — `TEAM` list with fields: name, email, department, role, status | Data | P4 | Pending | — | — | Yes | — |
+| T008 | Write `mock_data.py` — `STOCK_LEVELS` list with fields: product, sku, location, qty, min_qty | Data | P4 | Done | Prachi | — | Yes | — |
+| T009 | Write `mock_data.py` — `TRANSFERS` list with fields: ref, due, state, type, assigned_to | Data | P4 | Done | Prachi | — | Yes | — |
+| T010 | Write `mock_data.py` — `CUSTOMERS` list with fields: name, email, orders, spent, status, segment | Data | P4 | Done | Prachi | — | Yes | — |
+| T011 | Write `mock_data.py` — `SALES_ORDERS` list with fields: ref, customer, amount, status, date, items | Data | P4 | Done | Prachi | — | Yes | — |
+| T012 | Write `mock_data.py` — `TEAM` list with fields: name, email, department, role, status | Data | P4 | Done | Prachi | — | Yes | — |
 | T013 | Write `mock_data.py` — `NETWORK_POSTS` list with fields: author, role, content, likes, timestamp | Data | P4 | Pending | — | — | Yes | — |
 | T014 | Design database schema — 6 tables: User, Product, StockLevel, Transfer, SalesOrder, TeamMember | Database | P2 | Pending | — | — | Yes | — |
 | T015 | Draw ER diagram showing all 6 tables, attributes, primary keys and 5+ relationships | Database | P2 | Pending | — | — | Yes | — |
