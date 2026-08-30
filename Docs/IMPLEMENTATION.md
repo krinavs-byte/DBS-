@@ -38,8 +38,8 @@
 |---|---|---|---|---|---|---|---|---|
 | T001 | Create GitHub repository and add all members | Repo | P1 | Done | Prachi | — | No | — |
 | T002 | Define and commit folder structure (`app.py`, `mock_data.py`, `templates/`, `static/`, `docs/`) | Repo | P1 | done | Prachi| — | No | — |
-| T003 | Write `requirements.txt` with Flask, python-dotenv, requests | Repo | P2 | Pending | — | — | No | — |
-| T004 | Write `.env.example` with `ANTHROPIC_API_KEY`, `ODOO_URL`, `ODOO_DB`, `ODOO_USERNAME`, `ODOO_PASSWORD` | Config | P2 | Pending | — | — | No | — |
+| T003 | Write `requirements.txt` with Flask, python-dotenv, requests | Repo | P2 | Done | Krina | 2026-08-29 | Yes | requirements.txt — commit 1a45d0c61426211c3750ac44de67460484bac516 |
+| T004 | Write `.env.example` with `ANTHROPIC_API_KEY`, `ODOO_URL`, `ODOO_DB`, `ODOO_USERNAME`, `ODOO_PASSWORD` | Config | P2 | Done | Krina | 2026-08-29 | Yes | .env.example — commit 1a45d0c61426211c3750ac44de67460484bac516 |
 | T005 | Write `README.md` with setup instructions (clone → venv → install → run) | Docs | P1 | Done | Vaibhavi and Prachi | — | Yes | — |
 | T006 | Commit `docs/architecture.md` (existing document) | Docs | P1 | Done | Vaibhavi | — | No | — |
 | T007 | Create this file (`docs/project-implementation.md`) and commit it | Docs | P1 | Done | Prachi | — | No | — |
@@ -100,8 +100,8 @@
 | T035 | Write `get_status(item)` — returns `ok`, `low`, `critical`, or `out` based on qty vs min_qty | Logic | P4 | Pending | — | — | No | — |
 | T036 | Write `get_alerts(stock)` — filters items below threshold, sorts by urgency percentage ascending | Logic | P4 | Pending | — | — | No | — |
 | T037 | Write `compute_stats(stock, transfers)` — returns total_skus, pending, due_today, alerts, critical | Logic | P4 | Pending | — | — | No | — |
-| T038 | **[ALGORITHM]** Write `reorder_priority_score(item, transfers)` — scores each low-stock product using: `(1 - qty/min_qty) * 0.5 + (outgoing_transfers / max_transfers) * 0.3 + (1 / days_until_delivery) * 0.2` — returns float 0–1 | Algorithm | P4 | Pending | — | — | Yes | — |
-| T039 | **[ALGORITHM]** Write `rank_reorder_queue(stock, transfers)` — applies reorder_priority_score to all low-stock items, returns sorted list with score and recommended action (Urgent / Soon / Monitor) | Algorithm | P4 | Pending | — | — | Yes | — |
+| T038 | **[ALGORITHM]** Write `reorder_priority_score(item, transfers)` — scores each low-stock product using: `(1 - qty/min_qty) * 0.5 + (outgoing_transfers / max_transfers) * 0.3 + (1 / days_unti[...]
+| T039 | **[ALGORITHM]** Write `rank_reorder_queue(stock, transfers)` — applies reorder_priority_score to all low-stock items, returns sorted list with score and recommended action (Urgent / Soon /[...]
 | T040 | **[ALGORITHM]** Document the algorithm — problem, inputs, processing logic, pseudocode, example input, example output, location in code | Docs | P4 | Pending | — | — | No | — |
 | T041 | Write `customer_segment(customer)` — labels customers as High Value / Regular / At Risk based on order count and spend | Logic | P4 | Pending | — | — | Yes | — |
 | T042 | Write unit tests for `get_status()` — covers all four states including boundary conditions | Testing | P4 | Pending | — | — | No | — |
@@ -217,7 +217,7 @@
 **Task reference:** T038, T039, T040
 
 **Problem being solved:**
-When multiple products are below their reorder threshold simultaneously, warehouse staff need to know which ones to restock first. Ordering everything at once is not always possible — the algorithm ranks products by urgency so staff act on the most critical items first.
+When multiple products are below their reorder threshold simultaneously, warehouse staff need to know which ones to restock first. Ordering everything at once is not always possible — the algor[...]
 
 **Inputs:**
 - `item` — a stock record with `qty`, `min_qty`
