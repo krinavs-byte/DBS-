@@ -57,11 +57,11 @@
 | T010 | Write `mock_data.py` — `CUSTOMERS` list with fields: name, email, orders, spent, status, segment | Data | P4 | Done | Prachi | — | Yes | — |
 | T011 | Write `mock_data.py` — `SALES_ORDERS` list with fields: ref, customer, amount, status, date, items | Data | P4 | Done | Prachi | — | Yes | — |
 | T012 | Write `mock_data.py` — `TEAM` list with fields: name, email, department, role, status | Data | P4 | Done | Prachi | — | Yes | — |
-| T013 | Write `mock_data.py` — `NETWORK_POSTS` list with fields: author, role, content, likes, timestamp | Data | P4 | Pending | — | — | Yes | — |
-| T014 | Design database schema — 6 tables: User, Product, StockLevel, Transfer, SalesOrder, TeamMember | Database | P2 | Pending | — | — | Yes | — |
-| T015 | Draw ER diagram showing all 6 tables, attributes, primary keys and 5+ relationships | Database | P2 | Pending | — | — | Yes | — |
-| T016 | Add ER diagram to `docs/architecture.md` | Docs | P1 | Pending | — | — | No | — |
-| T017 | Set up SQLite database with SQLAlchemy — `db.py` with all 6 models defined | Database | P2 | Pending | — | — | Yes | — |
+| T013 | Write `mock_data.py` — `NETWORK_POSTS` list with fields: author, role, content, likes, timestamp | Data | P4 | Done | Aayoshi | — | Yes | — |
+| T014 | Design database schema — 6 tables: User, Product, StockLevel, Transfer, SalesOrder, TeamMember | Database | P2 | Done | Aayoshi | — | Yes | — |
+| T015 | Draw ER diagram showing all 6 tables, attributes, primary keys and 5+ relationships | Database | P2 | Done | Aayoshi | — | Yes | — |
+| T016 | Add ER diagram to `docs/architecture.md` | Docs | P1 | Done | Aayoshi | — | No | — |
+| T017 | Set up SQLite database with SQLAlchemy — `db.py` with all 6 models defined | Database | P2 | Done | Aayoshi | — | Yes | — |
 | T018 | Write database seed script — `seed.py` — populates DB from mock_data.py for local dev | Database | P2 | Pending | — | — | Yes | — |
 
 ---
