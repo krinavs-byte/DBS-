@@ -1,0 +1,430 @@
+sku_id,product_id,product_name,category,color,store_id,store_name,current_stock,reorder_point,unit_cost,supplier,lead_time_days,last_restock_date,stockout_flag
+PR0001-Red-S1,PR0001,Top Style 1,Tops,Red,S1,Koramangala Flagship,1,12,441.28,Coastal Textiles Pvt Ltd,12,2025-11-20,1
+PR0001-Red-S2,PR0001,Top Style 1,Tops,Red,S2,Indiranagar Store,3,11,441.28,Coastal Textiles Pvt Ltd,20,2025-11-20,1
+PR0001-Grey-S1,PR0001,Top Style 1,Tops,Grey,S1,Koramangala Flagship,57,14,441.28,Metro Garment Works,24,2025-11-20,0
+PR0001-Grey-S2,PR0001,Top Style 1,Tops,Grey,S2,Indiranagar Store,35,9,441.28,Northline Apparel Co.,31,2025-11-20,0
+PR0001-Grey-S3,PR0001,Top Style 1,Tops,Grey,S3,Downtown Mall Store,45,12,441.28,Metro Garment Works,16,2025-11-20,0
+PR0001-Mustard-S2,PR0001,Top Style 1,Tops,Mustard,S2,Indiranagar Store,47,8,441.28,Coastal Textiles Pvt Ltd,29,2025-11-20,0
+PR0001-Mustard-S3,PR0001,Top Style 1,Tops,Mustard,S3,Downtown Mall Store,22,8,441.28,Metro Garment Works,17,2025-11-20,0
+PR0002-Black-S1,PR0002,Top Style 2,Tops,Black,S1,Koramangala Flagship,45,8,645.38,Coastal Textiles Pvt Ltd,12,2025-11-20,0
+PR0002-Black-S2,PR0002,Top Style 2,Tops,Black,S2,Indiranagar Store,9,10,645.38,Metro Garment Works,16,2025-11-20,1
+PR0002-Beige-S1,PR0002,Top Style 2,Tops,Beige,S1,Koramangala Flagship,39,7,645.38,Northline Apparel Co.,26,2025-11-20,0
+PR0002-Beige-S3,PR0002,Top Style 2,Tops,Beige,S3,Downtown Mall Store,14,13,645.38,Coastal Textiles Pvt Ltd,32,2025-11-20,0
+PR0002-Mustard-S1,PR0002,Top Style 2,Tops,Mustard,S1,Koramangala Flagship,16,8,645.38,Metro Garment Works,22,2025-11-20,0
+PR0002-Mustard-S2,PR0002,Top Style 2,Tops,Mustard,S2,Indiranagar Store,54,5,645.38,Coastal Textiles Pvt Ltd,19,2025-11-20,0
+PR0002-Mustard-S3,PR0002,Top Style 2,Tops,Mustard,S3,Downtown Mall Store,50,6,645.38,Northline Apparel Co.,18,2025-11-20,0
+PR0003-Beige-S1,PR0003,Top Style 3,Tops,Beige,S1,Koramangala Flagship,52,6,466.9,Coastal Textiles Pvt Ltd,28,2025-11-20,0
+PR0003-Beige-S2,PR0003,Top Style 3,Tops,Beige,S2,Indiranagar Store,8,11,466.9,Everstyle Manufacturing,34,2025-11-20,1
+PR0003-Beige-S3,PR0003,Top Style 3,Tops,Beige,S3,Downtown Mall Store,17,12,466.9,Everstyle Manufacturing,14,2025-11-20,0
+PR0003-White-S1,PR0003,Top Style 3,Tops,White,S1,Koramangala Flagship,41,14,466.9,Everstyle Manufacturing,31,2025-11-20,0
+PR0003-White-S2,PR0003,Top Style 3,Tops,White,S2,Indiranagar Store,53,10,466.9,Everstyle Manufacturing,24,2025-11-20,0
+PR0003-White-S3,PR0003,Top Style 3,Tops,White,S3,Downtown Mall Store,33,14,466.9,Northline Apparel Co.,19,2025-11-20,0
+PR0003-Grey-S1,PR0003,Top Style 3,Tops,Grey,S1,Koramangala Flagship,40,11,466.9,Metro Garment Works,24,2025-11-20,0
+PR0003-Grey-S2,PR0003,Top Style 3,Tops,Grey,S2,Indiranagar Store,23,8,466.9,Metro Garment Works,15,2025-11-20,0
+PR0003-Grey-S3,PR0003,Top Style 3,Tops,Grey,S3,Downtown Mall Store,39,7,466.9,Coastal Textiles Pvt Ltd,33,2025-11-20,0
+PR0004-White-S2,PR0004,Top Style 4,Tops,White,S2,Indiranagar Store,42,12,621.98,Metro Garment Works,24,2025-11-20,0
+PR0004-Mustard-S1,PR0004,Top Style 4,Tops,Mustard,S1,Koramangala Flagship,51,13,621.98,Northline Apparel Co.,33,2025-11-20,0
+PR0004-Mustard-S3,PR0004,Top Style 4,Tops,Mustard,S3,Downtown Mall Store,55,5,621.98,Coastal Textiles Pvt Ltd,22,2025-11-20,0
+PR0004-Olive-S1,PR0004,Top Style 4,Tops,Olive,S1,Koramangala Flagship,45,7,621.98,Northline Apparel Co.,34,2025-11-20,0
+PR0004-Olive-S2,PR0004,Top Style 4,Tops,Olive,S2,Indiranagar Store,24,11,621.98,Northline Apparel Co.,25,2025-11-20,0
+PR0004-Olive-S3,PR0004,Top Style 4,Tops,Olive,S3,Downtown Mall Store,59,11,621.98,Coastal Textiles Pvt Ltd,27,2025-11-20,0
+PR0005-Black-S1,PR0005,Top Style 5,Tops,Black,S1,Koramangala Flagship,13,7,525.72,Everstyle Manufacturing,32,2025-11-20,0
+PR0005-Black-S3,PR0005,Top Style 5,Tops,Black,S3,Downtown Mall Store,47,10,525.72,Coastal Textiles Pvt Ltd,12,2025-11-20,0
+PR0005-Olive-S1,PR0005,Top Style 5,Tops,Olive,S1,Koramangala Flagship,2,10,525.72,Northline Apparel Co.,26,2025-11-20,1
+PR0005-Olive-S2,PR0005,Top Style 5,Tops,Olive,S2,Indiranagar Store,54,7,525.72,Coastal Textiles Pvt Ltd,11,2025-11-20,0
+PR0005-Grey-S1,PR0005,Top Style 5,Tops,Grey,S1,Koramangala Flagship,26,6,525.72,Metro Garment Works,17,2025-11-20,0
+PR0005-Grey-S2,PR0005,Top Style 5,Tops,Grey,S2,Indiranagar Store,56,8,525.72,Coastal Textiles Pvt Ltd,18,2025-11-20,0
+PR0005-Grey-S3,PR0005,Top Style 5,Tops,Grey,S3,Downtown Mall Store,26,6,525.72,Coastal Textiles Pvt Ltd,14,2025-11-20,0
+PR0006-Black-S2,PR0006,Top Style 6,Tops,Black,S2,Indiranagar Store,32,13,443.71,Northline Apparel Co.,30,2025-11-20,0
+PR0006-Black-S3,PR0006,Top Style 6,Tops,Black,S3,Downtown Mall Store,38,12,443.71,Everstyle Manufacturing,10,2025-11-20,0
+PR0006-Red-S2,PR0006,Top Style 6,Tops,Red,S2,Indiranagar Store,4,6,443.71,Metro Garment Works,22,2025-11-20,1
+PR0006-Red-S3,PR0006,Top Style 6,Tops,Red,S3,Downtown Mall Store,49,9,443.71,Metro Garment Works,13,2025-11-20,0
+PR0006-Navy-S1,PR0006,Top Style 6,Tops,Navy,S1,Koramangala Flagship,53,14,443.71,Northline Apparel Co.,27,2025-11-20,0
+PR0006-Navy-S2,PR0006,Top Style 6,Tops,Navy,S2,Indiranagar Store,1,14,443.71,Everstyle Manufacturing,30,2025-11-20,1
+PR0007-Black-S1,PR0007,Top Style 7,Tops,Black,S1,Koramangala Flagship,52,8,277.46,Metro Garment Works,12,2025-11-20,0
+PR0007-Black-S2,PR0007,Top Style 7,Tops,Black,S2,Indiranagar Store,37,7,277.46,Coastal Textiles Pvt Ltd,33,2025-11-20,0
+PR0007-Black-S3,PR0007,Top Style 7,Tops,Black,S3,Downtown Mall Store,15,7,277.46,Everstyle Manufacturing,17,2025-11-20,0
+PR0007-Grey-S1,PR0007,Top Style 7,Tops,Grey,S1,Koramangala Flagship,34,7,277.46,Everstyle Manufacturing,31,2025-11-20,0
+PR0007-Grey-S2,PR0007,Top Style 7,Tops,Grey,S2,Indiranagar Store,27,8,277.46,Everstyle Manufacturing,32,2025-11-20,0
+PR0007-Olive-S1,PR0007,Top Style 7,Tops,Olive,S1,Koramangala Flagship,54,11,277.46,Metro Garment Works,19,2025-11-20,0
+PR0007-Olive-S2,PR0007,Top Style 7,Tops,Olive,S2,Indiranagar Store,51,5,277.46,Everstyle Manufacturing,27,2025-11-20,0
+PR0007-Olive-S3,PR0007,Top Style 7,Tops,Olive,S3,Downtown Mall Store,30,8,277.46,Metro Garment Works,13,2025-11-20,0
+PR0008-Black-S1,PR0008,Top Style 8,Tops,Black,S1,Koramangala Flagship,30,11,326.91,Metro Garment Works,19,2025-11-20,0
+PR0008-Black-S2,PR0008,Top Style 8,Tops,Black,S2,Indiranagar Store,50,13,326.91,Metro Garment Works,13,2025-11-20,0
+PR0008-Black-S3,PR0008,Top Style 8,Tops,Black,S3,Downtown Mall Store,57,11,326.91,Northline Apparel Co.,18,2025-11-20,0
+PR0008-Grey-S1,PR0008,Top Style 8,Tops,Grey,S1,Koramangala Flagship,14,11,326.91,Coastal Textiles Pvt Ltd,33,2025-11-20,0
+PR0008-Grey-S2,PR0008,Top Style 8,Tops,Grey,S2,Indiranagar Store,25,6,326.91,Coastal Textiles Pvt Ltd,17,2025-11-20,0
+PR0008-Grey-S3,PR0008,Top Style 8,Tops,Grey,S3,Downtown Mall Store,21,10,326.91,Everstyle Manufacturing,25,2025-11-20,0
+PR0008-Beige-S1,PR0008,Top Style 8,Tops,Beige,S1,Koramangala Flagship,49,10,326.91,Coastal Textiles Pvt Ltd,30,2025-11-20,0
+PR0008-Beige-S2,PR0008,Top Style 8,Tops,Beige,S2,Indiranagar Store,3,11,326.91,Everstyle Manufacturing,14,2025-11-20,1
+PR0009-Black-S1,PR0009,Top Style 9,Tops,Black,S1,Koramangala Flagship,56,11,320.35,Everstyle Manufacturing,21,2025-11-20,0
+PR0009-Black-S2,PR0009,Top Style 9,Tops,Black,S2,Indiranagar Store,21,14,320.35,Northline Apparel Co.,18,2025-11-20,0
+PR0009-Black-S3,PR0009,Top Style 9,Tops,Black,S3,Downtown Mall Store,1,10,320.35,Everstyle Manufacturing,32,2025-11-20,1
+PR0009-Beige-S1,PR0009,Top Style 9,Tops,Beige,S1,Koramangala Flagship,35,11,320.35,Metro Garment Works,10,2025-11-20,0
+PR0009-Beige-S2,PR0009,Top Style 9,Tops,Beige,S2,Indiranagar Store,37,11,320.35,Metro Garment Works,17,2025-11-20,0
+PR0009-Beige-S3,PR0009,Top Style 9,Tops,Beige,S3,Downtown Mall Store,21,6,320.35,Everstyle Manufacturing,31,2025-11-20,0
+PR0010-Olive-S1,PR0010,Top Style 10,Tops,Olive,S1,Koramangala Flagship,26,8,587.78,Northline Apparel Co.,14,2025-11-20,0
+PR0010-Olive-S2,PR0010,Top Style 10,Tops,Olive,S2,Indiranagar Store,11,9,587.78,Metro Garment Works,11,2025-11-20,0
+PR0010-Black-S3,PR0010,Top Style 10,Tops,Black,S3,Downtown Mall Store,33,6,587.78,Coastal Textiles Pvt Ltd,26,2025-11-20,0
+PR0011-Mustard-S1,PR0011,Top Style 11,Tops,Mustard,S1,Koramangala Flagship,33,8,413.62,Everstyle Manufacturing,34,2025-11-20,0
+PR0011-Mustard-S2,PR0011,Top Style 11,Tops,Mustard,S2,Indiranagar Store,13,12,413.62,Metro Garment Works,12,2025-11-20,0
+PR0011-Grey-S1,PR0011,Top Style 11,Tops,Grey,S1,Koramangala Flagship,32,7,413.62,Coastal Textiles Pvt Ltd,28,2025-11-20,0
+PR0011-Grey-S2,PR0011,Top Style 11,Tops,Grey,S2,Indiranagar Store,7,7,413.62,Northline Apparel Co.,20,2025-11-20,1
+PR0012-Red-S1,PR0012,Top Style 12,Tops,Red,S1,Koramangala Flagship,23,9,416.13,Metro Garment Works,28,2025-11-20,0
+PR0012-Red-S2,PR0012,Top Style 12,Tops,Red,S2,Indiranagar Store,12,13,416.13,Northline Apparel Co.,21,2025-11-20,1
+PR0012-Red-S3,PR0012,Top Style 12,Tops,Red,S3,Downtown Mall Store,0,11,416.13,Everstyle Manufacturing,29,2025-11-20,1
+PR0012-Black-S1,PR0012,Top Style 12,Tops,Black,S1,Koramangala Flagship,7,14,416.13,Metro Garment Works,21,2025-11-20,1
+PR0012-Black-S2,PR0012,Top Style 12,Tops,Black,S2,Indiranagar Store,49,6,416.13,Northline Apparel Co.,33,2025-11-20,0
+PR0012-Black-S3,PR0012,Top Style 12,Tops,Black,S3,Downtown Mall Store,34,10,416.13,Coastal Textiles Pvt Ltd,33,2025-11-20,0
+PR0012-Mustard-S1,PR0012,Top Style 12,Tops,Mustard,S1,Koramangala Flagship,20,6,416.13,Metro Garment Works,31,2025-11-20,0
+PR0012-Mustard-S2,PR0012,Top Style 12,Tops,Mustard,S2,Indiranagar Store,10,5,416.13,Coastal Textiles Pvt Ltd,14,2025-11-20,0
+PR0012-Mustard-S3,PR0012,Top Style 12,Tops,Mustard,S3,Downtown Mall Store,37,12,416.13,Everstyle Manufacturing,13,2025-11-20,0
+PR0013-White-S1,PR0013,Top Style 13,Tops,White,S1,Koramangala Flagship,22,12,546.38,Coastal Textiles Pvt Ltd,24,2025-11-20,0
+PR0013-White-S3,PR0013,Top Style 13,Tops,White,S3,Downtown Mall Store,4,5,546.38,Everstyle Manufacturing,33,2025-11-20,1
+PR0013-Mustard-S3,PR0013,Top Style 13,Tops,Mustard,S3,Downtown Mall Store,40,13,546.38,Metro Garment Works,19,2025-11-20,0
+PR0014-Black-S1,PR0014,Top Style 14,Tops,Black,S1,Koramangala Flagship,10,7,498.09,Everstyle Manufacturing,27,2025-11-20,0
+PR0014-Black-S2,PR0014,Top Style 14,Tops,Black,S2,Indiranagar Store,55,7,498.09,Northline Apparel Co.,17,2025-11-20,0
+PR0014-Black-S3,PR0014,Top Style 14,Tops,Black,S3,Downtown Mall Store,57,7,498.09,Northline Apparel Co.,19,2025-11-20,0
+PR0014-Olive-S1,PR0014,Top Style 14,Tops,Olive,S1,Koramangala Flagship,11,12,498.09,Everstyle Manufacturing,26,2025-11-20,1
+PR0014-Olive-S2,PR0014,Top Style 14,Tops,Olive,S2,Indiranagar Store,24,9,498.09,Northline Apparel Co.,21,2025-11-20,0
+PR0014-Olive-S3,PR0014,Top Style 14,Tops,Olive,S3,Downtown Mall Store,53,14,498.09,Coastal Textiles Pvt Ltd,16,2025-11-20,0
+PR0015-Mustard-S1,PR0015,Top Style 15,Tops,Mustard,S1,Koramangala Flagship,5,5,353.43,Everstyle Manufacturing,29,2025-11-20,1
+PR0015-Red-S1,PR0015,Top Style 15,Tops,Red,S1,Koramangala Flagship,59,8,353.43,Coastal Textiles Pvt Ltd,17,2025-11-20,0
+PR0015-Red-S2,PR0015,Top Style 15,Tops,Red,S2,Indiranagar Store,45,12,353.43,Coastal Textiles Pvt Ltd,16,2025-11-20,0
+PR0016-Navy-S1,PR0016,Top Style 16,Tops,Navy,S1,Koramangala Flagship,50,12,410.65,Coastal Textiles Pvt Ltd,24,2025-11-20,0
+PR0016-Navy-S2,PR0016,Top Style 16,Tops,Navy,S2,Indiranagar Store,22,6,410.65,Metro Garment Works,23,2025-11-20,0
+PR0016-Navy-S3,PR0016,Top Style 16,Tops,Navy,S3,Downtown Mall Store,49,7,410.65,Northline Apparel Co.,10,2025-11-20,0
+PR0016-Olive-S1,PR0016,Top Style 16,Tops,Olive,S1,Koramangala Flagship,30,14,410.65,Northline Apparel Co.,24,2025-11-20,0
+PR0016-Olive-S2,PR0016,Top Style 16,Tops,Olive,S2,Indiranagar Store,18,9,410.65,Metro Garment Works,31,2025-11-20,0
+PR0016-Olive-S3,PR0016,Top Style 16,Tops,Olive,S3,Downtown Mall Store,4,9,410.65,Metro Garment Works,27,2025-11-20,1
+PR0017-Navy-S2,PR0017,Top Style 17,Tops,Navy,S2,Indiranagar Store,3,14,631.04,Metro Garment Works,23,2025-11-20,1
+PR0017-Navy-S3,PR0017,Top Style 17,Tops,Navy,S3,Downtown Mall Store,17,13,631.04,Everstyle Manufacturing,10,2025-11-20,0
+PR0017-Grey-S2,PR0017,Top Style 17,Tops,Grey,S2,Indiranagar Store,42,14,631.04,Metro Garment Works,13,2025-11-20,0
+PR0017-Grey-S3,PR0017,Top Style 17,Tops,Grey,S3,Downtown Mall Store,51,5,631.04,Everstyle Manufacturing,18,2025-11-20,0
+PR0017-Olive-S1,PR0017,Top Style 17,Tops,Olive,S1,Koramangala Flagship,43,9,631.04,Coastal Textiles Pvt Ltd,30,2025-11-20,0
+PR0017-Olive-S2,PR0017,Top Style 17,Tops,Olive,S2,Indiranagar Store,12,7,631.04,Northline Apparel Co.,23,2025-11-20,0
+PR0017-Olive-S3,PR0017,Top Style 17,Tops,Olive,S3,Downtown Mall Store,43,9,631.04,Everstyle Manufacturing,21,2025-11-20,0
+PR0018-Black-S1,PR0018,Top Style 18,Tops,Black,S1,Koramangala Flagship,18,8,419.96,Coastal Textiles Pvt Ltd,25,2025-11-20,0
+PR0018-Black-S2,PR0018,Top Style 18,Tops,Black,S2,Indiranagar Store,2,6,419.96,Metro Garment Works,13,2025-11-20,1
+PR0018-Black-S3,PR0018,Top Style 18,Tops,Black,S3,Downtown Mall Store,59,11,419.96,Northline Apparel Co.,14,2025-11-20,0
+PR0018-Olive-S1,PR0018,Top Style 18,Tops,Olive,S1,Koramangala Flagship,35,7,419.96,Everstyle Manufacturing,10,2025-11-20,0
+PR0018-Olive-S2,PR0018,Top Style 18,Tops,Olive,S2,Indiranagar Store,36,6,419.96,Northline Apparel Co.,31,2025-11-20,0
+PR0018-Olive-S3,PR0018,Top Style 18,Tops,Olive,S3,Downtown Mall Store,43,14,419.96,Everstyle Manufacturing,24,2025-11-20,0
+PR0019-Grey-S2,PR0019,Bottom Style 1,Bottoms,Grey,S2,Indiranagar Store,57,7,780.07,Coastal Textiles Pvt Ltd,16,2025-11-20,0
+PR0019-Grey-S3,PR0019,Bottom Style 1,Bottoms,Grey,S3,Downtown Mall Store,25,12,780.07,Everstyle Manufacturing,24,2025-11-20,0
+PR0019-Black-S1,PR0019,Bottom Style 1,Bottoms,Black,S1,Koramangala Flagship,23,6,780.07,Everstyle Manufacturing,15,2025-11-20,0
+PR0019-Black-S2,PR0019,Bottom Style 1,Bottoms,Black,S2,Indiranagar Store,41,10,780.07,Everstyle Manufacturing,15,2025-11-20,0
+PR0019-Black-S3,PR0019,Bottom Style 1,Bottoms,Black,S3,Downtown Mall Store,53,9,780.07,Everstyle Manufacturing,14,2025-11-20,0
+PR0020-Red-S2,PR0020,Bottom Style 2,Bottoms,Red,S2,Indiranagar Store,4,5,758.32,Northline Apparel Co.,10,2025-11-20,1
+PR0020-Red-S3,PR0020,Bottom Style 2,Bottoms,Red,S3,Downtown Mall Store,31,5,758.32,Coastal Textiles Pvt Ltd,26,2025-11-20,0
+PR0020-Navy-S1,PR0020,Bottom Style 2,Bottoms,Navy,S1,Koramangala Flagship,3,8,758.32,Metro Garment Works,21,2025-11-20,1
+PR0020-Navy-S2,PR0020,Bottom Style 2,Bottoms,Navy,S2,Indiranagar Store,51,11,758.32,Metro Garment Works,19,2025-11-20,0
+PR0020-Navy-S3,PR0020,Bottom Style 2,Bottoms,Navy,S3,Downtown Mall Store,40,10,758.32,Metro Garment Works,20,2025-11-20,0
+PR0020-Mustard-S1,PR0020,Bottom Style 2,Bottoms,Mustard,S1,Koramangala Flagship,3,11,758.32,Coastal Textiles Pvt Ltd,22,2025-11-20,1
+PR0020-Mustard-S3,PR0020,Bottom Style 2,Bottoms,Mustard,S3,Downtown Mall Store,48,5,758.32,Metro Garment Works,34,2025-11-20,0
+PR0021-Grey-S1,PR0021,Bottom Style 3,Bottoms,Grey,S1,Koramangala Flagship,37,11,940.74,Metro Garment Works,25,2025-11-20,0
+PR0021-Grey-S2,PR0021,Bottom Style 3,Bottoms,Grey,S2,Indiranagar Store,49,10,940.74,Metro Garment Works,27,2025-11-20,0
+PR0021-Grey-S3,PR0021,Bottom Style 3,Bottoms,Grey,S3,Downtown Mall Store,2,6,940.74,Everstyle Manufacturing,34,2025-11-20,1
+PR0021-Red-S1,PR0021,Bottom Style 3,Bottoms,Red,S1,Koramangala Flagship,55,14,940.74,Coastal Textiles Pvt Ltd,10,2025-11-20,0
+PR0021-Red-S2,PR0021,Bottom Style 3,Bottoms,Red,S2,Indiranagar Store,44,14,940.74,Metro Garment Works,33,2025-11-20,0
+PR0021-Red-S3,PR0021,Bottom Style 3,Bottoms,Red,S3,Downtown Mall Store,46,13,940.74,Northline Apparel Co.,30,2025-11-20,0
+PR0021-White-S1,PR0021,Bottom Style 3,Bottoms,White,S1,Koramangala Flagship,34,8,940.74,Everstyle Manufacturing,28,2025-11-20,0
+PR0021-White-S2,PR0021,Bottom Style 3,Bottoms,White,S2,Indiranagar Store,38,8,940.74,Metro Garment Works,11,2025-11-20,0
+PR0021-White-S3,PR0021,Bottom Style 3,Bottoms,White,S3,Downtown Mall Store,7,6,940.74,Metro Garment Works,24,2025-11-20,0
+PR0022-Olive-S1,PR0022,Bottom Style 4,Bottoms,Olive,S1,Koramangala Flagship,33,14,745.78,Metro Garment Works,20,2025-11-20,0
+PR0022-Olive-S2,PR0022,Bottom Style 4,Bottoms,Olive,S2,Indiranagar Store,57,13,745.78,Northline Apparel Co.,27,2025-11-20,0
+PR0022-Olive-S3,PR0022,Bottom Style 4,Bottoms,Olive,S3,Downtown Mall Store,5,5,745.78,Metro Garment Works,34,2025-11-20,1
+PR0022-Black-S1,PR0022,Bottom Style 4,Bottoms,Black,S1,Koramangala Flagship,32,11,745.78,Everstyle Manufacturing,26,2025-11-20,0
+PR0022-Black-S3,PR0022,Bottom Style 4,Bottoms,Black,S3,Downtown Mall Store,28,8,745.78,Metro Garment Works,18,2025-11-20,0
+PR0022-White-S1,PR0022,Bottom Style 4,Bottoms,White,S1,Koramangala Flagship,34,9,745.78,Everstyle Manufacturing,17,2025-11-20,0
+PR0022-White-S3,PR0022,Bottom Style 4,Bottoms,White,S3,Downtown Mall Store,50,10,745.78,Metro Garment Works,29,2025-11-20,0
+PR0023-Mustard-S1,PR0023,Bottom Style 5,Bottoms,Mustard,S1,Koramangala Flagship,33,8,747.26,Everstyle Manufacturing,27,2025-11-20,0
+PR0023-Mustard-S2,PR0023,Bottom Style 5,Bottoms,Mustard,S2,Indiranagar Store,54,12,747.26,Coastal Textiles Pvt Ltd,33,2025-11-20,0
+PR0023-Red-S2,PR0023,Bottom Style 5,Bottoms,Red,S2,Indiranagar Store,9,13,747.26,Everstyle Manufacturing,11,2025-11-20,1
+PR0023-Red-S3,PR0023,Bottom Style 5,Bottoms,Red,S3,Downtown Mall Store,39,5,747.26,Everstyle Manufacturing,15,2025-11-20,0
+PR0024-Red-S1,PR0024,Bottom Style 6,Bottoms,Red,S1,Koramangala Flagship,23,8,716.85,Coastal Textiles Pvt Ltd,32,2025-11-20,0
+PR0024-Red-S3,PR0024,Bottom Style 6,Bottoms,Red,S3,Downtown Mall Store,18,14,716.85,Coastal Textiles Pvt Ltd,12,2025-11-20,0
+PR0024-Navy-S1,PR0024,Bottom Style 6,Bottoms,Navy,S1,Koramangala Flagship,57,10,716.85,Metro Garment Works,18,2025-11-20,0
+PR0024-Navy-S2,PR0024,Bottom Style 6,Bottoms,Navy,S2,Indiranagar Store,44,12,716.85,Metro Garment Works,11,2025-11-20,0
+PR0024-Beige-S1,PR0024,Bottom Style 6,Bottoms,Beige,S1,Koramangala Flagship,57,14,716.85,Northline Apparel Co.,18,2025-11-20,0
+PR0024-Beige-S2,PR0024,Bottom Style 6,Bottoms,Beige,S2,Indiranagar Store,28,9,716.85,Northline Apparel Co.,25,2025-11-20,0
+PR0024-Beige-S3,PR0024,Bottom Style 6,Bottoms,Beige,S3,Downtown Mall Store,4,9,716.85,Coastal Textiles Pvt Ltd,31,2025-11-20,1
+PR0025-Red-S1,PR0025,Bottom Style 7,Bottoms,Red,S1,Koramangala Flagship,28,12,428.74,Northline Apparel Co.,13,2025-11-20,0
+PR0025-Red-S3,PR0025,Bottom Style 7,Bottoms,Red,S3,Downtown Mall Store,17,13,428.74,Metro Garment Works,17,2025-11-20,0
+PR0025-Navy-S2,PR0025,Bottom Style 7,Bottoms,Navy,S2,Indiranagar Store,34,10,428.74,Northline Apparel Co.,21,2025-11-20,0
+PR0025-Navy-S3,PR0025,Bottom Style 7,Bottoms,Navy,S3,Downtown Mall Store,54,14,428.74,Northline Apparel Co.,12,2025-11-20,0
+PR0025-White-S1,PR0025,Bottom Style 7,Bottoms,White,S1,Koramangala Flagship,13,14,428.74,Coastal Textiles Pvt Ltd,28,2025-11-20,1
+PR0025-White-S3,PR0025,Bottom Style 7,Bottoms,White,S3,Downtown Mall Store,3,10,428.74,Northline Apparel Co.,16,2025-11-20,1
+PR0026-Black-S1,PR0026,Bottom Style 8,Bottoms,Black,S1,Koramangala Flagship,18,6,809.04,Metro Garment Works,12,2025-11-20,0
+PR0026-Black-S3,PR0026,Bottom Style 8,Bottoms,Black,S3,Downtown Mall Store,33,7,809.04,Coastal Textiles Pvt Ltd,31,2025-11-20,0
+PR0026-White-S2,PR0026,Bottom Style 8,Bottoms,White,S2,Indiranagar Store,53,13,809.04,Metro Garment Works,15,2025-11-20,0
+PR0026-White-S3,PR0026,Bottom Style 8,Bottoms,White,S3,Downtown Mall Store,15,13,809.04,Coastal Textiles Pvt Ltd,32,2025-11-20,0
+PR0026-Mustard-S1,PR0026,Bottom Style 8,Bottoms,Mustard,S1,Koramangala Flagship,51,6,809.04,Northline Apparel Co.,16,2025-11-20,0
+PR0026-Mustard-S2,PR0026,Bottom Style 8,Bottoms,Mustard,S2,Indiranagar Store,42,13,809.04,Metro Garment Works,22,2025-11-20,0
+PR0026-Mustard-S3,PR0026,Bottom Style 8,Bottoms,Mustard,S3,Downtown Mall Store,31,14,809.04,Northline Apparel Co.,10,2025-11-20,0
+PR0027-White-S1,PR0027,Bottom Style 9,Bottoms,White,S1,Koramangala Flagship,28,12,613.09,Coastal Textiles Pvt Ltd,20,2025-11-20,0
+PR0027-White-S2,PR0027,Bottom Style 9,Bottoms,White,S2,Indiranagar Store,24,13,613.09,Northline Apparel Co.,14,2025-11-20,0
+PR0027-Black-S1,PR0027,Bottom Style 9,Bottoms,Black,S1,Koramangala Flagship,20,9,613.09,Northline Apparel Co.,11,2025-11-20,0
+PR0027-Black-S2,PR0027,Bottom Style 9,Bottoms,Black,S2,Indiranagar Store,7,10,613.09,Everstyle Manufacturing,34,2025-11-20,1
+PR0027-Black-S3,PR0027,Bottom Style 9,Bottoms,Black,S3,Downtown Mall Store,31,8,613.09,Everstyle Manufacturing,13,2025-11-20,0
+PR0027-Olive-S1,PR0027,Bottom Style 9,Bottoms,Olive,S1,Koramangala Flagship,35,11,613.09,Metro Garment Works,12,2025-11-20,0
+PR0027-Olive-S2,PR0027,Bottom Style 9,Bottoms,Olive,S2,Indiranagar Store,51,11,613.09,Northline Apparel Co.,14,2025-11-20,0
+PR0027-Olive-S3,PR0027,Bottom Style 9,Bottoms,Olive,S3,Downtown Mall Store,56,7,613.09,Everstyle Manufacturing,13,2025-11-20,0
+PR0028-Black-S2,PR0028,Bottom Style 10,Bottoms,Black,S2,Indiranagar Store,10,8,900.38,Everstyle Manufacturing,20,2025-11-20,0
+PR0028-Black-S3,PR0028,Bottom Style 10,Bottoms,Black,S3,Downtown Mall Store,4,5,900.38,Metro Garment Works,23,2025-11-20,1
+PR0028-Beige-S2,PR0028,Bottom Style 10,Bottoms,Beige,S2,Indiranagar Store,4,7,900.38,Everstyle Manufacturing,23,2025-11-20,1
+PR0028-Beige-S3,PR0028,Bottom Style 10,Bottoms,Beige,S3,Downtown Mall Store,31,8,900.38,Everstyle Manufacturing,19,2025-11-20,0
+PR0028-Mustard-S1,PR0028,Bottom Style 10,Bottoms,Mustard,S1,Koramangala Flagship,52,13,900.38,Metro Garment Works,11,2025-11-20,0
+PR0028-Mustard-S2,PR0028,Bottom Style 10,Bottoms,Mustard,S2,Indiranagar Store,48,11,900.38,Metro Garment Works,26,2025-11-20,0
+PR0028-Mustard-S3,PR0028,Bottom Style 10,Bottoms,Mustard,S3,Downtown Mall Store,58,9,900.38,Coastal Textiles Pvt Ltd,31,2025-11-20,0
+PR0029-Mustard-S1,PR0029,Bottom Style 11,Bottoms,Mustard,S1,Koramangala Flagship,50,9,811.74,Metro Garment Works,34,2025-11-20,0
+PR0029-Mustard-S2,PR0029,Bottom Style 11,Bottoms,Mustard,S2,Indiranagar Store,31,6,811.74,Metro Garment Works,18,2025-11-20,0
+PR0029-Mustard-S3,PR0029,Bottom Style 11,Bottoms,Mustard,S3,Downtown Mall Store,41,11,811.74,Everstyle Manufacturing,17,2025-11-20,0
+PR0030-Red-S1,PR0030,Bottom Style 12,Bottoms,Red,S1,Koramangala Flagship,12,11,606.41,Metro Garment Works,23,2025-11-20,0
+PR0030-Red-S2,PR0030,Bottom Style 12,Bottoms,Red,S2,Indiranagar Store,46,10,606.41,Metro Garment Works,27,2025-11-20,0
+PR0030-Beige-S1,PR0030,Bottom Style 12,Bottoms,Beige,S1,Koramangala Flagship,35,8,606.41,Coastal Textiles Pvt Ltd,16,2025-11-20,0
+PR0030-Beige-S2,PR0030,Bottom Style 12,Bottoms,Beige,S2,Indiranagar Store,1,13,606.41,Coastal Textiles Pvt Ltd,14,2025-11-20,1
+PR0030-Beige-S3,PR0030,Bottom Style 12,Bottoms,Beige,S3,Downtown Mall Store,20,11,606.41,Coastal Textiles Pvt Ltd,20,2025-11-20,0
+PR0030-Navy-S1,PR0030,Bottom Style 12,Bottoms,Navy,S1,Koramangala Flagship,29,6,606.41,Metro Garment Works,30,2025-11-20,0
+PR0030-Navy-S2,PR0030,Bottom Style 12,Bottoms,Navy,S2,Indiranagar Store,1,8,606.41,Metro Garment Works,17,2025-11-20,1
+PR0030-Navy-S3,PR0030,Bottom Style 12,Bottoms,Navy,S3,Downtown Mall Store,8,7,606.41,Metro Garment Works,14,2025-11-20,0
+PR0031-White-S1,PR0031,Bottom Style 13,Bottoms,White,S1,Koramangala Flagship,6,9,479.41,Coastal Textiles Pvt Ltd,33,2025-11-20,1
+PR0031-White-S2,PR0031,Bottom Style 13,Bottoms,White,S2,Indiranagar Store,50,10,479.41,Northline Apparel Co.,15,2025-11-20,0
+PR0031-White-S3,PR0031,Bottom Style 13,Bottoms,White,S3,Downtown Mall Store,5,10,479.41,Coastal Textiles Pvt Ltd,11,2025-11-20,1
+PR0031-Grey-S1,PR0031,Bottom Style 13,Bottoms,Grey,S1,Koramangala Flagship,44,5,479.41,Northline Apparel Co.,30,2025-11-20,0
+PR0031-Grey-S2,PR0031,Bottom Style 13,Bottoms,Grey,S2,Indiranagar Store,39,9,479.41,Northline Apparel Co.,24,2025-11-20,0
+PR0031-Grey-S3,PR0031,Bottom Style 13,Bottoms,Grey,S3,Downtown Mall Store,36,13,479.41,Northline Apparel Co.,17,2025-11-20,0
+PR0032-Navy-S1,PR0032,Bottom Style 14,Bottoms,Navy,S1,Koramangala Flagship,48,8,735.36,Metro Garment Works,31,2025-11-20,0
+PR0032-Navy-S2,PR0032,Bottom Style 14,Bottoms,Navy,S2,Indiranagar Store,3,7,735.36,Everstyle Manufacturing,32,2025-11-20,1
+PR0032-Navy-S3,PR0032,Bottom Style 14,Bottoms,Navy,S3,Downtown Mall Store,22,8,735.36,Everstyle Manufacturing,22,2025-11-20,0
+PR0032-Mustard-S1,PR0032,Bottom Style 14,Bottoms,Mustard,S1,Koramangala Flagship,51,7,735.36,Coastal Textiles Pvt Ltd,24,2025-11-20,0
+PR0032-Mustard-S2,PR0032,Bottom Style 14,Bottoms,Mustard,S2,Indiranagar Store,42,7,735.36,Metro Garment Works,10,2025-11-20,0
+PR0032-Mustard-S3,PR0032,Bottom Style 14,Bottoms,Mustard,S3,Downtown Mall Store,52,14,735.36,Metro Garment Works,33,2025-11-20,0
+PR0032-Grey-S1,PR0032,Bottom Style 14,Bottoms,Grey,S1,Koramangala Flagship,55,10,735.36,Northline Apparel Co.,19,2025-11-20,0
+PR0032-Grey-S3,PR0032,Bottom Style 14,Bottoms,Grey,S3,Downtown Mall Store,34,6,735.36,Northline Apparel Co.,30,2025-11-20,0
+PR0033-Black-S1,PR0033,Dresse Style 1,Dresses,Black,S1,Koramangala Flagship,8,8,841.72,Coastal Textiles Pvt Ltd,30,2025-11-20,1
+PR0033-Black-S2,PR0033,Dresse Style 1,Dresses,Black,S2,Indiranagar Store,57,14,841.72,Everstyle Manufacturing,12,2025-11-20,0
+PR0033-Black-S3,PR0033,Dresse Style 1,Dresses,Black,S3,Downtown Mall Store,9,13,841.72,Metro Garment Works,33,2025-11-20,1
+PR0033-White-S1,PR0033,Dresse Style 1,Dresses,White,S1,Koramangala Flagship,27,12,841.72,Everstyle Manufacturing,19,2025-11-20,0
+PR0033-White-S2,PR0033,Dresse Style 1,Dresses,White,S2,Indiranagar Store,46,8,841.72,Coastal Textiles Pvt Ltd,26,2025-11-20,0
+PR0033-White-S3,PR0033,Dresse Style 1,Dresses,White,S3,Downtown Mall Store,22,12,841.72,Coastal Textiles Pvt Ltd,11,2025-11-20,0
+PR0034-Black-S1,PR0034,Dresse Style 2,Dresses,Black,S1,Koramangala Flagship,22,8,1291.98,Northline Apparel Co.,33,2025-11-20,0
+PR0034-Black-S2,PR0034,Dresse Style 2,Dresses,Black,S2,Indiranagar Store,56,5,1291.98,Everstyle Manufacturing,12,2025-11-20,0
+PR0034-Black-S3,PR0034,Dresse Style 2,Dresses,Black,S3,Downtown Mall Store,29,9,1291.98,Metro Garment Works,33,2025-11-20,0
+PR0034-Mustard-S1,PR0034,Dresse Style 2,Dresses,Mustard,S1,Koramangala Flagship,55,6,1291.98,Northline Apparel Co.,10,2025-11-20,0
+PR0034-Mustard-S2,PR0034,Dresse Style 2,Dresses,Mustard,S2,Indiranagar Store,21,12,1291.98,Everstyle Manufacturing,30,2025-11-20,0
+PR0034-Mustard-S3,PR0034,Dresse Style 2,Dresses,Mustard,S3,Downtown Mall Store,8,5,1291.98,Metro Garment Works,29,2025-11-20,0
+PR0034-White-S2,PR0034,Dresse Style 2,Dresses,White,S2,Indiranagar Store,51,9,1291.98,Northline Apparel Co.,19,2025-11-20,0
+PR0034-White-S3,PR0034,Dresse Style 2,Dresses,White,S3,Downtown Mall Store,41,10,1291.98,Metro Garment Works,14,2025-11-20,0
+PR0035-Navy-S1,PR0035,Dresse Style 3,Dresses,Navy,S1,Koramangala Flagship,55,9,1592.67,Everstyle Manufacturing,14,2025-11-20,0
+PR0035-Navy-S3,PR0035,Dresse Style 3,Dresses,Navy,S3,Downtown Mall Store,7,11,1592.67,Metro Garment Works,33,2025-11-20,1
+PR0036-White-S1,PR0036,Dresse Style 4,Dresses,White,S1,Koramangala Flagship,37,8,977.36,Everstyle Manufacturing,24,2025-11-20,0
+PR0036-White-S3,PR0036,Dresse Style 4,Dresses,White,S3,Downtown Mall Store,13,7,977.36,Everstyle Manufacturing,33,2025-11-20,0
+PR0036-Beige-S1,PR0036,Dresse Style 4,Dresses,Beige,S1,Koramangala Flagship,57,11,977.36,Coastal Textiles Pvt Ltd,12,2025-11-20,0
+PR0036-Beige-S2,PR0036,Dresse Style 4,Dresses,Beige,S2,Indiranagar Store,58,7,977.36,Metro Garment Works,26,2025-11-20,0
+PR0036-Beige-S3,PR0036,Dresse Style 4,Dresses,Beige,S3,Downtown Mall Store,15,8,977.36,Coastal Textiles Pvt Ltd,30,2025-11-20,0
+PR0036-Olive-S1,PR0036,Dresse Style 4,Dresses,Olive,S1,Koramangala Flagship,36,12,977.36,Metro Garment Works,16,2025-11-20,0
+PR0036-Olive-S3,PR0036,Dresse Style 4,Dresses,Olive,S3,Downtown Mall Store,54,11,977.36,Everstyle Manufacturing,15,2025-11-20,0
+PR0037-Mustard-S1,PR0037,Dresse Style 5,Dresses,Mustard,S1,Koramangala Flagship,38,9,640.17,Northline Apparel Co.,25,2025-11-20,0
+PR0037-Mustard-S2,PR0037,Dresse Style 5,Dresses,Mustard,S2,Indiranagar Store,9,6,640.17,Everstyle Manufacturing,27,2025-11-20,0
+PR0037-Mustard-S3,PR0037,Dresse Style 5,Dresses,Mustard,S3,Downtown Mall Store,11,7,640.17,Coastal Textiles Pvt Ltd,19,2025-11-20,0
+PR0037-Black-S1,PR0037,Dresse Style 5,Dresses,Black,S1,Koramangala Flagship,7,6,640.17,Metro Garment Works,14,2025-11-20,0
+PR0037-Black-S2,PR0037,Dresse Style 5,Dresses,Black,S2,Indiranagar Store,41,13,640.17,Coastal Textiles Pvt Ltd,11,2025-11-20,0
+PR0037-Black-S3,PR0037,Dresse Style 5,Dresses,Black,S3,Downtown Mall Store,0,6,640.17,Northline Apparel Co.,33,2025-11-20,1
+PR0037-White-S1,PR0037,Dresse Style 5,Dresses,White,S1,Koramangala Flagship,34,9,640.17,Everstyle Manufacturing,21,2025-11-20,0
+PR0037-White-S2,PR0037,Dresse Style 5,Dresses,White,S2,Indiranagar Store,16,10,640.17,Coastal Textiles Pvt Ltd,26,2025-11-20,0
+PR0037-White-S3,PR0037,Dresse Style 5,Dresses,White,S3,Downtown Mall Store,41,8,640.17,Northline Apparel Co.,22,2025-11-20,0
+PR0038-Navy-S1,PR0038,Dresse Style 6,Dresses,Navy,S1,Koramangala Flagship,23,5,753.48,Northline Apparel Co.,22,2025-11-20,0
+PR0038-Navy-S2,PR0038,Dresse Style 6,Dresses,Navy,S2,Indiranagar Store,56,13,753.48,Northline Apparel Co.,33,2025-11-20,0
+PR0038-Mustard-S2,PR0038,Dresse Style 6,Dresses,Mustard,S2,Indiranagar Store,23,12,753.48,Northline Apparel Co.,27,2025-11-20,0
+PR0038-Red-S1,PR0038,Dresse Style 6,Dresses,Red,S1,Koramangala Flagship,48,8,753.48,Metro Garment Works,24,2025-11-20,0
+PR0038-Red-S2,PR0038,Dresse Style 6,Dresses,Red,S2,Indiranagar Store,18,13,753.48,Coastal Textiles Pvt Ltd,32,2025-11-20,0
+PR0039-Grey-S2,PR0039,Dresse Style 7,Dresses,Grey,S2,Indiranagar Store,47,14,930.26,Northline Apparel Co.,27,2025-11-20,0
+PR0039-Grey-S3,PR0039,Dresse Style 7,Dresses,Grey,S3,Downtown Mall Store,33,8,930.26,Metro Garment Works,27,2025-11-20,0
+PR0039-Navy-S1,PR0039,Dresse Style 7,Dresses,Navy,S1,Koramangala Flagship,25,6,930.26,Northline Apparel Co.,26,2025-11-20,0
+PR0039-Navy-S2,PR0039,Dresse Style 7,Dresses,Navy,S2,Indiranagar Store,46,13,930.26,Everstyle Manufacturing,16,2025-11-20,0
+PR0039-Navy-S3,PR0039,Dresse Style 7,Dresses,Navy,S3,Downtown Mall Store,9,7,930.26,Metro Garment Works,20,2025-11-20,0
+PR0040-White-S2,PR0040,Dresse Style 8,Dresses,White,S2,Indiranagar Store,38,11,1122.18,Northline Apparel Co.,28,2025-11-20,0
+PR0040-Beige-S1,PR0040,Dresse Style 8,Dresses,Beige,S1,Koramangala Flagship,10,8,1122.18,Northline Apparel Co.,27,2025-11-20,0
+PR0040-Beige-S2,PR0040,Dresse Style 8,Dresses,Beige,S2,Indiranagar Store,17,11,1122.18,Northline Apparel Co.,27,2025-11-20,0
+PR0040-Beige-S3,PR0040,Dresse Style 8,Dresses,Beige,S3,Downtown Mall Store,59,5,1122.18,Metro Garment Works,16,2025-11-20,0
+PR0041-Navy-S1,PR0041,Dresse Style 9,Dresses,Navy,S1,Koramangala Flagship,22,14,1121.31,Coastal Textiles Pvt Ltd,28,2025-11-20,0
+PR0041-Navy-S2,PR0041,Dresse Style 9,Dresses,Navy,S2,Indiranagar Store,46,8,1121.31,Metro Garment Works,33,2025-11-20,0
+PR0041-Navy-S3,PR0041,Dresse Style 9,Dresses,Navy,S3,Downtown Mall Store,16,9,1121.31,Coastal Textiles Pvt Ltd,29,2025-11-20,0
+PR0041-Red-S1,PR0041,Dresse Style 9,Dresses,Red,S1,Koramangala Flagship,42,6,1121.31,Northline Apparel Co.,28,2025-11-20,0
+PR0041-Red-S2,PR0041,Dresse Style 9,Dresses,Red,S2,Indiranagar Store,47,13,1121.31,Everstyle Manufacturing,30,2025-11-20,0
+PR0041-Red-S3,PR0041,Dresse Style 9,Dresses,Red,S3,Downtown Mall Store,7,7,1121.31,Northline Apparel Co.,19,2025-11-20,1
+PR0042-Beige-S2,PR0042,Dresse Style 10,Dresses,Beige,S2,Indiranagar Store,50,12,1124.68,Coastal Textiles Pvt Ltd,28,2025-11-20,0
+PR0042-Beige-S3,PR0042,Dresse Style 10,Dresses,Beige,S3,Downtown Mall Store,34,5,1124.68,Northline Apparel Co.,19,2025-11-20,0
+PR0042-Grey-S1,PR0042,Dresse Style 10,Dresses,Grey,S1,Koramangala Flagship,12,7,1124.68,Coastal Textiles Pvt Ltd,28,2025-11-20,0
+PR0042-Grey-S2,PR0042,Dresse Style 10,Dresses,Grey,S2,Indiranagar Store,42,14,1124.68,Everstyle Manufacturing,13,2025-11-20,0
+PR0042-Grey-S3,PR0042,Dresse Style 10,Dresses,Grey,S3,Downtown Mall Store,31,9,1124.68,Coastal Textiles Pvt Ltd,27,2025-11-20,0
+PR0042-Olive-S2,PR0042,Dresse Style 10,Dresses,Olive,S2,Indiranagar Store,7,11,1124.68,Northline Apparel Co.,11,2025-11-20,1
+PR0042-Olive-S3,PR0042,Dresse Style 10,Dresses,Olive,S3,Downtown Mall Store,30,11,1124.68,Coastal Textiles Pvt Ltd,12,2025-11-20,0
+PR0043-Grey-S2,PR0043,Outerwear Style 1,Outerwear,Grey,S2,Indiranagar Store,3,7,2117.8,Everstyle Manufacturing,37,2024-05-30,1
+PR0043-Grey-S3,PR0043,Outerwear Style 1,Outerwear,Grey,S3,Downtown Mall Store,7,11,2117.8,Northline Apparel Co.,40,2024-05-30,1
+PR0043-Beige-S1,PR0043,Outerwear Style 1,Outerwear,Beige,S1,Koramangala Flagship,3,7,2117.8,Metro Garment Works,49,2024-05-30,1
+PR0043-Beige-S3,PR0043,Outerwear Style 1,Outerwear,Beige,S3,Downtown Mall Store,11,5,2117.8,Northline Apparel Co.,43,2024-05-30,0
+PR0044-Beige-S1,PR0044,Outerwear Style 2,Outerwear,Beige,S1,Koramangala Flagship,56,14,867.47,Northline Apparel Co.,58,2024-05-30,0
+PR0044-Beige-S3,PR0044,Outerwear Style 2,Outerwear,Beige,S3,Downtown Mall Store,34,9,867.47,Everstyle Manufacturing,57,2024-05-30,0
+PR0044-Mustard-S1,PR0044,Outerwear Style 2,Outerwear,Mustard,S1,Koramangala Flagship,6,13,867.47,Everstyle Manufacturing,43,2024-05-30,1
+PR0044-Mustard-S2,PR0044,Outerwear Style 2,Outerwear,Mustard,S2,Indiranagar Store,47,14,867.47,Metro Garment Works,43,2024-05-30,0
+PR0044-Mustard-S3,PR0044,Outerwear Style 2,Outerwear,Mustard,S3,Downtown Mall Store,35,7,867.47,Coastal Textiles Pvt Ltd,40,2024-05-30,0
+PR0044-Olive-S1,PR0044,Outerwear Style 2,Outerwear,Olive,S1,Koramangala Flagship,28,8,867.47,Coastal Textiles Pvt Ltd,45,2024-05-30,0
+PR0044-Olive-S3,PR0044,Outerwear Style 2,Outerwear,Olive,S3,Downtown Mall Store,40,12,867.47,Northline Apparel Co.,55,2024-05-30,0
+PR0045-Black-S1,PR0045,Outerwear Style 3,Outerwear,Black,S1,Koramangala Flagship,32,12,1922.61,Coastal Textiles Pvt Ltd,40,2024-05-30,0
+PR0045-Black-S2,PR0045,Outerwear Style 3,Outerwear,Black,S2,Indiranagar Store,33,14,1922.61,Metro Garment Works,58,2024-05-30,0
+PR0045-Black-S3,PR0045,Outerwear Style 3,Outerwear,Black,S3,Downtown Mall Store,28,12,1922.61,Northline Apparel Co.,38,2024-05-30,0
+PR0045-White-S1,PR0045,Outerwear Style 3,Outerwear,White,S1,Koramangala Flagship,22,10,1922.61,Metro Garment Works,51,2024-05-30,0
+PR0045-White-S2,PR0045,Outerwear Style 3,Outerwear,White,S2,Indiranagar Store,4,8,1922.61,Everstyle Manufacturing,52,2024-05-30,1
+PR0045-White-S3,PR0045,Outerwear Style 3,Outerwear,White,S3,Downtown Mall Store,10,11,1922.61,Coastal Textiles Pvt Ltd,37,2024-05-30,1
+PR0045-Grey-S1,PR0045,Outerwear Style 3,Outerwear,Grey,S1,Koramangala Flagship,56,7,1922.61,Coastal Textiles Pvt Ltd,54,2024-05-30,0
+PR0045-Grey-S2,PR0045,Outerwear Style 3,Outerwear,Grey,S2,Indiranagar Store,2,5,1922.61,Northline Apparel Co.,46,2024-05-30,1
+PR0045-Grey-S3,PR0045,Outerwear Style 3,Outerwear,Grey,S3,Downtown Mall Store,17,9,1922.61,Coastal Textiles Pvt Ltd,59,2024-05-30,0
+PR0046-Olive-S1,PR0046,Outerwear Style 4,Outerwear,Olive,S1,Koramangala Flagship,26,8,2425.57,Everstyle Manufacturing,36,2024-05-30,0
+PR0046-Olive-S2,PR0046,Outerwear Style 4,Outerwear,Olive,S2,Indiranagar Store,22,14,2425.57,Everstyle Manufacturing,59,2024-05-30,0
+PR0046-Olive-S3,PR0046,Outerwear Style 4,Outerwear,Olive,S3,Downtown Mall Store,26,8,2425.57,Everstyle Manufacturing,57,2024-05-30,0
+PR0046-White-S2,PR0046,Outerwear Style 4,Outerwear,White,S2,Indiranagar Store,34,6,2425.57,Metro Garment Works,47,2024-05-30,0
+PR0046-White-S3,PR0046,Outerwear Style 4,Outerwear,White,S3,Downtown Mall Store,21,9,2425.57,Coastal Textiles Pvt Ltd,59,2024-05-30,0
+PR0046-Grey-S1,PR0046,Outerwear Style 4,Outerwear,Grey,S1,Koramangala Flagship,3,14,2425.57,Everstyle Manufacturing,45,2024-05-30,1
+PR0046-Grey-S3,PR0046,Outerwear Style 4,Outerwear,Grey,S3,Downtown Mall Store,41,10,2425.57,Northline Apparel Co.,53,2024-05-30,0
+PR0047-Navy-S2,PR0047,Outerwear Style 5,Outerwear,Navy,S2,Indiranagar Store,4,14,916.02,Everstyle Manufacturing,50,2024-05-30,1
+PR0047-White-S1,PR0047,Outerwear Style 5,Outerwear,White,S1,Koramangala Flagship,43,5,916.02,Coastal Textiles Pvt Ltd,36,2024-05-30,0
+PR0047-Red-S1,PR0047,Outerwear Style 5,Outerwear,Red,S1,Koramangala Flagship,22,6,916.02,Northline Apparel Co.,45,2024-05-30,0
+PR0047-Red-S2,PR0047,Outerwear Style 5,Outerwear,Red,S2,Indiranagar Store,35,9,916.02,Northline Apparel Co.,43,2024-05-30,0
+PR0047-Red-S3,PR0047,Outerwear Style 5,Outerwear,Red,S3,Downtown Mall Store,27,5,916.02,Coastal Textiles Pvt Ltd,57,2024-05-30,0
+PR0048-Red-S2,PR0048,Outerwear Style 6,Outerwear,Red,S2,Indiranagar Store,48,10,2160.47,Northline Apparel Co.,36,2024-05-30,0
+PR0048-Red-S3,PR0048,Outerwear Style 6,Outerwear,Red,S3,Downtown Mall Store,29,8,2160.47,Everstyle Manufacturing,38,2024-05-30,0
+PR0048-Navy-S1,PR0048,Outerwear Style 6,Outerwear,Navy,S1,Koramangala Flagship,19,9,2160.47,Everstyle Manufacturing,43,2024-05-30,0
+PR0048-Navy-S2,PR0048,Outerwear Style 6,Outerwear,Navy,S2,Indiranagar Store,28,5,2160.47,Everstyle Manufacturing,46,2024-05-30,0
+PR0048-Navy-S3,PR0048,Outerwear Style 6,Outerwear,Navy,S3,Downtown Mall Store,51,6,2160.47,Metro Garment Works,44,2024-05-30,0
+PR0049-Olive-S1,PR0049,Outerwear Style 7,Outerwear,Olive,S1,Koramangala Flagship,12,5,1417.81,Everstyle Manufacturing,49,2024-05-30,0
+PR0049-Olive-S3,PR0049,Outerwear Style 7,Outerwear,Olive,S3,Downtown Mall Store,55,12,1417.81,Metro Garment Works,44,2024-05-30,0
+PR0049-Grey-S2,PR0049,Outerwear Style 7,Outerwear,Grey,S2,Indiranagar Store,49,13,1417.81,Metro Garment Works,37,2024-05-30,0
+PR0049-Grey-S3,PR0049,Outerwear Style 7,Outerwear,Grey,S3,Downtown Mall Store,17,8,1417.81,Metro Garment Works,50,2024-05-30,0
+PR0050-Mustard-S1,PR0050,Outerwear Style 8,Outerwear,Mustard,S1,Koramangala Flagship,54,11,1081.54,Coastal Textiles Pvt Ltd,39,2024-05-30,0
+PR0050-Mustard-S3,PR0050,Outerwear Style 8,Outerwear,Mustard,S3,Downtown Mall Store,22,14,1081.54,Coastal Textiles Pvt Ltd,37,2024-05-30,0
+PR0050-White-S1,PR0050,Outerwear Style 8,Outerwear,White,S1,Koramangala Flagship,42,9,1081.54,Coastal Textiles Pvt Ltd,50,2024-05-30,0
+PR0050-White-S2,PR0050,Outerwear Style 8,Outerwear,White,S2,Indiranagar Store,46,7,1081.54,Northline Apparel Co.,53,2024-05-30,0
+PR0050-White-S3,PR0050,Outerwear Style 8,Outerwear,White,S3,Downtown Mall Store,34,12,1081.54,Everstyle Manufacturing,55,2024-05-30,0
+PR0051-Olive-S1,PR0051,Footwear Style 1,Footwear,Olive,S1,Koramangala Flagship,38,12,1584.1,Coastal Textiles Pvt Ltd,37,2024-05-30,0
+PR0051-White-S2,PR0051,Footwear Style 1,Footwear,White,S2,Indiranagar Store,8,12,1584.1,Northline Apparel Co.,49,2024-05-30,1
+PR0051-White-S3,PR0051,Footwear Style 1,Footwear,White,S3,Downtown Mall Store,11,5,1584.1,Metro Garment Works,41,2024-05-30,0
+PR0052-Navy-S1,PR0052,Footwear Style 2,Footwear,Navy,S1,Koramangala Flagship,54,9,1804.06,Coastal Textiles Pvt Ltd,58,2024-05-30,0
+PR0052-Navy-S2,PR0052,Footwear Style 2,Footwear,Navy,S2,Indiranagar Store,32,13,1804.06,Everstyle Manufacturing,38,2024-05-30,0
+PR0052-Navy-S3,PR0052,Footwear Style 2,Footwear,Navy,S3,Downtown Mall Store,12,12,1804.06,Coastal Textiles Pvt Ltd,39,2024-05-30,1
+PR0052-Olive-S2,PR0052,Footwear Style 2,Footwear,Olive,S2,Indiranagar Store,42,13,1804.06,Northline Apparel Co.,53,2024-05-30,0
+PR0052-Olive-S3,PR0052,Footwear Style 2,Footwear,Olive,S3,Downtown Mall Store,26,8,1804.06,Northline Apparel Co.,37,2024-05-30,0
+PR0052-Red-S2,PR0052,Footwear Style 2,Footwear,Red,S2,Indiranagar Store,22,7,1804.06,Northline Apparel Co.,59,2024-05-30,0
+PR0052-Red-S3,PR0052,Footwear Style 2,Footwear,Red,S3,Downtown Mall Store,14,6,1804.06,Northline Apparel Co.,41,2024-05-30,0
+PR0053-Grey-S2,PR0053,Footwear Style 3,Footwear,Grey,S2,Indiranagar Store,35,9,1027.74,Metro Garment Works,44,2024-05-30,0
+PR0053-Grey-S3,PR0053,Footwear Style 3,Footwear,Grey,S3,Downtown Mall Store,45,13,1027.74,Northline Apparel Co.,37,2024-05-30,0
+PR0053-Mustard-S1,PR0053,Footwear Style 3,Footwear,Mustard,S1,Koramangala Flagship,0,10,1027.74,Metro Garment Works,48,2024-05-30,1
+PR0053-Mustard-S3,PR0053,Footwear Style 3,Footwear,Mustard,S3,Downtown Mall Store,14,12,1027.74,Metro Garment Works,37,2024-05-30,0
+PR0053-Navy-S1,PR0053,Footwear Style 3,Footwear,Navy,S1,Koramangala Flagship,36,11,1027.74,Everstyle Manufacturing,53,2024-05-30,0
+PR0053-Navy-S3,PR0053,Footwear Style 3,Footwear,Navy,S3,Downtown Mall Store,38,14,1027.74,Coastal Textiles Pvt Ltd,55,2024-05-30,0
+PR0054-Navy-S1,PR0054,Footwear Style 4,Footwear,Navy,S1,Koramangala Flagship,26,8,1745.98,Northline Apparel Co.,57,2024-05-30,0
+PR0054-Navy-S2,PR0054,Footwear Style 4,Footwear,Navy,S2,Indiranagar Store,34,7,1745.98,Everstyle Manufacturing,42,2024-05-30,0
+PR0054-Navy-S3,PR0054,Footwear Style 4,Footwear,Navy,S3,Downtown Mall Store,27,13,1745.98,Northline Apparel Co.,53,2024-05-30,0
+PR0054-White-S2,PR0054,Footwear Style 4,Footwear,White,S2,Indiranagar Store,18,10,1745.98,Coastal Textiles Pvt Ltd,48,2024-05-30,0
+PR0054-White-S3,PR0054,Footwear Style 4,Footwear,White,S3,Downtown Mall Store,53,14,1745.98,Coastal Textiles Pvt Ltd,44,2024-05-30,0
+PR0055-Red-S1,PR0055,Footwear Style 5,Footwear,Red,S1,Koramangala Flagship,36,12,1376.23,Northline Apparel Co.,44,2024-05-30,0
+PR0055-Red-S2,PR0055,Footwear Style 5,Footwear,Red,S2,Indiranagar Store,12,6,1376.23,Metro Garment Works,39,2024-05-30,0
+PR0055-Red-S3,PR0055,Footwear Style 5,Footwear,Red,S3,Downtown Mall Store,23,6,1376.23,Everstyle Manufacturing,49,2024-05-30,0
+PR0055-Olive-S3,PR0055,Footwear Style 5,Footwear,Olive,S3,Downtown Mall Store,39,10,1376.23,Northline Apparel Co.,36,2024-05-30,0
+PR0056-Grey-S2,PR0056,Footwear Style 6,Footwear,Grey,S2,Indiranagar Store,14,12,1785.17,Coastal Textiles Pvt Ltd,49,2024-05-30,0
+PR0056-Grey-S3,PR0056,Footwear Style 6,Footwear,Grey,S3,Downtown Mall Store,0,5,1785.17,Everstyle Manufacturing,52,2024-05-30,1
+PR0056-Red-S1,PR0056,Footwear Style 6,Footwear,Red,S1,Koramangala Flagship,15,9,1785.17,Northline Apparel Co.,56,2024-05-30,0
+PR0056-Red-S2,PR0056,Footwear Style 6,Footwear,Red,S2,Indiranagar Store,8,6,1785.17,Everstyle Manufacturing,59,2024-05-30,0
+PR0056-Red-S3,PR0056,Footwear Style 6,Footwear,Red,S3,Downtown Mall Store,3,6,1785.17,Metro Garment Works,53,2024-05-30,1
+PR0057-Beige-S1,PR0057,Footwear Style 7,Footwear,Beige,S1,Koramangala Flagship,48,14,1059.63,Northline Apparel Co.,59,2024-05-30,0
+PR0057-Beige-S3,PR0057,Footwear Style 7,Footwear,Beige,S3,Downtown Mall Store,14,13,1059.63,Coastal Textiles Pvt Ltd,58,2024-05-30,0
+PR0057-Navy-S1,PR0057,Footwear Style 7,Footwear,Navy,S1,Koramangala Flagship,45,13,1059.63,Northline Apparel Co.,43,2024-05-30,0
+PR0057-Navy-S3,PR0057,Footwear Style 7,Footwear,Navy,S3,Downtown Mall Store,19,5,1059.63,Coastal Textiles Pvt Ltd,38,2024-05-30,0
+PR0057-Olive-S2,PR0057,Footwear Style 7,Footwear,Olive,S2,Indiranagar Store,12,8,1059.63,Northline Apparel Co.,45,2024-05-30,0
+PR0057-Olive-S3,PR0057,Footwear Style 7,Footwear,Olive,S3,Downtown Mall Store,24,7,1059.63,Coastal Textiles Pvt Ltd,48,2024-05-30,0
+PR0058-Navy-S1,PR0058,Footwear Style 8,Footwear,Navy,S1,Koramangala Flagship,47,12,1503.77,Metro Garment Works,58,2024-05-30,0
+PR0058-Navy-S2,PR0058,Footwear Style 8,Footwear,Navy,S2,Indiranagar Store,29,11,1503.77,Northline Apparel Co.,50,2024-05-30,0
+PR0058-Navy-S3,PR0058,Footwear Style 8,Footwear,Navy,S3,Downtown Mall Store,3,12,1503.77,Northline Apparel Co.,56,2024-05-30,1
+PR0058-Black-S1,PR0058,Footwear Style 8,Footwear,Black,S1,Koramangala Flagship,38,9,1503.77,Everstyle Manufacturing,59,2024-05-30,0
+PR0058-Black-S2,PR0058,Footwear Style 8,Footwear,Black,S2,Indiranagar Store,16,13,1503.77,Everstyle Manufacturing,41,2024-05-30,0
+PR0058-Black-S3,PR0058,Footwear Style 8,Footwear,Black,S3,Downtown Mall Store,26,9,1503.77,Northline Apparel Co.,54,2024-05-30,0
+PR0058-White-S1,PR0058,Footwear Style 8,Footwear,White,S1,Koramangala Flagship,7,6,1503.77,Metro Garment Works,47,2024-05-30,0
+PR0058-White-S2,PR0058,Footwear Style 8,Footwear,White,S2,Indiranagar Store,57,7,1503.77,Metro Garment Works,59,2024-05-30,0
+PR0058-White-S3,PR0058,Footwear Style 8,Footwear,White,S3,Downtown Mall Store,53,10,1503.77,Northline Apparel Co.,45,2024-05-30,0
+PR0059-Beige-S1,PR0059,Footwear Style 9,Footwear,Beige,S1,Koramangala Flagship,17,12,1691.84,Everstyle Manufacturing,38,2024-05-30,0
+PR0059-Beige-S2,PR0059,Footwear Style 9,Footwear,Beige,S2,Indiranagar Store,37,12,1691.84,Coastal Textiles Pvt Ltd,37,2024-05-30,0
+PR0059-Beige-S3,PR0059,Footwear Style 9,Footwear,Beige,S3,Downtown Mall Store,23,11,1691.84,Everstyle Manufacturing,43,2024-05-30,0
+PR0059-Red-S1,PR0059,Footwear Style 9,Footwear,Red,S1,Koramangala Flagship,47,13,1691.84,Metro Garment Works,45,2024-05-30,0
+PR0059-Red-S2,PR0059,Footwear Style 9,Footwear,Red,S2,Indiranagar Store,53,5,1691.84,Everstyle Manufacturing,38,2024-05-30,0
+PR0060-Olive-S1,PR0060,Footwear Style 10,Footwear,Olive,S1,Koramangala Flagship,14,13,1152.95,Everstyle Manufacturing,49,2024-05-30,0
+PR0060-Olive-S2,PR0060,Footwear Style 10,Footwear,Olive,S2,Indiranagar Store,19,5,1152.95,Northline Apparel Co.,56,2024-05-30,0
+PR0060-Olive-S3,PR0060,Footwear Style 10,Footwear,Olive,S3,Downtown Mall Store,55,10,1152.95,Northline Apparel Co.,38,2024-05-30,0
+PR0060-Red-S1,PR0060,Footwear Style 10,Footwear,Red,S1,Koramangala Flagship,33,10,1152.95,Coastal Textiles Pvt Ltd,47,2024-05-30,0
+PR0060-Red-S2,PR0060,Footwear Style 10,Footwear,Red,S2,Indiranagar Store,51,12,1152.95,Metro Garment Works,49,2024-05-30,0
+PR0060-Red-S3,PR0060,Footwear Style 10,Footwear,Red,S3,Downtown Mall Store,15,10,1152.95,Northline Apparel Co.,41,2024-05-30,0
+PR0060-Black-S2,PR0060,Footwear Style 10,Footwear,Black,S2,Indiranagar Store,23,5,1152.95,Metro Garment Works,35,2024-05-30,0
+PR0061-Navy-S1,PR0061,Accessorie Style 1,Accessories,Navy,S1,Koramangala Flagship,34,9,623.81,Northline Apparel Co.,31,2025-11-20,0
+PR0061-Olive-S2,PR0061,Accessorie Style 1,Accessories,Olive,S2,Indiranagar Store,26,11,623.81,Everstyle Manufacturing,33,2025-11-20,0
+PR0062-Grey-S1,PR0062,Accessorie Style 2,Accessories,Grey,S1,Koramangala Flagship,13,12,286.93,Metro Garment Works,29,2025-11-20,0
+PR0062-Grey-S2,PR0062,Accessorie Style 2,Accessories,Grey,S2,Indiranagar Store,6,8,286.93,Metro Garment Works,23,2025-11-20,1
+PR0062-Grey-S3,PR0062,Accessorie Style 2,Accessories,Grey,S3,Downtown Mall Store,57,8,286.93,Coastal Textiles Pvt Ltd,20,2025-11-20,0
+PR0062-Olive-S1,PR0062,Accessorie Style 2,Accessories,Olive,S1,Koramangala Flagship,13,12,286.93,Northline Apparel Co.,32,2025-11-20,0
+PR0062-Olive-S2,PR0062,Accessorie Style 2,Accessories,Olive,S2,Indiranagar Store,17,10,286.93,Metro Garment Works,21,2025-11-20,0
+PR0062-Olive-S3,PR0062,Accessorie Style 2,Accessories,Olive,S3,Downtown Mall Store,3,13,286.93,Coastal Textiles Pvt Ltd,14,2025-11-20,1
+PR0063-White-S1,PR0063,Accessorie Style 3,Accessories,White,S1,Koramangala Flagship,23,8,136.81,Metro Garment Works,27,2025-11-20,0
+PR0063-White-S2,PR0063,Accessorie Style 3,Accessories,White,S2,Indiranagar Store,2,14,136.81,Metro Garment Works,31,2025-11-20,1
+PR0063-Mustard-S1,PR0063,Accessorie Style 3,Accessories,Mustard,S1,Koramangala Flagship,13,5,136.81,Northline Apparel Co.,29,2025-11-20,0
+PR0063-Mustard-S3,PR0063,Accessorie Style 3,Accessories,Mustard,S3,Downtown Mall Store,37,14,136.81,Metro Garment Works,31,2025-11-20,0
+PR0064-Mustard-S1,PR0064,Accessorie Style 4,Accessories,Mustard,S1,Koramangala Flagship,31,8,455.81,Northline Apparel Co.,27,2025-11-20,0
+PR0064-Mustard-S2,PR0064,Accessorie Style 4,Accessories,Mustard,S2,Indiranagar Store,29,10,455.81,Coastal Textiles Pvt Ltd,27,2025-11-20,0
+PR0064-Olive-S3,PR0064,Accessorie Style 4,Accessories,Olive,S3,Downtown Mall Store,57,8,455.81,Northline Apparel Co.,15,2025-11-20,0
+PR0065-Mustard-S1,PR0065,Accessorie Style 5,Accessories,Mustard,S1,Koramangala Flagship,19,13,410.03,Coastal Textiles Pvt Ltd,23,2025-11-20,0
+PR0065-Olive-S1,PR0065,Accessorie Style 5,Accessories,Olive,S1,Koramangala Flagship,14,9,410.03,Northline Apparel Co.,11,2025-11-20,0
+PR0065-Olive-S2,PR0065,Accessorie Style 5,Accessories,Olive,S2,Indiranagar Store,44,14,410.03,Northline Apparel Co.,26,2025-11-20,0
+PR0065-Olive-S3,PR0065,Accessorie Style 5,Accessories,Olive,S3,Downtown Mall Store,7,10,410.03,Everstyle Manufacturing,32,2025-11-20,1
+PR0065-White-S1,PR0065,Accessorie Style 5,Accessories,White,S1,Koramangala Flagship,38,5,410.03,Everstyle Manufacturing,21,2025-11-20,0
+PR0065-White-S2,PR0065,Accessorie Style 5,Accessories,White,S2,Indiranagar Store,2,7,410.03,Northline Apparel Co.,12,2025-11-20,1
+PR0065-White-S3,PR0065,Accessorie Style 5,Accessories,White,S3,Downtown Mall Store,31,8,410.03,Coastal Textiles Pvt Ltd,34,2025-11-20,0
+PR0066-Mustard-S1,PR0066,Accessorie Style 6,Accessories,Mustard,S1,Koramangala Flagship,57,9,325.5,Metro Garment Works,24,2025-11-20,0
+PR0066-Mustard-S2,PR0066,Accessorie Style 6,Accessories,Mustard,S2,Indiranagar Store,3,7,325.5,Northline Apparel Co.,27,2025-11-20,1
+PR0066-Mustard-S3,PR0066,Accessorie Style 6,Accessories,Mustard,S3,Downtown Mall Store,39,12,325.5,Northline Apparel Co.,25,2025-11-20,0
+PR0066-Olive-S3,PR0066,Accessorie Style 6,Accessories,Olive,S3,Downtown Mall Store,7,8,325.5,Coastal Textiles Pvt Ltd,29,2025-11-20,1
+PR0067-White-S1,PR0067,Accessorie Style 7,Accessories,White,S1,Koramangala Flagship,48,7,152.25,Everstyle Manufacturing,11,2025-11-20,0
+PR0067-White-S2,PR0067,Accessorie Style 7,Accessories,White,S2,Indiranagar Store,12,13,152.25,Metro Garment Works,24,2025-11-20,1
+PR0067-White-S3,PR0067,Accessorie Style 7,Accessories,White,S3,Downtown Mall Store,51,12,152.25,Northline Apparel Co.,18,2025-11-20,0
+PR0067-Red-S1,PR0067,Accessorie Style 7,Accessories,Red,S1,Koramangala Flagship,2,12,152.25,Northline Apparel Co.,20,2025-11-20,1
+PR0067-Red-S2,PR0067,Accessorie Style 7,Accessories,Red,S2,Indiranagar Store,51,10,152.25,Metro Garment Works,13,2025-11-20,0
+PR0067-Red-S3,PR0067,Accessorie Style 7,Accessories,Red,S3,Downtown Mall Store,10,11,152.25,Metro Garment Works,16,2025-11-20,1
+PR0067-Navy-S1,PR0067,Accessorie Style 7,Accessories,Navy,S1,Koramangala Flagship,0,10,152.25,Northline Apparel Co.,16,2025-11-20,1
+PR0067-Navy-S2,PR0067,Accessorie Style 7,Accessories,Navy,S2,Indiranagar Store,20,12,152.25,Everstyle Manufacturing,25,2025-11-20,0
+PR0067-Navy-S3,PR0067,Accessorie Style 7,Accessories,Navy,S3,Downtown Mall Store,15,11,152.25,Metro Garment Works,21,2025-11-20,0
+PR0068-Olive-S1,PR0068,Accessorie Style 8,Accessories,Olive,S1,Koramangala Flagship,42,5,257.19,Northline Apparel Co.,27,2025-11-20,0
+PR0068-Olive-S2,PR0068,Accessorie Style 8,Accessories,Olive,S2,Indiranagar Store,8,9,257.19,Coastal Textiles Pvt Ltd,19,2025-11-20,1
+PR0068-Grey-S2,PR0068,Accessorie Style 8,Accessories,Grey,S2,Indiranagar Store,16,6,257.19,Everstyle Manufacturing,19,2025-11-20,0
+PR0069-Grey-S1,PR0069,Accessorie Style 9,Accessories,Grey,S1,Koramangala Flagship,49,8,162.39,Metro Garment Works,33,2025-11-20,0
+PR0069-Grey-S2,PR0069,Accessorie Style 9,Accessories,Grey,S2,Indiranagar Store,37,11,162.39,Coastal Textiles Pvt Ltd,29,2025-11-20,0
+PR0069-Navy-S1,PR0069,Accessorie Style 9,Accessories,Navy,S1,Koramangala Flagship,59,7,162.39,Metro Garment Works,24,2025-11-20,0
+PR0069-Navy-S2,PR0069,Accessorie Style 9,Accessories,Navy,S2,Indiranagar Store,24,13,162.39,Northline Apparel Co.,26,2025-11-20,0
+PR0069-Navy-S3,PR0069,Accessorie Style 9,Accessories,Navy,S3,Downtown Mall Store,44,14,162.39,Everstyle Manufacturing,10,2025-11-20,0
+PR0069-Black-S1,PR0069,Accessorie Style 9,Accessories,Black,S1,Koramangala Flagship,49,13,162.39,Coastal Textiles Pvt Ltd,20,2025-11-20,0
+PR0070-Navy-S1,PR0070,Accessorie Style 10,Accessories,Navy,S1,Koramangala Flagship,37,10,131.09,Metro Garment Works,34,2025-11-20,0
+PR0070-Navy-S2,PR0070,Accessorie Style 10,Accessories,Navy,S2,Indiranagar Store,4,7,131.09,Coastal Textiles Pvt Ltd,18,2025-11-20,1
+PR0070-Navy-S3,PR0070,Accessorie Style 10,Accessories,Navy,S3,Downtown Mall Store,49,5,131.09,Everstyle Manufacturing,11,2025-11-20,0
+PR0070-Beige-S1,PR0070,Accessorie Style 10,Accessories,Beige,S1,Koramangala Flagship,9,7,131.09,Northline Apparel Co.,17,2025-11-20,0
+PR0070-Beige-S2,PR0070,Accessorie Style 10,Accessories,Beige,S2,Indiranagar Store,1,14,131.09,Metro Garment Works,17,2025-11-20,1
+PR0070-Beige-S3,PR0070,Accessorie Style 10,Accessories,Beige,S3,Downtown Mall Store,38,7,131.09,Metro Garment Works,26,2025-11-20,0
+PR0070-Red-S1,PR0070,Accessorie Style 10,Accessories,Red,S1,Koramangala Flagship,29,6,131.09,Metro Garment Works,28,2025-11-20,0
+PR0070-Red-S2,PR0070,Accessorie Style 10,Accessories,Red,S2,Indiranagar Store,22,10,131.09,Everstyle Manufacturing,14,2025-11-20,0
+PR0070-Red-S3,PR0070,Accessorie Style 10,Accessories,Red,S3,Downtown Mall Store,53,6,131.09,Metro Garment Works,20,2025-11-20,0
+PR0071-Black-S1,PR0071,Accessorie Style 11,Accessories,Black,S1,Koramangala Flagship,33,12,548.45,Metro Garment Works,16,2025-11-20,0
+PR0071-Black-S2,PR0071,Accessorie Style 11,Accessories,Black,S2,Indiranagar Store,43,13,548.45,Northline Apparel Co.,10,2025-11-20,0
+PR0071-Black-S3,PR0071,Accessorie Style 11,Accessories,Black,S3,Downtown Mall Store,40,7,548.45,Everstyle Manufacturing,28,2025-11-20,0
+PR0071-Grey-S1,PR0071,Accessorie Style 11,Accessories,Grey,S1,Koramangala Flagship,46,8,548.45,Northline Apparel Co.,17,2025-11-20,0
+PR0071-Grey-S2,PR0071,Accessorie Style 11,Accessories,Grey,S2,Indiranagar Store,28,10,548.45,Metro Garment Works,15,2025-11-20,0
+PR0071-Navy-S1,PR0071,Accessorie Style 11,Accessories,Navy,S1,Koramangala Flagship,19,13,548.45,Coastal Textiles Pvt Ltd,11,2025-11-20,0
+PR0071-Navy-S2,PR0071,Accessorie Style 11,Accessories,Navy,S2,Indiranagar Store,1,7,548.45,Everstyle Manufacturing,13,2025-11-20,1
+PR0072-Olive-S3,PR0072,Accessorie Style 12,Accessories,Olive,S3,Downtown Mall Store,2,10,328.09,Coastal Textiles Pvt Ltd,14,2025-11-20,1
+PR0072-Red-S1,PR0072,Accessorie Style 12,Accessories,Red,S1,Koramangala Flagship,58,14,328.09,Coastal Textiles Pvt Ltd,23,2025-11-20,0
+PR0072-White-S1,PR0072,Accessorie Style 12,Accessories,White,S1,Koramangala Flagship,8,5,328.09,Metro Garment Works,12,2025-11-20,0
+PR0072-White-S3,PR0072,Accessorie Style 12,Accessories,White,S3,Downtown Mall Store,47,11,328.09,Everstyle Manufacturing,13,2025-11-20,0

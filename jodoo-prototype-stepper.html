@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jodoo — AI-Powered Business OS</title>
+<style>
+  :root{
+    --brand:#6F4A6F;
+    --brand-dark:#59395A;
+    --brand-soft:#F5EDF5;
+    --contrast:#D9A24B;
+    --ink:#2B2230;
+    --bg:#FAF7F9;
+    --border:#E4D9E4;
+    --muted:#8A7A8A;
+    --white:#ffffff;
+    --green:#3E9B6F;
+    --red:#C25450;
+    --shadow: 0 1px 2px rgba(43,34,48,.04), 0 8px 24px rgba(43,34,48,.06);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  ul{list-style:none;margin:0;padding:0;}
+  h1,h2,h3,h4,p{margin:0;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- prototype control bar ---------- */
+  #protonav{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    background:var(--ink);color:#fff;
+    display:flex;align-items:center;gap:10px;
+    padding:7px 18px;font-size:12.5px;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+  }
+  #protonav .pn-logo{font-weight:700;letter-spacing:.3px;color:var(--contrast);flex-shrink:0;}
+  #protonav .pn-stepinfo{font-size:11.5px;color:#cdb9cd;margin-right:2px;flex-shrink:0;white-space:nowrap;}
+
+  .pn-stepper{display:flex;align-items:center;flex:1;justify-content:center;overflow-x:auto;padding:2px 0;}
+  .pn-dot{
+    width:22px;height:22px;border-radius:50%;flex-shrink:0;
+    border:1.5px solid #6a5c6a;background:transparent;color:#cdb9cd;
+    font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:.15s;padding:0;
+  }
+  .pn-dot.current{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 0 0 3px rgba(111,74,111,.35);}
+  .pn-dot.done{background:rgba(111,74,111,.35);border-color:var(--brand);color:#fff;}
+  .pn-dot.locked{opacity:.35;cursor:not-allowed;}
+  .pn-dot:not(.locked):hover{border-color:var(--contrast);}
+  .pn-line{width:16px;height:2px;background:#4a3d4a;flex-shrink:0;}
+  .pn-line.filled{background:var(--brand);}
+
+  .pn-arrows{display:flex;gap:6px;flex-shrink:0;}
+  .pn-arrow{
+    width:24px;height:24px;border-radius:50%;border:1px solid #6a5c6a;background:transparent;
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;padding:0;
+  }
+  .pn-arrow:disabled{opacity:.3;cursor:not-allowed;}
+  .pn-arrow:not(:disabled):hover{background:rgba(255,255,255,.1);}
+
+  .pn-devwrap{position:relative;flex-shrink:0;}
+  .pn-devtoggle{background:transparent;border:1px solid #6a5c6a;color:#cdb9cd;padding:5px 10px;border-radius:8px;font-size:11.5px;}
+  .pn-devtoggle:hover{border-color:#fff;color:#fff;}
+  .pn-devmenu{
+    display:none;flex-direction:column;gap:3px;position:absolute;top:calc(100% + 8px);right:0;
+    background:var(--ink);border-radius:10px;padding:10px;box-shadow:0 10px 24px rgba(0,0,0,.35);
+    min-width:230px;max-height:75vh;overflow:auto;z-index:1000;
+  }
+  .pn-devmenu.open{display:flex;}
+  .pn-devmenu .pn-link{padding:6px 10px;border-radius:8px;color:#e9dfe9;white-space:nowrap;}
+  .pn-devmenu .pn-link:hover{background:rgba(255,255,255,.08);}
+  .pn-devmenu .pn-link.active{background:var(--brand);color:#fff;font-weight:600;}
+  .pn-devmenu .pn-sep{border-top:1px solid #4a3d4a;margin:5px 2px;}
+
+  body{padding-top:40px;}
+
+  .page{display:none;min-height:calc(100vh - 40px);}
+  .page.active{display:block;animation:pageAdvance .38s ease;}
+  @keyframes pageAdvance{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  @media(max-width:700px){
+    #protonav .pn-stepinfo{display:none;}
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;border-radius:10px;font-size:14.5px;font-weight:600;
+    border:1px solid transparent;transition:.15s;
+  }
+  .btn-primary{background:var(--brand);color:#fff;}
+  .btn-primary:hover{background:var(--brand-dark);}
+  .btn-outline{background:#fff;color:var(--brand);border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--brand);}
+  .btn-sm{padding:8px 14px;font-size:13px;border-radius:8px;}
+  .btn-ghost{background:transparent;color:var(--muted);}
+
+  .container{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ============ LANDING ============ */
+  #page-landing .lnav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;border-bottom:1px solid var(--border);
+  }
+  .brandmark{display:flex;align-items:center;gap:8px;font-size:21px;font-weight:800;color:var(--brand);}
+  .brandmark .dot{width:26px;height:26px;border-radius:50%;border:3px solid var(--brand);border-right-color:var(--contrast);display:inline-block;}
+  #page-landing .lnav-links{display:flex;gap:30px;font-size:14.5px;color:var(--ink);}
+  #page-landing .lnav-cta{display:flex;gap:12px;}
+
+  .hero{padding:70px 0 40px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--brand-soft);color:var(--brand);
+    padding:6px 14px;border-radius:20px;font-size:12.5px;font-weight:700;letter-spacing:.3px;}
+  .hero h1{font-size:46px;line-height:1.12;margin:18px 0 16px;letter-spacing:-.02em;}
+  .hero h1 em{font-style:normal;color:var(--brand);}
+  .hero p{font-size:16.5px;color:var(--muted);line-height:1.6;max-width:460px;}
+  .hero-ctas{display:flex;gap:14px;margin:26px 0 20px;}
+  .trust{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);}
+  .stars{color:var(--contrast);letter-spacing:2px;}
+
+  .mock-window{background:var(--ink);border-radius:16px;padding:14px;box-shadow:var(--shadow);}
+  .mock-topbar{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:10px 10px 0 0;padding:12px 16px;}
+  .mock-body{background:#fff;border-radius:0 0 10px 10px;padding:18px;}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+  .kpi{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px;}
+  .kpi .label{font-size:12px;color:var(--muted);}
+  .kpi .value{font-size:19px;font-weight:800;margin:4px 0 2px;}
+  .kpi .delta{font-size:11.5px;color:var(--green);font-weight:600;}
+  .kpi .delta.down{color:var(--red);}
+
+  .logos-row{display:flex;justify-content:space-between;align-items:center;padding:36px 0;flex-wrap:wrap;gap:20px;opacity:.65;font-weight:700;color:var(--muted);font-size:14px;}
+
+  .feature-band{background:var(--ink);border-radius:20px;padding:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:30px 0;color:#fff;}
+  .feature-band .f h4{color:var(--contrast);font-size:15px;margin-bottom:6px;}
+  .feature-band .f p{color:#cdb9cd;font-size:13.5px;line-height:1.5;}
+
+  .how-title{text-align:center;font-size:26px;margin:56px 0 32px;letter-spacing:-.01em;}
+  .how-steps{display:flex;justify-content:space-between;gap:16px;}
+  .how-step{flex:1;text-align:center;}
+  .how-num{width:56px;height:56px;border-radius:50%;background:var(--brand-soft);color:var(--brand);
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 14px;font-size:18px;}
+  .how-step h5{font-size:15px;margin-bottom:6px;}
+  .how-step p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+  .quote-block{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;background:var(--brand-soft);border-radius:20px;padding:36px;margin:60px 0;align-items:center;}
+  .quote-block blockquote{font-size:19px;line-height:1.5;color:var(--ink);margin:0 0 16px;}
+  .quote-stats{display:flex;gap:36px;}
+  .quote-stats .n{font-size:26px;font-weight:800;color:var(--brand);}
+  .quote-stats .l{font-size:12.5px;color:var(--muted);}
+
+  .site-footer{background:var(--ink);color:#cdb9cd;padding:50px 0 26px;margin-top:20px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:24px;padding-bottom:30px;border-bottom:1px solid #4a3d4a;}
+  .footer-grid h6{color:#fff;font-size:13px;margin-bottom:12px;}
+  .footer-grid li{font-size:13px;margin-bottom:8px;color:#b7a4b7;}
+  .footer-bottom{display:flex;justify-content:space-between;padding-top:20px;font-size:12.5px;color:#8a768a;}
+
+  /* ============ LOGIN ============ */
+  #page-login{display:none;grid-template-columns:1fr 1fr;min-height:calc(100vh - 42px);}
+  #page-login.active{display:grid;}
+  .login-left{background:linear-gradient(160deg,var(--brand-soft),#fff);padding:70px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .login-left h2{font-size:34px;line-height:1.2;margin:20px 0 14px;}
+  .login-left p{color:var(--muted);font-size:15px;line-height:1.6;max-width:400px;margin-bottom:26px;}
+  .login-feat{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;}
+  .login-feat .ic{width:36px;height:36px;border-radius:9px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .login-feat h5{font-size:14.5px;margin-bottom:2px;}
+  .login-feat p{font-size:12.5px;margin:0;}
+  .login-right{padding:70px 70px;display:flex;flex-direction:column;justify-content:center;max-width:480px;margin:0 auto;width:100%;}
+  .login-tabs{display:flex;gap:26px;border-bottom:1px solid var(--border);margin:28px 0 26px;}
+  .login-tab{padding-bottom:12px;font-weight:700;color:var(--muted);border-bottom:2px solid transparent;font-size:14.5px;}
+  .login-tab.active{color:var(--brand);border-color:var(--brand);}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;}
+  .field input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:#fff;}
+  .field input:focus{outline:2px solid var(--brand);outline-offset:1px;}
+  .row-between{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin:-6px 0 20px;}
+  .social-row{display:flex;gap:10px;margin-top:18px;}
+  .social-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:#fff;text-align:center;font-size:13px;font-weight:600;}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12.5px;margin:22px 0;}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border);}
+
+  /* ============ ONBOARDING ============ */
+  #page-onboarding{grid-template-columns:260px 1fr 260px;min-height:calc(100vh - 40px);}
+  #page-onboarding.active{display:grid;}
+  .ob-sidebar{background:#fff;border-right:1px solid var(--border);padding:28px 22px;}
+  .ob-progress-title{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.6px;margin-bottom:16px;}
+  .ob-step{display:flex;align-items:center;gap:10px;padding:11px 10px;border-radius:10px;font-size:13.5px;color:var(--muted);margin-bottom:2px;}
+  .ob-step .num{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;}
+  .ob-step.done .num{background:var(--brand);border-color:var(--brand);color:#fff;}
+  .ob-step.done{color:var(--ink);}
+  .ob-step.current{background:var(--brand-soft);color:var(--brand);font-weight:700;}
+  .ob-step.current .num{background:var(--brand);border-color:var(--brand);color:#fff;}
+  .ob-bot{margin-top:26px;background:var(--brand-soft);border-radius:14px;padding:18px;text-align:center;}
+  .ob-bot .emoji{width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;}
+  .ob-bot h5{font-size:13.5px;margin-bottom:6px;}
+  .ob-bot p{font-size:12px;color:var(--muted);line-height:1.5;}
+
+  .ob-main{padding:30px 40px;overflow:auto;}
+  .ob-topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px;}
+  .ob-step-label{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .ob-title{font-size:24px;font-weight:800;}
+  .ob-progress-bar{width:260px;height:7px;border-radius:6px;background:var(--border);overflow:hidden;margin-top:10px;}
+  .ob-progress-bar .fill{height:100%;background:var(--brand);border-radius:6px;}
+  .ob-progress-pct{font-size:12px;color:var(--muted);margin-top:4px;text-align:right;}
+
+  .ob-question{font-size:19px;font-weight:700;margin-bottom:6px;}
+  .ob-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;}
+  .ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .ob-card{border:1.5px solid var(--border);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;background:#fff;cursor:pointer;transition:.15s;}
+  .ob-card:hover{border-color:var(--brand);}
+  .ob-card.selected{border-color:var(--brand);background:var(--brand-soft);}
+  .ob-card .ic{width:38px;height:38px;border-radius:10px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;}
+  .ob-card.selected .ic{background:#fff;}
+  .ob-card h5{font-size:14.5px;margin-bottom:3px;}
+  .ob-card p{font-size:12px;color:var(--muted);line-height:1.4;}
+  .ob-check{margin-left:auto;width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);flex-shrink:0;}
+  .ob-card.selected .ob-check{background:var(--brand);border-color:var(--brand);position:relative;}
+  .ob-card.selected .ob-check::after{content:"✓";color:#fff;font-size:12px;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+
+  .ob-footer{display:flex;justify-content:space-between;margin-top:34px;}
+  .ob-side-tips{padding:28px 22px;}
+  .tip-box{background:var(--brand-soft);border-radius:14px;padding:20px;}
+  .tip-box h5{font-size:14px;margin-bottom:8px;}
+  .tip-box p{font-size:12.5px;color:var(--muted);line-height:1.6;}
+  .tip-list li{font-size:12.5px;color:var(--muted);margin-bottom:8px;padding-left:18px;position:relative;}
+  .tip-list li::before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:700;}
+
+  /* ============ DATA UPLOAD ============ */
+  .upload-zone{
+    border:2px dashed var(--border);border-radius:16px;background:#fff;
+    padding:42px 20px;text-align:center;transition:.15s;
+  }
+  .upload-zone.drag{border-color:var(--brand);background:var(--brand-soft);}
+  .upload-ic{font-size:32px;margin-bottom:10px;}
+  .upload-zone h4{font-size:15px;margin-bottom:4px;}
+  .upload-zone p{font-size:12.5px;color:var(--muted);margin:4px 0;}
+  .upload-hint{font-size:11.5px;color:var(--muted);margin-top:12px;}
+
+  .upload-cats{display:flex;flex-direction:column;gap:10px;}
+  .upload-cat{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:.15s;}
+  .upload-cat.done{border-color:var(--brand);background:var(--brand-soft);}
+  .upload-cat .ic{width:36px;height:36px;border-radius:9px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+  .upload-cat.done .ic{background:#fff;}
+  .upload-cat .txt{flex:1;}
+  .upload-cat .txt h5{font-size:13.5px;margin-bottom:2px;}
+  .upload-cat .txt p{font-size:12px;color:var(--muted);}
+  .upload-cat.done .txt p{color:var(--green);font-weight:600;}
+
+  .file-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:13px;}
+  .file-chip .ic{font-size:15px;flex-shrink:0;}
+  .file-chip .nm{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .file-chip .sz{color:var(--muted);font-size:11.5px;flex-shrink:0;}
+  .file-chip .rm{background:transparent;border:none;color:var(--muted);font-size:13px;flex-shrink:0;}
+  .file-chip .rm:hover{color:var(--red);}
+
+  /* ============ AI ANALYSIS ============ */
+  #page-ai-analysis .ai-wrap{max-width:1180px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:340px 1fr 300px;gap:34px;}
+  .ai-bot-visual{width:150px;height:150px;border-radius:50%;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:60px;margin:30px 0;}
+  .ai-quote{background:var(--brand-soft);border-radius:14px;padding:18px;font-size:13px;color:var(--ink);font-style:italic;line-height:1.5;border-left:3px solid var(--contrast);}
+  .ai-panel{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;box-shadow:var(--shadow);}
+  .ai-brain{width:64px;height:64px;border-radius:50%;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;}
+  .ai-panel h2{font-size:23px;margin-bottom:6px;}
+  .ai-panel .sub{font-size:13px;color:var(--muted);margin-bottom:26px;}
+  .ai-task{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border);text-align:left;}
+  .ai-task .ic{width:38px;height:38px;border-radius:10px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ai-task .txt h5{font-size:14px;margin-bottom:2px;}
+  .ai-task .txt p{font-size:12px;color:var(--muted);}
+  .ai-task .status{margin-left:auto;font-size:12px;color:var(--muted);flex-shrink:0;}
+  .ai-task .status.done{color:var(--green);font-weight:700;}
+  .ai-total-bar{margin-top:22px;background:var(--border);height:9px;border-radius:6px;overflow:hidden;}
+  .ai-total-bar .fill{height:100%;background:var(--brand);}
+  .live-progress{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;}
+  .live-progress h4{font-size:14px;margin-bottom:16px;}
+  .lp-item{display:flex;gap:10px;margin-bottom:16px;}
+  .lp-dot{width:9px;height:9px;border-radius:50%;background:var(--brand);margin-top:5px;flex-shrink:0;}
+  .lp-dot.pending{background:var(--border);}
+  .lp-item h6{font-size:13px;margin-bottom:1px;}
+  .lp-item p{font-size:11.5px;color:var(--muted);}
+
+  /* ============ PREVIEW / CUSTOMIZE / DASHBOARD shared app-like layout ============ */
+  .appish{display:grid;grid-template-columns:230px 1fr 300px;min-height:calc(100vh - 42px);}
+  .appish.no-right{grid-template-columns:230px 1fr;}
+  .app-sidebar{background:#fff;border-right:1px solid var(--border);padding:20px 16px;display:flex;flex-direction:column;}
+  .side-logo{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--brand);font-size:18px;padding:6px 8px 20px;}
+  .side-nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;font-size:13.5px;color:var(--ink);margin-bottom:2px;font-weight:500;}
+  .side-nav-item .ic{width:18px;text-align:center;}
+  .side-nav-item.active{background:var(--brand);color:#fff;font-weight:700;}
+  .side-nav-item:hover:not(.active){background:var(--brand-soft);}
+  .side-nav-item.new::after{content:"NEW";font-size:9px;background:var(--contrast);color:#fff;padding:2px 6px;border-radius:6px;margin-left:auto;font-weight:800;}
+  .side-bottom-card{margin-top:auto;background:var(--brand-soft);border-radius:14px;padding:16px;}
+  .side-bottom-card h6{font-size:13px;margin-bottom:8px;}
+  .side-bottom-card li{font-size:11.5px;color:var(--muted);margin-bottom:5px;padding-left:16px;position:relative;}
+  .side-bottom-card li::before{content:"✓";position:absolute;left:0;color:var(--brand);}
+
+  .app-main{padding:22px 26px;overflow:auto;}
+  .app-topbar{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+  .search-bar{flex:1;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--muted);max-width:420px;}
+  .top-icon{width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;}
+  .top-icon .badge-dot{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .profile-chip{display:flex;align-items:center;gap:9px;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+  .profile-chip .nm{font-size:13px;font-weight:700;}
+  .profile-chip .rl{font-size:11px;color:var(--muted);}
+
+  .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;}
+  .card-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .card-title-row h4{font-size:14.5px;}
+  .link-sm{font-size:12.5px;color:var(--brand);font-weight:700;}
+
+  .two-col{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:16px;}
+  .fake-chart{height:150px;border-radius:10px;background:
+    linear-gradient(180deg, rgba(111,74,111,.12), rgba(111,74,111,0)) ;
+    position:relative;overflow:hidden;}
+  .fake-chart svg{width:100%;height:100%;}
+  .activity-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .activity-item:last-child{border:none;}
+  .activity-item .ic{width:30px;height:30px;border-radius:8px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
+  .activity-item h6{font-size:12.5px;margin-bottom:1px;}
+  .activity-item p{font-size:11px;color:var(--muted);}
+  .activity-item .t{margin-left:auto;font-size:10.5px;color:var(--muted);flex-shrink:0;}
+
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;padding:9px 8px;border-bottom:1px solid var(--border);}
+  td{padding:11px 8px;border-bottom:1px solid var(--border);}
+  tr:last-child td{border:none;}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+  .pill.green{background:#e4f3ec;color:var(--green);}
+  .pill.amber{background:#fbf0dd;color:#a5731f;}
+  .pill.red{background:#f8e6e5;color:var(--red);}
+  .todo-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+  .todo-item:last-child{border:none;}
+  .todo-item input{accent-color:var(--brand);}
+  .todo-item .due{margin-left:auto;font-size:11px;color:var(--muted);}
+
+  .right-rail-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px;}
+  .right-rail-card h4{font-size:13.5px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+  .net-post{padding:10px 0;border-bottom:1px solid var(--border);}
+  .net-post:last-child{border:none;}
+  .net-post .who{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .net-post .who .av{width:26px;height:26px;border-radius:50%;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+  .net-post .who h6{font-size:12.5px;}
+  .net-post .who span{font-size:10.5px;color:var(--muted);}
+  .net-post p{font-size:12px;color:var(--ink);line-height:1.4;margin-bottom:6px;}
+  .net-post .stats{display:flex;gap:12px;font-size:11px;color:var(--muted);}
+  .conn-row{display:flex;align-items:center;gap:10px;padding:8px 0;}
+  .conn-row .av{width:32px;height:32px;border-radius:9px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .conn-row h6{font-size:12.5px;}
+  .conn-row span{font-size:10.5px;color:var(--muted);}
+  .conn-row button{margin-left:auto;}
+
+  /* preview two-panel step banner */
+  .step-banner{background:#fff;border-bottom:1px solid var(--border);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;}
+  .step-banner h2{font-size:19px;}
+  .step-banner p{font-size:12.5px;color:var(--muted);margin-top:3px;}
+
+  /* customize workspace grid */
+  .cw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 24px;}
+  .cw-tile{border:1.5px solid var(--border);border-radius:12px;padding:16px;text-align:center;background:#fff;cursor:pointer;}
+  .cw-tile.on{border-color:var(--brand);background:var(--brand-soft);}
+  .cw-tile .ic{font-size:20px;margin-bottom:8px;}
+  .cw-tile h6{font-size:13px;}
+  .theme-row{display:flex;gap:14px;margin:14px 0 24px;}
+  .theme-swatch{width:70px;height:52px;border-radius:9px;border:2px solid var(--border);cursor:pointer;}
+  .theme-swatch.on{border-color:var(--brand);}
+  .color-row{display:flex;gap:10px;}
+  .color-dot{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--border);}
+  .color-dot.on{box-shadow:0 0 0 2px var(--brand);}
+
+  /* network page full */
+  .net-tabs{display:flex;gap:24px;border-bottom:1px solid var(--border);margin:0 0 20px;font-size:13.5px;}
+  .net-tab{padding-bottom:12px;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;}
+  .net-tab.active{color:var(--brand);border-color:var(--brand);}
+  .composer{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:16px;}
+  .composer-top{display:flex;gap:10px;align-items:center;margin-bottom:12px;}
+  .composer-top input{flex:1;border:none;background:var(--bg);border-radius:10px;padding:12px 14px;font-size:13.5px;}
+  .composer-actions{display:flex;gap:18px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;}
+  .feed-post{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;}
+  .feed-post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .feed-post-head .av{width:42px;height:42px;border-radius:50%;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .feed-post-head h5{font-size:14px;}
+  .feed-post-head span{font-size:11.5px;color:var(--muted);}
+  .feed-post p{font-size:13.5px;line-height:1.5;margin-bottom:12px;}
+  .feed-img{height:180px;border-radius:10px;background:linear-gradient(135deg,var(--brand-soft),var(--border));margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:34px;}
+  .feed-stats{display:flex;gap:20px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px;}
+  .trend-chip{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:5px 12px;border-radius:16px;font-size:12px;font-weight:700;margin:0 6px 8px 0;}
+
+  /* chat / Jule assistant */
+  .chat-wrap{display:grid;grid-template-columns:260px 1fr;gap:16px;height:calc(100vh - 130px);}
+  .chat-history{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;overflow:auto;}
+  .chat-hist-item{padding:10px 12px;border-radius:9px;font-size:12.5px;margin-bottom:4px;color:var(--muted);}
+  .chat-hist-item.active{background:var(--brand-soft);color:var(--brand);font-weight:700;}
+  .chat-main{background:#fff;border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;}
+  .chat-body{flex:1;padding:22px;overflow:auto;}
+  .msg{max-width:70%;padding:12px 16px;border-radius:14px;font-size:13.5px;line-height:1.5;margin-bottom:14px;}
+  .msg.bot{background:var(--brand-soft);border-bottom-left-radius:4px;}
+  .msg.user{background:var(--brand);color:#fff;margin-left:auto;border-bottom-right-radius:4px;}
+  .chat-suggest{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;}
+  .chat-input-row{display:flex;gap:10px;padding:14px;border-top:1px solid var(--border);}
+  .chat-input-row input{flex:1;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13.5px;}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:20px 0;}
+  .price-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:26px;}
+  .price-card.popular{border-color:var(--brand);position:relative;}
+  .price-card .badge-pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--contrast);color:#fff;font-size:10.5px;font-weight:800;padding:4px 12px;border-radius:12px;}
+  .price-card h3{font-size:16px;margin-bottom:4px;}
+  .price-card .amt{font-size:30px;font-weight:800;margin:10px 0 4px;}
+  .price-card .amt span{font-size:13px;color:var(--muted);font-weight:500;}
+
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr;}
+    #page-login{grid-template-columns:1fr;}
+    .login-left{display:none;}
+    #page-onboarding{grid-template-columns:1fr;}
+    .ob-sidebar,.ob-side-tips{display:none;}
+    .appish{grid-template-columns:1fr;}
+    .app-sidebar{display:none;}
+    .appish.rightonly{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="protonav">
+  <span class="pn-logo">◎ JODOO</span>
+  <span class="pn-stepinfo" id="pn-stepinfo">Step 1 of 8 · Landing</span>
+  <div class="pn-stepper" id="pn-stepper"></div>
+  <div class="pn-arrows">
+    <button class="pn-arrow" id="pn-prev" title="Previous step">←</button>
+    <button class="pn-arrow" id="pn-next" title="Next step">→</button>
+  </div>
+  <div class="pn-devwrap">
+    <button class="pn-devtoggle" id="pn-devtoggle">☰ All Pages</button>
+    <div class="pn-devmenu" id="pn-devmenu">
+      <a class="pn-link" data-go="landing">1. Landing</a>
+      <a class="pn-link" data-go="login">2. Login/Signup</a>
+      <a class="pn-link" data-go="onboarding">3. Questionnaire</a>
+      <a class="pn-link" data-go="data-upload">4. Upload Data</a>
+      <a class="pn-link" data-go="ai-analysis">5. AI Analysis</a>
+      <a class="pn-link" data-go="preview">6. Dashboard Preview</a>
+      <a class="pn-link" data-go="customize">7. Customize</a>
+      <div class="pn-sep"></div>
+      <a class="pn-link" data-go="app" data-app="dashboard">8. Dashboard</a>
+      <a class="pn-link" data-go="app" data-app="network">9. Jodoo Network</a>
+      <a class="pn-link" data-go="app" data-app="jule">10. AI Assistant</a>
+      <a class="pn-link" data-go="app" data-app="customers">11. Customers</a>
+      <a class="pn-link" data-go="app" data-app="sales">12. Sales</a>
+      <a class="pn-link" data-go="app" data-app="inventory">13. Inventory</a>
+      <a class="pn-link" data-go="app" data-app="analytics">14. Analytics</a>
+      <a class="pn-link" data-go="app" data-app="team">15. Team</a>
+      <a class="pn-link" data-go="app" data-app="settings">16. Settings</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 1. LANDING ================= -->
+<section id="page-landing" class="page">
+  <div class="container">
+    <div class="lnav">
+      <div class="brandmark"><span class="dot"></span>Jodoo</div>
+      <div class="lnav-links">
+        <span>Features</span><span>Industries</span><span>Pricing</span><span>Resources</span><span>About</span>
+      </div>
+      <div class="lnav-cta">
+        <button class="btn btn-outline btn-sm" data-go="login">Log in</button>
+        <button class="btn btn-primary btn-sm" data-go="login">Get Started Free</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <span class="eyebrow">✨ AI-POWERED BUSINESS OS</span>
+        <h1>The ERP that builds <em>itself</em> for you.</h1>
+        <p>Answer a few simple questions, and Jodoo creates your perfect workspace in minutes — no consultants, no six-month rollout.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" data-go="login">Get Started Free →</button>
+          <button class="btn btn-outline">▶ Watch Demo</button>
+        </div>
+        <div class="trust"><span class="stars">★★★★★</span> Trusted by 10,000+ businesses worldwide</div>
+      </div>
+      <div class="mock-window">
+        <div class="mock-topbar">
+          <strong style="color:var(--brand)">◎ Jodoo</strong>
+          <span style="font-size:12px;color:var(--muted)">🔍 Search anything…</span>
+          <span class="avatar" style="width:28px;height:28px;font-size:11px;">A</span>
+        </div>
+        <div class="mock-body">
+          <div class="kpi-row">
+            <div class="kpi"><div class="label">Revenue</div><div class="value">₹8,42,650</div><div class="delta">↑ 12.5%</div></div>
+            <div class="kpi"><div class="label">Orders</div><div class="value">128</div><div class="delta">↑ 8.1%</div></div>
+            <div class="kpi"><div class="label">Customers</div><div class="value">582</div><div class="delta">↑ 18.2%</div></div>
+            <div class="kpi"><div class="label">Pending</div><div class="value">₹1,24,000</div><div class="delta down">24 invoices</div></div>
+          </div>
+          <div class="fake-chart" id="landing-chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="logos-row">
+      <span>Bloomora</span><span>NEXORA</span><span>Cafeteria</span><span>UrbanStitch</span><span>Growthzilla</span><span>Finova</span><span>CraftMart</span>
+    </div>
+
+    <div class="feature-band">
+      <div class="f"><h4>⚡ AI-Powered Setup</h4><p>Answer a few questions, and your workspace is ready in minutes.</p></div>
+      <div class="f"><h4>🎛 Personalized Dashboard</h4><p>Only what you need, nothing you don't.</p></div>
+      <div class="f"><h4>🤝 Built-in Business Network</h4><p>Connect. Collaborate. Grow together.</p></div>
+      <div class="f"><h4>🔒 Secure & Reliable</h4><p>Enterprise-grade security for your data.</p></div>
+    </div>
+
+    <h2 class="how-title">How Jodoo works</h2>
+    <div class="how-steps">
+      <div class="how-step"><div class="how-num">1</div><h5>Answer Questions</h5><p>Tell us about your business in a few simple steps.</p></div>
+      <div class="how-step"><div class="how-num">2</div><h5>AI Analyzes</h5><p>Our AI understands your business and selects the right tools.</p></div>
+      <div class="how-step"><div class="how-num">3</div><h5>Workspace Built</h5><p>Your personalized dashboard is created automatically.</p></div>
+      <div class="how-step"><div class="how-num">4</div><h5>Customize</h5><p>Tweak layouts, widgets, and automation to fit your style.</p></div>
+      <div class="how-step"><div class="how-num">5</div><h5>Start Growing</h5><p>Everything is ready. Focus on what matters most.</p></div>
+    </div>
+
+    <div class="quote-block">
+      <div>
+        <blockquote>"Jodoo transformed the way we run our business. Setup took 3 minutes, and we saw results on day one."</blockquote>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="avatar">RS</span>
+          <div><strong style="font-size:13.5px;">Rohit Sharma</strong><div style="font-size:12px;color:var(--muted);">CEO, UrbanStitch</div></div>
+        </div>
+      </div>
+      <div class="quote-stats">
+        <div><div class="n">10K+</div><div class="l">Businesses Trust Jodoo</div></div>
+        <div><div class="n">4.9/5</div><div class="l">Customer Rating</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="brandmark" style="color:#fff;font-size:18px;">◎ Jodoo</div><p style="font-size:12.5px;margin-top:10px;">The AI-powered ERP that builds itself for you.</p></div>
+        <div><h6>Product</h6><ul><li>Features</li><li>Pricing</li><li>Integrations</li></ul></div>
+        <div><h6>Industries</h6><ul><li>Retail</li><li>Manufacturing</li><li>Services</li></ul></div>
+        <div><h6>Resources</h6><ul><li>Blog</li><li>Help Center</li><li>Guides</li></ul></div>
+        <div><h6>Company</h6><ul><li>About Us</li><li>Careers</li><li>Contact Us</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Jodoo. All rights reserved.</span><span>Privacy · Terms · Security</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. LOGIN ================= -->
+<section id="page-login" class="page">
+  <div class="login-left">
+    <div class="brandmark"><span class="dot"></span>Jodoo</div>
+    <span class="eyebrow" style="margin-top:24px;width:fit-content;">✨ AI-POWERED BUSINESS OS</span>
+    <h2>Welcome back to<br>your business hub</h2>
+    <p>Log in to access your personalized workspace, insights, and grow your business with Jodoo.</p>
+    <div class="login-feat"><div class="ic">📊</div><div><h5>Smart Dashboards</h5><p>Real-time insights that matter.</p></div></div>
+    <div class="login-feat"><div class="ic">🧩</div><div><h5>All-in-One Workspace</h5><p>Everything your business needs.</p></div></div>
+    <div class="login-feat"><div class="ic">🔒</div><div><h5>Secure & Reliable</h5><p>Enterprise-grade security for your data.</p></div></div>
+  </div>
+  <div class="login-right">
+    <div class="brandmark" style="display:none;"><span class="dot"></span>Jodoo</div>
+    <h2 style="font-size:27px;">Welcome back</h2>
+    <p style="color:var(--muted);font-size:13.5px;margin-top:6px;">Log in to your account to continue</p>
+    <div class="login-tabs">
+      <div class="login-tab active">Log in</div>
+      <div class="login-tab">Sign up</div>
+    </div>
+    <div class="field"><label>Email address</label><input type="email" placeholder="Enter your email"></div>
+    <div class="field"><label>Password</label><input type="password" placeholder="Enter your password"></div>
+    <div class="row-between"><label><input type="checkbox" checked> Remember me</label><span style="color:var(--brand);font-weight:600;">Forgot password?</span></div>
+    <button class="btn btn-primary" style="width:100%;" data-go="onboarding">Log in</button>
+    <div class="divider">or continue with</div>
+    <div class="social-row">
+      <div class="social-btn">G Google</div>
+      <div class="social-btn">⊞ Microsoft</div>
+      <div class="social-btn">◍ Apple</div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:24px;">🔒 Your data is secure with enterprise-grade encryption</p>
+  </div>
+</section>
+
+<!-- ================= 3. ONBOARDING (dynamic) ================= -->
+<section id="page-onboarding" class="page">
+  <div class="ob-sidebar">
+    <div class="brandmark"><span class="dot"></span>Jodoo</div>
+    <div class="ob-progress-title" style="margin-top:24px;">ONBOARDING PROGRESS</div>
+    <div id="ob-step-list"></div>
+    <div class="ob-bot">
+      <div class="emoji">🤖</div>
+      <h5 id="ob-bot-title">We personalize everything</h5>
+      <p id="ob-bot-text">Our AI will use your answers to build the perfect workspace for your business.</p>
+    </div>
+  </div>
+  <div class="ob-main">
+    <div class="ob-topbar">
+      <div>
+        <div class="ob-step-label" id="ob-step-label">Step 1 of 8</div>
+        <div class="ob-title" id="ob-title">Business Basics</div>
+      </div>
+      <button class="btn btn-outline btn-sm">💾 Save & Exit</button>
+    </div>
+    <div class="ob-progress-bar"><div class="fill" id="ob-fill" style="width:12%;"></div></div>
+    <div class="ob-progress-pct" id="ob-pct">12%</div>
+
+    <div style="margin-top:26px;">
+      <div class="ob-question" id="ob-question">What type of business do you run?</div>
+      <div class="ob-sub" id="ob-sub">This helps us understand your business and suggest the right tools.</div>
+      <div class="ob-grid" id="ob-grid"></div>
+    </div>
+
+    <div class="ob-footer">
+      <button class="btn btn-outline" onclick="obStep(-1)">← Back</button>
+      <button class="btn btn-primary" id="ob-next-btn" onclick="obStep(1)">Next →</button>
+    </div>
+  </div>
+  <div class="ob-side-tips">
+    <div class="tip-box">
+      <h5>💡 Why we ask this</h5>
+      <p id="ob-why">Your answers help Jodoo recommend the right modules, dashboards, and automations for your business.</p>
+      <ul class="tip-list" style="margin-top:16px;">
+        <li>You can always update this later</li>
+        <li>Selecting more options helps us personalize better</li>
+        <li>Answer honestly for the best experience</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. DATA UPLOAD ================= -->
+<section id="page-data-upload" class="page">
+  <div class="step-banner">
+    <div>
+      <h2>Upload your business data</h2>
+      <p>Give Jodoo a head start — upload files you already have and we'll use them to pre-fill and customize your dashboard. This step is optional.</p>
+    </div>
+    <button class="btn btn-outline btn-sm">💾 Save & Exit</button>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:32px;">
+    <div class="upload-zone" id="upload-dropzone">
+      <div class="upload-ic">📤</div>
+      <h4>Drag & drop files here</h4>
+      <p>or</p>
+      <label class="btn btn-primary btn-sm" for="file-input" style="cursor:pointer;">Browse Files</label>
+      <input type="file" id="file-input" multiple style="display:none;">
+      <p class="upload-hint">Supports CSV, XLSX, PDF · Up to 20MB per file</p>
+    </div>
+
+    <div id="uploaded-files-list"></div>
+
+    <h4 style="margin:28px 0 4px;font-size:14px;">Suggested data to upload</h4>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;">Uploading these helps us tailor dashboards, reports, and automations to your real numbers.</p>
+    <div class="upload-cats" id="upload-cats"></div>
+
+    <div class="ai-quote" style="margin-top:26px;">🔒 Your files are used only to personalize your workspace and are never shared. You can also skip this and add data anytime later from Settings.</div>
+  </div>
+
+  <div style="padding:18px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;background:#fff;">
+    <button class="btn btn-outline" data-go="onboarding">← Back</button>
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-ghost" data-go="ai-analysis">Skip for now</button>
+      <button class="btn btn-primary" data-go="ai-analysis">Continue →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. AI ANALYSIS ================= -->
+<section id="page-ai-analysis" class="page">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:1px solid var(--border);">
+    <div class="brandmark"><span class="dot"></span>Jodoo</div>
+    <button class="btn btn-outline btn-sm" data-go="preview">✕ Cancel</button>
+  </div>
+  <div class="ai-wrap">
+    <div>
+      <h2 style="font-size:26px;line-height:1.25;">AI is creating<br>your workspace</h2>
+      <p style="color:var(--muted);font-size:14px;margin-top:14px;line-height:1.6;">Sit back while our AI analyzes your answers, selects the right tools, and builds your custom workspace.</p>
+      <div class="ai-bot-visual">🤖</div>
+      <div class="ai-quote">"Great businesses aren't built overnight, but this workspace gives you a head start." — Jule, Your AI Companion ✨</div>
+    </div>
+
+    <div class="ai-panel">
+      <div class="ai-brain">🧠</div>
+      <h2>Creating your perfect workspace…</h2>
+      <div class="sub">This usually takes less than 2 minutes</div>
+      <div style="text-align:left;">
+        <div class="ai-task"><div class="ic">🔍</div><div class="txt"><h5>Understanding your business</h5><p>Analyzing your answers and business needs</p></div><div class="status done">✓</div></div>
+        <div class="ai-task"><div class="ic">🧩</div><div class="txt"><h5>Selecting the right modules</h5><p>Choosing the best tools and features for you</p></div><div class="status done">✓</div></div>
+        <div class="ai-task"><div class="ic">📈</div><div class="txt"><h5>Building your dashboard</h5><p>Designing a personalized dashboard layout</p></div><div class="status">70%</div></div>
+        <div class="ai-task"><div class="ic">⚙️</div><div class="txt"><h5>Configuring automations</h5><p>Setting up workflows and automations</p></div><div class="status">Pending</div></div>
+        <div class="ai-task"><div class="ic">🛡️</div><div class="txt"><h5>Setting up permissions</h5><p>Configuring role-based access and security</p></div><div class="status">Pending</div></div>
+        <div class="ai-task"><div class="ic">📄</div><div class="txt"><h5>Generating reports & insights</h5><p>Preparing initial reports and business insights</p></div><div class="status">Pending</div></div>
+      </div>
+      <div class="ai-total-bar"><div class="fill" style="width:70%;"></div></div>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:10px;">Almost there! We're putting the finishing touches on your workspace.</p>
+      <button class="btn btn-primary" style="margin-top:22px;width:100%;" data-go="preview">Continue to Dashboard Preview →</button>
+    </div>
+
+    <div class="live-progress">
+      <h4>📶 Live Progress</h4>
+      <div class="lp-item"><div class="lp-dot"></div><div><h6>Understanding your business</h6><p>Completed</p></div></div>
+      <div class="lp-item"><div class="lp-dot"></div><div><h6>Selecting modules</h6><p>Completed</p></div></div>
+      <div class="lp-item"><div class="lp-dot"></div><div><h6>Building dashboard</h6><p>In progress</p></div></div>
+      <div class="lp-item"><div class="lp-dot pending"></div><div><h6>Configuring automations</h6><p>Pending</p></div></div>
+      <div class="lp-item"><div class="lp-dot pending"></div><div><h6>Setting up permissions</h6><p>Pending</p></div></div>
+      <div class="lp-item"><div class="lp-dot pending"></div><div><h6>Generating reports</h6><p>Pending</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. DASHBOARD PREVIEW ================= -->
+<section id="page-preview" class="page">
+  <div class="step-banner">
+    <div>
+      <h2>Your Smart Dashboard is Ready!</h2>
+      <p>We've built a personalized workspace for your business. Preview it and explore the networking space on the right.</p>
+    </div>
+    <button class="btn btn-outline btn-sm">💾 Save & Exit</button>
+  </div>
+  <div class="appish" style="grid-template-columns:1fr 300px;">
+    <div class="app-main" id="preview-main"></div>
+    <div style="padding:22px 20px;border-left:1px solid var(--border);background:#fff;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <h4 style="font-size:14.5px;">👥 Jodoo Network <span style="color:var(--green);font-size:11px;font-weight:700;">● Live</span></h4>
+      </div>
+      <div class="net-tabs" style="font-size:12px;gap:16px;">
+        <div class="net-tab active">Feed</div><div class="net-tab">Connections</div><div class="net-tab">Marketplace</div>
+      </div>
+      <div id="preview-network"></div>
+    </div>
+  </div>
+  <div style="padding:18px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;background:#fff;">
+    <button class="btn btn-outline" data-go="ai-analysis">← Back</button>
+    <button class="btn btn-primary" data-go="customize">Next: Customize Workspace →</button>
+  </div>
+</section>
+
+<!-- ================= 7. CUSTOMIZE ================= -->
+<section id="page-customize" class="page">
+  <div class="step-banner">
+    <div><h2>Customize your workspace</h2><p>Choose the tools and features you want. You can always change this later.</p></div>
+    <button class="btn btn-outline btn-sm">💾 Save & Exit</button>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:32px;">
+    <h4 style="font-size:14px;margin-bottom:4px;">Choose your modules</h4>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;">Selected modules will appear in your sidebar.</p>
+    <div class="cw-grid">
+      <div class="cw-tile on"><div class="ic">👥</div><h6>Customers</h6></div>
+      <div class="cw-tile on"><div class="ic">💰</div><h6>Sales</h6></div>
+      <div class="cw-tile"><div class="ic">📦</div><h6>Inventory</h6></div>
+      <div class="cw-tile"><div class="ic">💳</div><h6>Finance</h6></div>
+      <div class="cw-tile"><div class="ic">📁</div><h6>Projects</h6></div>
+      <div class="cw-tile"><div class="ic">👨‍💼</div><h6>HR & Team</h6></div>
+      <div class="cw-tile on"><div class="ic">📊</div><h6>Analytics</h6></div>
+      <div class="cw-tile on"><div class="ic">🤖</div><h6>AI Assistant</h6></div>
+      <div class="cw-tile"><div class="ic">⚙️</div><h6>Automations</h6></div>
+      <div class="cw-tile"><div class="ic">📄</div><h6>Reports</h6></div>
+      <div class="cw-tile"><div class="ic">🛒</div><h6>Marketplace</h6></div>
+      <div class="cw-tile on"><div class="ic">🌐</div><h6>Network</h6></div>
+    </div>
+
+    <h4 style="font-size:14px;margin-bottom:4px;">Choose theme</h4>
+    <div class="theme-row">
+      <div class="theme-swatch on" style="background:linear-gradient(135deg,#fff 50%,var(--brand-soft) 50%);"></div>
+      <div class="theme-swatch" style="background:#fff;"></div>
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#f4f1ee,#e7e2dd);"></div>
+      <div class="theme-swatch" style="background:var(--ink);"></div>
+    </div>
+
+    <h4 style="font-size:14px;margin-bottom:4px;">Choose accent color</h4>
+    <div class="color-row" style="margin-bottom:30px;">
+      <div class="color-dot on" style="background:var(--brand);"></div>
+      <div class="color-dot" style="background:#E8A33D;"></div>
+      <div class="color-dot" style="background:#3E7BD9;"></div>
+      <div class="color-dot" style="background:#3E9B6F;"></div>
+      <div class="color-dot" style="background:#C25450;"></div>
+      <div class="color-dot" style="background:#4A90A4;"></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;">
+      <button class="btn btn-outline" data-go="preview">← Back</button>
+      <button class="btn btn-primary" data-go="app" data-app="dashboard">Finish & Build My Workspace ✓</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8+. APP SHELL ================= -->
+<section id="page-app" class="page">
+  <div class="appish" id="app-shell-grid">
+    <div class="app-sidebar">
+      <div class="side-logo"><span class="dot" style="width:20px;height:20px;"></span>Jodoo</div>
+      <div id="app-nav"></div>
+      <div class="side-bottom-card">
+        <h6>🤖 Hi! I'm Jule</h6>
+        <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Your AI business assistant, always here to help.</p>
+        <button class="btn btn-primary btn-sm" style="width:100%;" data-go="app" data-app="jule">Chat with Jule</button>
+      </div>
+    </div>
+    <div class="app-main" id="app-main"></div>
+    <div id="app-right-rail"></div>
+  </div>
+</section>
+
+<script>
+/* ---------------- PAGE ROUTING (step-by-step wizard) ---------------- */
+const stepFlow = [
+  {id:'landing',     label:'Landing'},
+  {id:'login',       label:'Login'},
+  {id:'onboarding',  label:'Setup'},
+  {id:'data-upload', label:'Your Data'},
+  {id:'ai-analysis', label:'AI Build'},
+  {id:'preview',     label:'Preview'},
+  {id:'customize',   label:'Customize'},
+  {id:'app',         label:'Workspace'},
+];
+let currentStepIdx = 0;
+let maxReached = 0;
+let currentAppName = 'dashboard';
+
+function stepIndexFor(id){ return stepFlow.findIndex(s=>s.id===id); }
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pageEl = document.getElementById('page-'+id);
+  pageEl.classList.add('active');
+  // restart the enter animation each time
+  pageEl.style.animation = 'none';
+  void pageEl.offsetHeight;
+  pageEl.style.animation = '';
+
+  const idx = stepIndexFor(id);
+  if(idx>-1){
+    currentStepIdx = idx;
+    if(idx>maxReached) maxReached = idx;
+  }
+  renderStepper();
+  refreshDevMenuActive(id);
+  window.scrollTo({top:0,behavior:'instant'});
+}
+
+function renderStepper(){
+  const wrap = document.getElementById('pn-stepper');
+  wrap.innerHTML = stepFlow.map((s,i)=>{
+    let cls = 'pn-dot';
+    if(i<currentStepIdx) cls += ' done';
+    else if(i===currentStepIdx) cls += ' current';
+    else if(i>maxReached) cls += ' locked';
+    const mark = i<currentStepIdx ? '✓' : (i+1);
+    const line = i>0 ? `<span class="pn-line ${i<=maxReached?'filled':''}"></span>` : '';
+    return `${line}<button type="button" class="${cls}" title="${i+1}. ${s.label}" data-step="${s.id}" ${i>maxReached?'disabled':''}>${mark}</button>`;
+  }).join('');
+  wrap.querySelectorAll('.pn-dot').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id = btn.getAttribute('data-step');
+      if(id==='app'){ showPage('app'); renderApp(currentAppName); }
+      else showPage(id);
+    });
+  });
+  document.getElementById('pn-stepinfo').textContent =
+    `Step ${currentStepIdx+1} of ${stepFlow.length} · ${stepFlow[currentStepIdx].label}`;
+  document.getElementById('pn-prev').disabled = currentStepIdx===0;
+  document.getElementById('pn-next').disabled = currentStepIdx>=maxReached || currentStepIdx===stepFlow.length-1;
+}
+
+document.getElementById('pn-prev').addEventListener('click',()=>{
+  if(currentStepIdx>0) showPage(stepFlow[currentStepIdx-1].id);
+});
+document.getElementById('pn-next').addEventListener('click',()=>{
+  if(currentStepIdx<maxReached){
+    const next = stepFlow[currentStepIdx+1];
+    if(next.id==='app'){ showPage('app'); renderApp(currentAppName); }
+    else showPage(next.id);
+  }
+});
+
+/* dev "jump to any page" menu — for prototype testing/demoing only */
+document.getElementById('pn-devtoggle').addEventListener('click',(e)=>{
+  e.stopPropagation();
+  document.getElementById('pn-devmenu').classList.toggle('open');
+});
+document.addEventListener('click',(e)=>{
+  const menu = document.getElementById('pn-devmenu');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && e.target.id!=='pn-devtoggle'){
+    menu.classList.remove('open');
+  }
+});
+function refreshDevMenuActive(target){
+  document.querySelectorAll('#pn-devmenu .pn-link').forEach(l=>{
+    l.classList.toggle('active', l.getAttribute('data-go')===target);
+  });
+}
+
+document.querySelectorAll('[data-go]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const target = el.getAttribute('data-go');
+    if(target==='app'){
+      const app = el.getAttribute('data-app') || 'dashboard';
+      currentAppName = app;
+      showPage('app');
+      renderApp(app);
+    } else {
+      showPage(target);
+    }
+    document.getElementById('pn-devmenu').classList.remove('open');
+  });
+});
+
+/* ---------------- LANDING MINI CHART ---------------- */
+document.getElementById('landing-chart').innerHTML = miniLineChart([30,45,38,60,52,70,65,80],'#6F4A6F');
+function miniLineChart(vals,color){
+  const w=560,h=150,max=Math.max(...vals),min=Math.min(...vals);
+  const pts = vals.map((v,i)=>{
+    const x = (i/(vals.length-1))*w;
+    const y = h - ((v-min)/(max-min||1))*(h-20) - 10;
+    return x+','+y;
+  }).join(' ');
+  const area = `0,${h} ${pts} ${w},${h}`;
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polygon points="${area}" fill="${color}" opacity="0.12"></polygon>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+  </svg>`;
+}
+
+/* ---------------- ONBOARDING DATA ---------------- */
+const obSteps = [
+  {
+    label:"Business Basics", q:"What type of business do you run?", sub:"This helps us understand your business and suggest the right tools.",
+    why:"Your answers help Jodoo recommend the right modules, dashboards, and automations for your business.",
+    options:[
+      ["🏬","Retail Store","e.g. Clothing, electronics, grocery"],
+      ["🍽","Restaurant / Cafe","e.g. Food, bakery, cloud kitchen"],
+      ["🏭","Manufacturing","e.g. Factory, production, assembly"],
+      ["📣","Marketing Agency","e.g. Digital agency, creative agency"],
+    ], multi:false, sel:[0]
+  },
+  {
+    label:"Business Operations", q:"Which of the following best describes how you operate?", sub:"Select all that apply to your business.",
+    why:"This helps Jodoo recommend the right modules, automations, and dashboards for your operations.",
+    options:[
+      ["📦","Sell physical products","You sell tangible items to customers"],
+      ["🛒","Maintain inventory","You keep track of stock and manage inventory"],
+      ["💻","Sell online","You sell products or services through online channels"],
+      ["📋","Provide services","You deliver services to your customers"],
+    ], multi:true, sel:[0,1,2]
+  },
+  {
+    label:"Customers & Sales", q:"How do your customers typically find and contact you?", sub:"Select all that apply.",
+    why:"This helps us enable the right sales and customer management tools and automations for your business.",
+    options:[
+      ["🏪","Walk-ins / In-person","Customers visit your store or office"],
+      ["📞","Phone","Customers call you directly"],
+      ["🌐","Website","Customers contact you through your website"],
+      ["💬","WhatsApp","Customers message you on WhatsApp"],
+    ], multi:true, sel:[0,1,2,3]
+  },
+  {
+    label:"Team", q:"How many people are involved in your business?", sub:"This helps us tailor collaboration & permissions.",
+    why:"Team size helps Jodoo configure the right roles, permissions, and collaboration tools.",
+    options:[
+      ["🧍","Just me","Solo operator"],
+      ["👥","2 – 20 people","Small team"],
+      ["🏢","21 – 50 people","Growing team"],
+      ["🏙","50+ people","Larger organization"],
+    ], multi:false, sel:[0]
+  },
+  {
+    label:"Finance", q:"How do you manage your finances?", sub:"Select the option that fits best.",
+    why:"This helps Jodoo suggest the right accounting and invoicing setup.",
+    options:[
+      ["📊","Manual (Excel / Paper)","Tracked manually today"],
+      ["💻","Accounting Software","Using tools like Tally, Zoho, etc."],
+      ["🏦","Banking Apps","Managed mostly via banking apps"],
+      ["❓","Other","Something else not listed"],
+    ], multi:false, sel:[0]
+  },
+  {
+    label:"Goals", q:"What are your top business goals?", sub:"Select all that apply.",
+    why:"Goals help Jodoo prioritize the right widgets and AI recommendations for your dashboard.",
+    options:[
+      ["📈","Increase Sales","Grow revenue and order volume"],
+      ["⚡","Improve Efficiency","Streamline day-to-day operations"],
+      ["🧭","Expand Business","Open new locations or channels"],
+      ["🤝","Better Customer Service","Improve response & satisfaction"],
+    ], multi:true, sel:[0,1,3]
+  },
+  {
+    label:"Preferences", q:"What's your preferred workspace experience?", sub:"Choose one.",
+    why:"This tunes the complexity of your dashboard and default views.",
+    options:[
+      ["🌤","Simple & Easy","Clean and minimal, only essentials"],
+      ["🛠","Advanced & Customizable","Full control over every widget"],
+      ["⚖️","A balance of both","Simple by default, advanced on demand"],
+    ], multi:false, sel:[0]
+  },
+  {
+    label:"Review & Confirm", q:"You're all set! We'll use your answers to build your perfect workspace.", sub:"Review your details below.",
+    why:"Once confirmed, our AI will start building your personalized workspace immediately.",
+    options:[
+      ["🏬","Business Type","Retail Store"],
+      ["👥","Team Size","Just me"],
+      ["🎯","Key Goals","Increase Sales, Expand Business"],
+      ["🎨","Preferred Theme","Modern"],
+    ], multi:false, sel:[0,1,2,3], review:true
+  }
+];
+let obIndex = 0;
+
+function renderObSideList(){
+  const wrap = document.getElementById('ob-step-list');
+  wrap.innerHTML = obSteps.map((s,i)=>{
+    const cls = i<obIndex ? 'done' : (i===obIndex ? 'current' : '');
+    const mark = i<obIndex ? '✓' : (i+1);
+    return `<div class="ob-step ${cls}"><span class="num">${mark}</span>${s.label}</div>`;
+  }).join('');
+}
+
+function renderObStep(){
+  const s = obSteps[obIndex];
+  document.getElementById('ob-step-label').textContent = `Step ${obIndex+1} of ${obSteps.length}`;
+  document.getElementById('ob-title').textContent = s.label;
+  document.getElementById('ob-question').textContent = s.q;
+  document.getElementById('ob-sub').textContent = s.sub;
+  document.getElementById('ob-why').textContent = s.why;
+  const pct = Math.round(((obIndex+1)/obSteps.length)*100);
+  document.getElementById('ob-fill').style.width = pct+'%';
+  document.getElementById('ob-pct').textContent = pct+'%';
+
+  document.getElementById('ob-grid').innerHTML = s.options.map((o,i)=>{
+    const selected = s.sel.includes(i) ? 'selected' : '';
+    return `<div class="ob-card ${selected}" onclick="toggleObOption(${i})">
+      <div class="ic">${o[0]}</div>
+      <div><h5>${o[1]}</h5><p>${o[2]}</p></div>
+      <div class="ob-check"></div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('ob-next-btn').textContent = (obIndex===obSteps.length-1) ? 'Finish & Build My Workspace ✓' : 'Next →';
+  renderObSideList();
+}
+
+function toggleObOption(i){
+  const s = obSteps[obIndex];
+  if(s.review) return;
+  if(s.multi){
+    const pos = s.sel.indexOf(i);
+    if(pos>-1) s.sel.splice(pos,1); else s.sel.push(i);
+  } else {
+    s.sel = [i];
+  }
+  renderObStep();
+}
+
+function obStep(dir){
+  if(obIndex===obSteps.length-1 && dir===1){
+    showPage('data-upload');
+    return;
+  }
+  obIndex = Math.max(0, Math.min(obSteps.length-1, obIndex+dir));
+  renderObStep();
+}
+renderObStep();
+
+/* ---------------- DATA UPLOAD STEP ---------------- */
+const uploadCats = [
+  {id:'customers', ic:'👥', title:'Customers List', desc:'CSV or Excel of your customer contacts'},
+  {id:'sales', ic:'💰', title:'Sales & Orders History', desc:'Past orders, invoices, or transactions'},
+  {id:'inventory', ic:'📦', title:'Inventory / Product Catalog', desc:'Current stock and product list'},
+  {id:'finance', ic:'💳', title:'Financial Records', desc:'Expenses or accounting exports'},
+];
+const uploadedByCat = {};
+
+function renderUploadCats(){
+  const wrap = document.getElementById('upload-cats');
+  if(!wrap) return;
+  wrap.innerHTML = uploadCats.map(c=>{
+    const file = uploadedByCat[c.id];
+    return `<div class="upload-cat ${file?'done':''}">
+      <div class="ic">${c.ic}</div>
+      <div class="txt"><h5>${c.title}</h5><p>${file ? '✓ '+file : c.desc}</p></div>
+      ${file
+        ? `<button type="button" class="btn btn-ghost btn-sm" onclick="clearCatFile('${c.id}')">✕ Remove</button>`
+        : `<label class="btn btn-outline btn-sm" style="cursor:pointer;">Upload<input type="file" style="display:none" onchange="handleCatFile('${c.id}', this)"></label>`
+      }
+    </div>`;
+  }).join('');
+}
+function handleCatFile(catId, input){
+  if(input.files && input.files[0]){
+    uploadedByCat[catId] = input.files[0].name;
+    renderUploadCats();
+  }
+}
+function clearCatFile(catId){
+  delete uploadedByCat[catId];
+  renderUploadCats();
+}
+renderUploadCats();
+
+const genericFiles = [];
+function renderGenericFiles(){
+  const wrap = document.getElementById('uploaded-files-list');
+  if(!wrap) return;
+  if(genericFiles.length===0){ wrap.innerHTML=''; return; }
+  wrap.innerHTML = `<h4 style="font-size:13px;margin:18px 0 10px;">Uploaded files</h4>` + genericFiles.map((f,i)=>`
+    <div class="file-chip">
+      <span class="ic">📄</span>
+      <span class="nm">${f.name}</span>
+      <span class="sz">${(f.size/1024).toFixed(1)} KB</span>
+      <button type="button" class="rm" onclick="removeGenericFile(${i})">✕</button>
+    </div>`).join('');
+}
+function addGenericFiles(fileList){
+  Array.from(fileList).forEach(f=>genericFiles.push(f));
+  renderGenericFiles();
+}
+function removeGenericFile(i){
+  genericFiles.splice(i,1);
+  renderGenericFiles();
+}
+const fileInputEl = document.getElementById('file-input');
+if(fileInputEl) fileInputEl.addEventListener('change', e=>{ addGenericFiles(e.target.files); e.target.value=''; });
+const dropzoneEl = document.getElementById('upload-dropzone');
+if(dropzoneEl){
+  ['dragover'].forEach(ev=>dropzoneEl.addEventListener(ev, e=>{e.preventDefault(); dropzoneEl.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>dropzoneEl.addEventListener(ev, e=>{e.preventDefault(); dropzoneEl.classList.remove('drag');}));
+  dropzoneEl.addEventListener('drop', e=>{ if(e.dataTransfer.files.length) addGenericFiles(e.dataTransfer.files); });
+}
+
+/* ---------------- PREVIEW MAIN (reuses dashboard body) ---------------- */
+document.getElementById('preview-main').innerHTML = dashboardMainHTML();
+document.getElementById('preview-network').innerHTML = networkRailHTML();
+
+/* ---------------- APP SHELL NAV ---------------- */
+const navItems = [
+  ['dashboard','🏠','Dashboard'],
+  ['customers','👥','Customers'],
+  ['sales','💰','Sales'],
+  ['inventory','📦','Inventory'],
+  ['team','👨‍💼','Team'],
+  ['analytics','📊','Analytics'],
+  ['jule','🤖','AI Assistant (Jule)'],
+  ['network','🌐','Jodoo Network', 'new'],
+  ['settings','⚙️','Settings'],
+];
+function renderNav(active){
+  document.getElementById('app-nav').innerHTML = navItems.map(n=>{
+    const cls = 'side-nav-item'+(n[0]===active?' active':'')+(n[3]?' new':'');
+    return `<a class="${cls}" data-go="app" data-app="${n[0]}"><span class="ic">${n[1]}</span>${n[2]}</a>`;
+  }).join('');
+  document.querySelectorAll('#app-nav [data-go]').forEach(el=>{
+    el.addEventListener('click',()=>renderApp(el.getAttribute('data-app')));
+  });
+}
+
+function topbar(activeName){
+  return `<div class="app-topbar">
+    <div class="search-bar">🔍 Search anything… (invoices, customers, reports) <span style="margin-left:auto;color:var(--muted);">⌘K</span></div>
+    <div class="top-icon">✨</div>
+    <div class="top-icon">🔔<span class="badge-dot">3</span></div>
+    <div class="top-icon">✉️</div>
+    <div class="profile-chip"><span class="avatar">A</span><div><div class="nm">Ananya</div><div class="rl">Admin</div></div></div>
+  </div>`;
+}
+
+function kpiStrip(){
+  return `<div class="kpi-strip">
+    <div class="card kpi"><div class="label">Total Revenue</div><div class="value">₹18,75,000</div><div class="delta">↑ 18.6% vs last month</div></div>
+    <div class="card kpi"><div class="label">Total Orders</div><div class="value">1,246</div><div class="delta">↑ 12.4% vs last month</div></div>
+    <div class="card kpi"><div class="label">Profit</div><div class="value">₹4,35,000</div><div class="delta">↑ 15.8% vs last month</div></div>
+    <div class="card kpi"><div class="label">Customers</div><div class="value">856</div><div class="delta">↑ 9.3% vs last month</div></div>
+  </div>`;
+}
+
+function dashboardMainHTML(){
+  return `${kpiStrip()}
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title-row"><h4>Revenue Overview</h4><span class="link-sm">This Month ▾</span></div>
+      <div class="fake-chart">${miniLineChart([40,55,48,68,60,78,72,90],'#6F4A6F')}</div>
+    </div>
+    <div class="card">
+      <div class="card-title-row"><h4>Recent Activities</h4></div>
+      <div class="activity-item"><div class="ic">🛒</div><div><h6>New Order Received</h6><p>Order #ORD-1256</p></div><div class="t">2m ago</div></div>
+      <div class="activity-item"><div class="ic">💳</div><div><h6>Invoice Paid</h6><p>INV-2024-0896</p></div><div class="t">15m ago</div></div>
+      <div class="activity-item"><div class="ic">👤</div><div><h6>New Customer Added</h6><p>Bright Retail Pvt. Ltd.</p></div><div class="t">1h ago</div></div>
+      <div class="activity-item"><div class="ic">⚠️</div><div><h6>Stock Alert</h6><p>5 items running low</p></div><div class="t">2h ago</div></div>
+    </div>
+  </div>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-title-row"><h4>Top Selling Products</h4></div>
+      <table><tr><th>Product</th><th>Sold</th></tr>
+      <tr><td>Wireless Headphones</td><td>320</td></tr>
+      <tr><td>Smart Watch</td><td>210</td></tr>
+      <tr><td>Bluetooth Speaker</td><td>185</td></tr></table>
+    </div>
+    <div class="card">
+      <div class="card-title-row"><h4>Tasks & To-Do</h4></div>
+      <div class="todo-item"><input type="checkbox"><span>Follow up with 5 customers</span><span class="due">Today</span></div>
+      <div class="todo-item"><input type="checkbox"><span>Review low stock items</span><span class="due">Today</span></div>
+      <div class="todo-item"><input type="checkbox" checked><span>Prepare monthly sales report</span><span class="due">Tomorrow</span></div>
+    </div>
+    <div class="card" style="background:var(--brand-soft);border:none;">
+      <div class="card-title-row"><h4>✨ AI Insight</h4></div>
+      <p style="font-size:13px;line-height:1.5;margin-bottom:10px;">Your revenue is <strong>18.6% higher</strong> than last month. You're on track to achieve your monthly goal.</p>
+      <button class="btn btn-primary btn-sm">View Full Report →</button>
+    </div>
+  </div>`;
+}
+
+function networkRailHTML(){
+  return `<div class="right-rail-card">
+    <h4>🔥 Trending</h4>
+    <span class="trend-chip">#SmallBusinessGrowth</span><span class="trend-chip">#RetailTrends</span><span class="trend-chip">#DigitalPayments</span>
+  </div>
+  <div class="right-rail-card">
+    <h4>Suggested Connections</h4>
+    <div class="conn-row"><div class="av">🌿</div><div><h6>GreenLeaf Traders</h6><span>Organic Supplier</span></div><button class="btn btn-outline btn-sm">Connect</button></div>
+    <div class="conn-row"><div class="av">🚚</div><div><h6>LogiFast Services</h6><span>Logistics & Delivery</span></div><button class="btn btn-outline btn-sm">Connect</button></div>
+    <div class="conn-row"><div class="av">🎨</div><div><h6>DesignCraft Studio</h6><span>Branding & Design</span></div><button class="btn btn-outline btn-sm">Connect</button></div>
+  </div>
+  <div class="right-rail-card">
+    <h4>📢 Business Feed</h4>
+    <div class="net-post"><div class="who"><div class="av">📦</div><div><h6>EcoPack Solutions</h6><span>2h ago · Bengaluru</span></div></div><p>We provide sustainable packaging solutions for businesses of all sizes 🌱</p><div class="stats"><span>❤️ 24</span><span>💬 8</span></div></div>
+    <div class="net-post"><div class="who"><div class="av">💻</div><div><h6>TechHub India</h6><span>4h ago · Mumbai</span></div></div><p>Hiring: Full Stack Developer (React + Node.js)</p><div class="stats"><span>❤️ 15</span><span>💬 6</span></div></div>
+  </div>
+  <div class="right-rail-card">
+    <h4>📅 Upcoming Events</h4>
+    <div class="conn-row"><div class="av">🎤</div><div><h6>Bengaluru Startup Meetup</h6><span>Sat, 24 May · 5:00 PM</span></div></div>
+  </div>`;
+}
+
+function customersHTML(){
+  const rows = [
+    ['John Doe','john@example.com',12,'₹2,45,000'],
+    ['Jane Smith','jane@example.com',8,'₹1,81,000'],
+    ['Bright Retail Ltd.','contact@brightretail.com',25,'₹6,75,000'],
+    ['GreenMart','hello@greenmart.com',19,'₹3,31,000'],
+    ['Tech Corner','info@techcorner.com',11,'₹1,55,000'],
+  ];
+  return `<div class="card-title-row" style="margin-bottom:16px;">
+    <h2 style="font-size:20px;">Customers</h2>
+    <button class="btn btn-primary btn-sm">+ Add Customer</button>
+  </div>
+  <div class="kpi-strip" style="grid-template-columns:repeat(3,1fr);">
+    <div class="card kpi"><div class="label">Total Customers</div><div class="value">856</div><div class="delta">↑ 9.3%</div></div>
+    <div class="card kpi"><div class="label">New This Month</div><div class="value">64</div><div class="delta">↑ 4.1%</div></div>
+    <div class="card kpi"><div class="label">Avg. Lifetime Value</div><div class="value">₹42,500</div><div class="delta">↑ 6.0%</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title-row"><h4>All Customers</h4><span class="link-sm">Showing 1–5 of 856</span></div>
+    <table><tr><th>Customer</th><th>Email</th><th>Total Orders</th><th>Total Spent</th></tr>
+    ${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}
+    </table>
+  </div>`;
+}
+
+function salesHTML(){
+  return `<div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Sales</h2><button class="btn btn-primary btn-sm">+ New Quotation</button></div>
+  <div class="kpi-strip">
+    <div class="card kpi"><div class="label">Total Sales</div><div class="value">₹18,75,000</div><div class="delta">↑ 15.0%</div></div>
+    <div class="card kpi"><div class="label">This Month</div><div class="value">₹6,75,000</div><div class="delta">↑ 12.4%</div></div>
+    <div class="card kpi"><div class="label">This Week</div><div class="value">₹1,25,000</div><div class="delta">↑ 15.0%</div></div>
+    <div class="card kpi"><div class="label">Conversion Rate</div><div class="value">24.6%</div><div class="delta">↑ 3.1%</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title-row"><h4>Sales Pipeline</h4><span class="link-sm">View All</span></div>
+      <table><tr><th>Stage</th><th>Count</th><th>Value</th></tr>
+      <tr><td>New Lead</td><td>130</td><td>₹22,00,000</td></tr>
+      <tr><td>Qualified</td><td>46</td><td>₹9,50,000</td></tr>
+      <tr><td>Proposal</td><td>18</td><td>₹4,10,000</td></tr>
+      <tr><td>Won</td><td>30</td><td>₹3,90,000</td></tr></table>
+    </div>
+    <div class="card">
+      <div class="card-title-row"><h4>Recent Invoices</h4></div>
+      <div class="activity-item"><div class="ic">🧾</div><div><h6>INV-0025 · Bright Retail</h6><p>₹75,600</p></div><div class="t"><span class="pill green">Paid</span></div></div>
+      <div class="activity-item"><div class="ic">🧾</div><div><h6>INV-0024 · GreenMart</h6><p>₹65,000</p></div><div class="t"><span class="pill green">Paid</span></div></div>
+      <div class="activity-item"><div class="ic">🧾</div><div><h6>INV-0023 · Tech Corner</h6><p>₹22,000</p></div><div class="t"><span class="pill amber">Pending</span></div></div>
+    </div>
+  </div>`;
+}
+
+function inventoryHTML(){
+  return `<div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Inventory</h2><button class="btn btn-primary btn-sm">+ Add Product</button></div>
+  <div class="kpi-strip">
+    <div class="card kpi"><div class="label">Total Products</div><div class="value">256</div><div class="delta"></div></div>
+    <div class="card kpi"><div class="label">Low Stock Items</div><div class="value">23</div><div class="delta down">Needs attention</div></div>
+    <div class="card kpi"><div class="label">Out of Stock</div><div class="value">5</div><div class="delta down">Reorder now</div></div>
+    <div class="card kpi"><div class="label">Stock Value</div><div class="value">₹12,45,000</div><div class="delta">↑ 4.5%</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title-row"><h4>Top Products</h4></div>
+      <table><tr><th>Product</th><th>Stock</th><th>Value</th></tr>
+      <tr><td>Wireless Headphones</td><td>300</td><td>₹2,10,000</td></tr>
+      <tr><td>Smart Watch</td><td>145</td><td>₹1,63,000</td></tr>
+      <tr><td>Bluetooth Speaker</td><td>170</td><td>₹1,64,000</td></tr></table>
+    </div>
+    <div class="card">
+      <div class="card-title-row"><h4>Recent Purchase Orders</h4></div>
+      <div class="activity-item"><div class="ic">📥</div><div><h6>PO-0011 · GreenLeaf Traders</h6><p>₹1,20,000</p></div><div class="t"><span class="pill green">Delivered</span></div></div>
+      <div class="activity-item"><div class="ic">📥</div><div><h6>PO-0010 · LogiFast Services</h6><p>₹85,000</p></div><div class="t"><span class="pill amber">In Transit</span></div></div>
+    </div>
+  </div>`;
+}
+
+function analyticsHTML(){
+  return `<div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Analytics</h2><span class="link-sm">Export Report ↓</span></div>
+  <div class="kpi-strip">
+    <div class="card kpi"><div class="label">Total Revenue</div><div class="value">₹18,75,000</div><div class="delta">↑ 18.6%</div></div>
+    <div class="card kpi"><div class="label">Total Profit</div><div class="value">₹4,35,000</div><div class="delta">↑ 15.8%</div></div>
+    <div class="card kpi"><div class="label">Total Orders</div><div class="value">1,246</div><div class="delta">↑ 12.4%</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-title-row"><h4>Revenue Trend</h4></div><div class="fake-chart">${miniLineChart([20,40,35,55,48,66,60,80],'#6F4A6F')}</div></div>
+    <div class="card"><div class="card-title-row"><h4>Profit Trend</h4></div><div class="fake-chart">${miniLineChart([10,18,15,26,24,32,30,40],'#D9A24B')}</div></div>
+  </div>`;
+}
+
+function teamHTML(){
+  return `<div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Team</h2><button class="btn btn-primary btn-sm">+ Add Member</button></div>
+  <div class="kpi-strip">
+    <div class="card kpi"><div class="label">Total Employees</div><div class="value">24</div><div class="delta"></div></div>
+    <div class="card kpi"><div class="label">Present Today</div><div class="value">18</div><div class="delta">75%</div></div>
+    <div class="card kpi"><div class="label">On Leave</div><div class="value">4</div><div class="delta down"></div></div>
+    <div class="card kpi"><div class="label">Departments</div><div class="value">6</div><div class="delta"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title-row"><h4>Team Members</h4></div>
+    <table><tr><th>Name</th><th>Email</th><th>Department</th><th>Status</th></tr>
+    <tr><td>Ananya Sharma</td><td>ananya@jodoo.com</td><td>Marketing</td><td><span class="pill green">Active</span></td></tr>
+    <tr><td>Rahul Mehra</td><td>rahul@jodoo.com</td><td>Sales</td><td><span class="pill green">Active</span></td></tr>
+    <tr><td>Sneha Iyer</td><td>sneha@jodoo.com</td><td>Finance</td><td><span class="pill amber">On Leave</span></td></tr></table>
+  </div>`;
+}
+
+function settingsHTML(){
+  return `<h2 style="font-size:20px;margin-bottom:16px;">Settings</h2>
+  <div class="two-col" style="grid-template-columns:1fr 1fr;">
+    <div class="card">
+      <div class="card-title-row"><h4>Business Profile</h4></div>
+      <div class="field"><label>Business Name</label><input value="Bright Retail Pvt. Ltd."></div>
+      <div class="field"><label>Industry</label><input value="Retail"></div>
+      <button class="btn btn-primary btn-sm">Save Changes</button>
+    </div>
+    <div class="card">
+      <div class="card-title-row"><h4>Integrations</h4></div>
+      <div class="activity-item"><div class="ic">💬</div><div><h6>WhatsApp Business</h6><p>Connected</p></div><div class="t"><span class="pill green">Active</span></div></div>
+      <div class="activity-item"><div class="ic">💳</div><div><h6>Razorpay</h6><p>Connected</p></div><div class="t"><span class="pill green">Active</span></div></div>
+      <div class="activity-item"><div class="ic">📊</div><div><h6>Tally</h6><p>Not connected</p></div><div class="t"><button class="btn btn-outline btn-sm">Connect</button></div></div>
+    </div>
+  </div>`;
+}
+
+function networkPageHTML(){
+  return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+    <div><h2 style="font-size:22px;">Jodoo Network</h2><p style="font-size:12.5px;color:var(--muted);">Connect. Collaborate. Grow together.</p></div>
+    <button class="btn btn-primary btn-sm">✎ Create Post ▾</button>
+  </div>
+  <div class="net-tabs">
+    <div class="net-tab active">Feed</div><div class="net-tab">Connections</div><div class="net-tab">Marketplace</div>
+    <div class="net-tab">Jobs</div><div class="net-tab">Events</div><div class="net-tab">Communities</div><div class="net-tab">Messages</div>
+  </div>
+  <div class="composer">
+    <div class="composer-top"><span class="avatar">A</span><input placeholder="What's on your mind?"></div>
+    <div class="composer-actions"><span>📷 Image</span><span>📊 Poll</span><span>💼 Job</span><span>📦 Product</span><span>📅 Event</span></div>
+  </div>
+  <div class="feed-post">
+    <div class="feed-post-head"><div class="av">🌿</div><div><h5>EcoPack Solutions ✔</h5><span>2h ago · Bengaluru, India</span></div></div>
+    <p>We provide sustainable packaging solutions for businesses of all sizes. Let's build a greener tomorrow, together. 🌱</p>
+    <div class="feed-img">📦</div>
+    <div class="feed-stats"><span>❤️ 24 Likes</span><span>💬 8 Comments</span><span>↗ Share</span></div>
+  </div>
+  <div class="feed-post">
+    <div class="feed-post-head"><div class="av">💻</div><div><h5>TechHub India ✔</h5><span>4h ago · Mumbai, India</span></div></div>
+    <p>Hiring: Full Stack Developer (React + Node.js). Join our team and help us build the future of business automation!</p>
+    <div class="feed-stats"><span>❤️ 15 Likes</span><span>💬 6 Comments</span><span>↗ Share</span></div>
+  </div>`;
+}
+
+function juleHTML(){
+  return `<div class="chat-wrap">
+    <div class="chat-history">
+      <button class="btn btn-primary btn-sm" style="width:100%;margin-bottom:12px;">+ New Chat</button>
+      <div class="chat-hist-item active">Today's sales report summary</div>
+      <div class="chat-hist-item">Top selling products this month</div>
+      <div class="chat-hist-item">Low stock alert follow-up</div>
+    </div>
+    <div class="chat-main">
+      <div class="chat-body">
+        <div class="msg bot">Hi Ananya! 👋 Here's a quick summary of your business today.</div>
+        <div class="msg bot">Revenue: ₹18,75,000 (↑15.0%) · Orders: 1,246 (↑12.4%) · Profit: ₹4,35,000 (↑15.0%)<br><br>You have 5 products running low on stock. Would you like me to generate a detailed report?</div>
+        <div class="msg user">Yes, generate a report</div>
+        <div class="msg bot">Done ✅ — I've compiled a report covering revenue trends, top products, and restock recommendations.</div>
+      </div>
+      <div class="chat-input-row">
+        <input placeholder="Ask Jule anything…">
+        <button class="btn btn-primary btn-sm">Send</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+const appPages = {
+  dashboard: {title:'Dashboard', body: dashboardMainHTML, rail: networkRailHTML},
+  customers: {title:'Customers', body: customersHTML, rail: null},
+  sales: {title:'Sales', body: salesHTML, rail: null},
+  inventory: {title:'Inventory', body: inventoryHTML, rail: null},
+  team: {title:'Team', body: teamHTML, rail: null},
+  analytics: {title:'Analytics', body: analyticsHTML, rail: null},
+  jule: {title:'AI Assistant', body: juleHTML, rail: null},
+  network: {title:'Jodoo Network', body: networkPageHTML, rail: null},
+  settings: {title:'Settings', body: settingsHTML, rail: null},
+};
+
+function renderApp(name){
+  const p = appPages[name] || appPages.dashboard;
+  currentAppName = name;
+  renderNav(name);
+  const grid = document.getElementById('app-shell-grid');
+  const railEl = document.getElementById('app-right-rail');
+  document.getElementById('app-main').innerHTML = topbar() + p.body();
+  if(p.rail){
+    grid.style.gridTemplateColumns = '230px 1fr 300px';
+    railEl.style.display = 'block';
+    railEl.style.cssText += 'padding:22px 20px 22px 0;overflow:auto;';
+    railEl.innerHTML = p.rail();
+  } else {
+    grid.style.gridTemplateColumns = '230px 1fr';
+    railEl.style.display = 'none';
+    railEl.innerHTML = '';
+  }
+}
+renderApp('dashboard');
+showPage('landing');
+</script>
+</body>
+</html>
