@@ -1,0 +1,10 @@
+employee_id,name,role,hire_date,termination_date,weekly_wage_usd_equiv,weekly_hours,performance_rating,status
+E01,Fatima Sheikh,Head Baker,2021-03-01,,320.0,45,4.6,Active
+E02,Suresh Bhat,Baker,2022-06-15,,260.0,42,4.2,Active
+E03,Anjali Verma,Pastry Chef,2022-09-01,,270.0,40,4.5,Active
+E04,Vikas Kumar,Counter Staff,2023-01-10,,180.0,35,3.9,Active
+E05,Ritika Das,Counter Staff,2023-04-20,2025-06-14,180.0,30,2.8,Terminated
+E06,Neha Joshi,Counter Staff,2025-07-01,,180.0,35,4.0,Active
+E07,Imran Khan,Delivery/Catering,2023-08-05,,200.0,25,4.1,Active
+E08,Gowri Krishnan,Cashier,2024-02-12,,175.0,30,3.7,Active
+E09,Owner - Priyanka Menon,Owner/Manager,2020-11-01,,,50,5.0,Active
