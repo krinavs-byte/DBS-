@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Jodo Dashboard API (excerpt)
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+  /version:
+    get:
+      summary: Version
+      responses:
+        "200":
+          description: App version
+  /api/dashboard/layouts/current:
+    get:
+      summary: Get current user's dashboard layout
+      responses:
+        "200":
+          description: Layout object
+  /api/dashboard/layouts/{id}:
+    put:
+      summary: Update layout with optimistic locking
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                layout_json: {}
+                version:
+                  type: integer
+      responses:
+        "200":
+          description: Updated
+        "400":
+          description: Invalid payload
+        "409":
+          description: Stale update
