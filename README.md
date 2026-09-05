@@ -10,14 +10,7 @@
 
 <br/><br/>
 
-```
-   ██╗ ██████╗ ██████╗  ██████╗
-   ██║██╔═══██╗██╔══██╗██╔═══██╗
-   ██║██║   ██║██║  ██║██║   ██║
-██ ██║██║   ██║██║  ██║██║   ██║
-╚█████╔╝╚██████╔╝██████╔╝╚██████╔╝
- ╚════╝  ╚═════╝ ╚═════╝  ╚═════╝
-```
+<img src="JodooLogo.png" alt="Jodo Logo" />
 
 ### Not just another ERP dashboard.
 ### A role-specific, AI-assisted, fully customisable operations platform — built for every kind of business.
@@ -31,7 +24,7 @@
 ## ⚡ The Problem with Odoo (and every ERP like it)
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────────────────────[...]
 │                  ODOO — full admin interface                      │
 │                                                                  │
 │  CRM │ Sales │ Accounting │ HR │ Manufacturing │ Helpdesk │ ...  │
@@ -39,7 +32,7 @@
 │         ↕  every user, every role, sees ALL of this  ↕          │
 │                                                                  │
 │  Inventory │ Transfers │ Payroll │ POS │ Marketing │ Repairs ... │
-└──────────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────────────[...]
 
   A warehouse worker. A retail manager. A restaurant owner.
   A freelance agency. All given the same cluttered interface.
@@ -47,10 +40,10 @@
 
                            ↓  Jodo fixes this  ↓
 
-┌──────────────┬───────────────────┬──────────────────────────────┐
+┌──────────────┬───────────────────┬────────────────────────────────[...]
 │  Your role   │  Your dashboards  │  Your data — nothing extra   │
 │  Your layout │  Your AI agent    │  Connected. Clean. Fast.     │
-└──────────────┴───────────────────┴──────────────────────────────┘
+└──────────────┴───────────────────┴────────────────────────────────[...]
 ```
 
 ---
@@ -95,7 +88,7 @@ Each business type gets its own configured dashboard. No two Jodo setups need to
 └─────────────────────────────────────────────────┘
 ```
 
-Users can add, remove, and reorder panels. Layouts save per role and per user. A warehouse manager's morning view looks nothing like an accountant's closing view — and both are built from the same platform.
+Users can add, remove, and reorder panels. Layouts save per role and per user. A warehouse manager's morning view looks nothing like an accountant's closing view — and both are built from the same p[...]
 
 ---
 
@@ -140,7 +133,7 @@ Persistent, role-aware team channels embedded directly in the platform. Alerts f
 └──────────────────────────────────────────────┘
 ```
 
-The AI agent reads live dashboard data and answers natural language questions about operations. It can flag patterns, suggest reorders, and summarise daily status — without the user building a single report.
+The AI agent reads live dashboard data and answers natural language questions about operations. It can flag patterns, suggest reorders, and summarise daily status — without the user building a singl[...]
 
 ---
 
