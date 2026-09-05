@@ -21,7 +21,7 @@
 
 ---
 
-## ⚡ The Problem with Odoo (and every ERP like it)
+## The Problem with Odoo (and every ERP like it)
 
 ```
 ┌───────────────────────────────────────────────────────────────────[...]
@@ -48,7 +48,7 @@
 
 ---
 
-## 🎯 Who Is Jodo For?
+##  Who Is Jodo For?
 
 ```
                             ┌─────────────┐
@@ -71,7 +71,7 @@ Each business type gets its own configured dashboard. No two Jodo setups need to
 
 ---
 
-## ✨ Core Features
+## Core Features
 
 ### 1 — Customisable Dashboards
 
@@ -102,7 +102,7 @@ Users can add, remove, and reorder panels. Layouts save per role and per user. A
 │  # dispatch-alerts  ● Priya (Accounts)      │
 │  # low-stock-watch  ○ Arjun (offline)       │
 │                                             │
-│  [🔴 ALERT] Corner Protectors — 5 units    │
+│  [ ALERT] Corner Protectors — 5 units    │
 │  Ravi: on it, reorder submitted             │
 │  Priya: invoice raised ✓                   │
 │                                             │
@@ -139,7 +139,7 @@ The AI agent reads live dashboard data and answers natural language questions ab
 
 
 
-## 🚀 Get Running in 60 Seconds
+##  Get Running in 60 Seconds
 
 ```bash
 # Clone
