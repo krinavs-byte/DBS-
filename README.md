@@ -159,13 +159,13 @@ Open **`http://localhost:5000`**
 
 ---
 
-## 👥 Team
+##  Team
 
 Members: Krina, Vaibhavi, Prachi, Triesha, Aayoshi  
 
 ---
 
-## 📎 References
+##  References
 
 - Odoo. (2025). *XML-RPC external API.* https://www.odoo.com/documentation/17.0/developer/reference/external_api.html
 - G2. (2026). *Odoo ERP reviews.* https://www.g2.com/products/odoo-odoo-erp/reviews
