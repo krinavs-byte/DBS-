@@ -1,6 +1,6 @@
 import json
 from app import create_app
-from db import db, User
+from db import db, User, DashboardLayout
 import pytest
 
 @pytest.fixture
@@ -19,11 +19,7 @@ def app():
 def client(app):
     return app.test_client()
 
-def login(client):
-    # seed has admin@example.com but in test we create test@example.com; skip auth and set session via cookie not trivial here
-    pass
 
-def test_get_current_layout_empty(client, app):
-    # without login should return 404
+def test_get_current_layout_requires_auth(client):
     res = client.get('/api/dashboard/layouts/current')
     assert res.status_code in (401, 404)

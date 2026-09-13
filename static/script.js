@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }));
       const payload = { layout_json: { panels: panels }, version: layout.version || 1 };
       const csrf = getCookie("csrf_token");
-      // find layout id if included in layout-json element dataset
       const layoutId = document.getElementById("layout-json")?.dataset?.layoutId || null;
       try {
         let res;
