@@ -138,6 +138,7 @@ class DashboardLayout(db.Model):
             "updated_at": self.updated_at.isoformat() if self.updated_at else None
         }
 
+
 class AuditLog(db.Model):
     __tablename__ = "audit_logs"
     id = db.Column(db.Integer, primary_key=True)
