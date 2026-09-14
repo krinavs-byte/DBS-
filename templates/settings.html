@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Jodoo Settings{% endblock %}
+
+{% block content %}
+<div class="appish" style="grid-template-columns:230px 1fr;">
+  <div class="app-sidebar">
+    <div class="side-logo"><span class="dot" style="width:20px;height:20px;"></span>Jodoo</div>
+    <div>
+      <a class="side-nav-item" data-go="app" data-app="dashboard" href="{{ url_for('dashboard_page') }}"><span class="ic">🏠</span>Dashboard</a>
+      <a class="side-nav-item" data-go="app" data-app="customers" href="{{ url_for('customers_page') }}"><span class="ic">👥</span>Customers</a>
+      <a class="side-nav-item" data-go="app" data-app="sales" href="{{ url_for('sales_page') }}"><span class="ic">💰</span>Sales</a>
+      <a class="side-nav-item" data-go="app" data-app="inventory" href="{{ url_for('inventory_page') }}"><span class="ic">📦</span>Inventory</a>
+      <a class="side-nav-item" data-go="app" data-app="team" href="{{ url_for('team_page') }}"><span class="ic">👨‍💼</span>Team</a>
+      <a class="side-nav-item" data-go="app" data-app="analytics" href="{{ url_for('analytics_page') }}"><span class="ic">📊</span>Analytics</a>
+      <a class="side-nav-item" data-go="app" data-app="network" href="{{ url_for('network_page') }}"><span class="ic">🌐</span>Jodoo Network</a>
+      <a class="side-nav-item active" data-go="app" data-app="settings" href="{{ url_for('settings_page') }}"><span class="ic">⚙️</span>Settings</a>
+    </div>
+    <div class="side-bottom-card">
+      <h6>🤖 Hi! I'm Jule</h6>
+      <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Your AI business assistant, always here to help.</p>
+      <a class="btn btn-primary btn-sm" style="width:100%;" href="{{ url_for('network_page') }}">Chat with Jule</a>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="search-bar">🔍 Search anything… (invoices, customers, reports) <span style="margin-left:auto;color:var(--muted);">⌘K</span></div>
+      <div class="top-icon">✨</div>
+      <div class="top-icon">🔔<span class="badge-dot">3</span></div>
+      <div class="top-icon">✉️</div>
+      <div class="profile-chip"><span class="avatar">A</span><div><div class="nm">Ananya</div><div class="rl">Admin</div></div></div>
+    </div>
+
+    <h2 style="font-size:20px;margin-bottom:16px;">Settings</h2>
+    <div class="two-col" style="grid-template-columns:1fr 1fr;">
+      <div class="card">
+        <div class="card-title-row"><h4>Business Profile</h4></div>
+        <div class="field"><label>Business Name</label><input value="Bright Retail Pvt. Ltd."></div>
+        <div class="field"><label>Industry</label><input value="Retail"></div>
+        <button class="btn btn-primary btn-sm">Save Changes</button>
+      </div>
+      <div class="card">
+        <div class="card-title-row"><h4>Integrations</h4></div>
+        <div class="activity-item"><div class="ic">💬</div><div><h6>WhatsApp Business</h6><p>Connected</p></div><div class="t"><span class="pill green">Active</span></div></div>
+        <div class="activity-item"><div class="ic">💳</div><div><h6>Razorpay</h6><p>Connected</p></div><div class="t"><span class="pill green">Active</span></div></div>
+        <div class="activity-item"><div class="ic">📊</div><div><h6>Tally</h6><p>Not connected</p></div><div class="t"><button class="btn btn-outline btn-sm">Connect</button></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Jodoo Inventory{% endblock %}
+
+{% block content %}
+<div class="appish" style="grid-template-columns:230px 1fr;">
+  <div class="app-sidebar">
+    <div class="side-logo"><span class="dot" style="width:20px;height:20px;"></span>Jodoo</div>
+    <div>
+      <a class="side-nav-item" href="{{ url_for('dashboard_page') }}"><span class="ic">🏠</span>Dashboard</a>
+      <a class="side-nav-item" href="{{ url_for('customers_page') }}"><span class="ic">👥</span>Customers</a>
+      <a class="side-nav-item" href="{{ url_for('sales_page') }}"><span class="ic">💰</span>Sales</a>
+      <a class="side-nav-item active" href="{{ url_for('inventory_page') }}"><span class="ic">📦</span>Inventory</a>
+      <a class="side-nav-item" href="{{ url_for('team_page') }}"><span class="ic">👨‍💼</span>Team</a>
+      <a class="side-nav-item" href="{{ url_for('analytics_page') }}"><span class="ic">📊</span>Analytics</a>
+      <a class="side-nav-item" href="{{ url_for('network_page') }}"><span class="ic">🌐</span>Jodoo Network</a>
+      <a class="side-nav-item" href="{{ url_for('settings_page') }}"><span class="ic">⚙️</span>Settings</a>
+    </div>
+    <div class="side-bottom-card">
+      <h6>🤖 Hi! I'm Jule</h6>
+      <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Your AI business assistant, always here to help.</p>
+      <a class="btn btn-primary btn-sm" style="width:100%;" href="{{ url_for('network_page') }}">Chat with Jule</a>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="search-bar">🔍 Search inventory… <span style="margin-left:auto;color:var(--muted);">⌘K</span></div>
+      <div class="top-icon">✨</div>
+      <div class="top-icon">🔔<span class="badge-dot">2</span></div>
+      <div class="top-icon">✉️</div>
+      <div class="profile-chip"><span class="avatar">A</span><div><div class="nm">Ananya</div><div class="rl">Admin</div></div></div>
+    </div>
+
+    <div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Inventory</h2><button class="btn btn-primary btn-sm">+ Add Product</button></div>
+    <div class="kpi-strip">
+      <div class="card kpi"><div class="label">Total Products</div><div class="value">{{ stock_items|length }}</div><div class="delta"></div></div>
+      <div class="card kpi"><div class="label">Low Stock Items</div><div class="value">{{ stock_items | selectattr('status', 'in', ['low','critical','out']) | list | length }}</div><div class="delta down">Needs attention</div></div>
+      <div class="card kpi"><div class="label">Out of Stock</div><div class="value">{{ stock_items | selectattr('status', 'equalto', 'out') | list | length }}</div><div class="delta down">Reorder now</div></div>
+      <div class="card kpi"><div class="label">Stock Value</div><div class="value">₹12,45,000</div><div class="delta">↑ 4.5%</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title-row"><h4>Current Inventory</h4><span class="link-sm">Showing {{ stock_items|length }} items</span></div>
+      <table>
+        <tr><th>Product</th><th>SKU</th><th>Location</th><th>Qty</th><th>Min Qty</th><th>Status</th></tr>
+        {% for item in stock_items %}
+        <tr>
+          <td>{{ item.product }}</td>
+          <td>{{ item.sku }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.qty }}</td>
+          <td>{{ item.min_qty }}</td>
+          <td><span class="pill {% if item.status == 'ok' %}green{% elif item.status == 'low' %}amber{% else %}red{% endif %}">{{ item.status|upper }}</span></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

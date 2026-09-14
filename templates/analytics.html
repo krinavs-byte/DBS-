@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Jodoo Analytics{% endblock %}
+
+{% block content %}
+<div class="appish" style="grid-template-columns:230px 1fr;">
+  <div class="app-sidebar">
+    <div class="side-logo"><span class="dot" style="width:20px;height:20px;"></span>Jodoo</div>
+    <div>
+      <a class="side-nav-item" href="{{ url_for('dashboard_page') }}"><span class="ic">🏠</span>Dashboard</a>
+      <a class="side-nav-item" href="{{ url_for('customers_page') }}"><span class="ic">👥</span>Customers</a>
+      <a class="side-nav-item" href="{{ url_for('sales_page') }}"><span class="ic">💰</span>Sales</a>
+      <a class="side-nav-item" href="{{ url_for('inventory_page') }}"><span class="ic">📦</span>Inventory</a>
+      <a class="side-nav-item" href="{{ url_for('team_page') }}"><span class="ic">👨‍💼</span>Team</a>
+      <a class="side-nav-item active" href="{{ url_for('analytics_page') }}"><span class="ic">📊</span>Analytics</a>
+      <a class="side-nav-item" href="{{ url_for('network_page') }}"><span class="ic">🌐</span>Jodoo Network</a>
+      <a class="side-nav-item" href="{{ url_for('settings_page') }}"><span class="ic">⚙️</span>Settings</a>
+    </div>
+    <div class="side-bottom-card">
+      <h6>🤖 Hi! I'm Jule</h6>
+      <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Your AI business assistant, always here to help.</p>
+      <a class="btn btn-primary btn-sm" style="width:100%;" href="{{ url_for('network_page') }}">Chat with Jule</a>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="search-bar">🔍 Search analytics… <span style="margin-left:auto;color:var(--muted);">⌘K</span></div>
+      <div class="top-icon">✨</div>
+      <div class="top-icon">🔔<span class="badge-dot">4</span></div>
+      <div class="top-icon">✉️</div>
+      <div class="profile-chip"><span class="avatar">A</span><div><div class="nm">Ananya</div><div class="rl">Admin</div></div></div>
+    </div>
+
+    <div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Analytics</h2><span class="link-sm">Export Report ↓</span></div>
+    <div class="kpi-strip">
+      <div class="card kpi"><div class="label">Total Revenue</div><div class="value">₹{{ '{:,.0f}'.format(kpis.revenue) }}</div><div class="delta">↑ 18.6%</div></div>
+      <div class="card kpi"><div class="label">Total Profit</div><div class="value">₹{{ '{:,.0f}'.format(kpis.profit) }}</div><div class="delta">↑ 15.8%</div></div>
+      <div class="card kpi"><div class="label">Total Orders</div><div class="value">{{ kpis.orders }}</div><div class="delta">↑ 12.4%</div></div>
+      <div class="card kpi"><div class="label">Alert Count</div><div class="value">{{ stats.alert_count }}</div><div class="delta down">{{ stats.critical_count }} critical</div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="card"><div class="card-title-row"><h4>Revenue Trend</h4></div><div class="fake-chart"><svg viewBox="0 0 560 150" preserveAspectRatio="none"><polygon points="0,150 0,110 60,95 120,86 180,70 240,60 300,54 360,42 420,38 480,30 560,22 560,150" fill="#6F4A6F" opacity="0.12"></polygon><polyline points="0,110 60,95 120,86 180,70 240,60 300,54 360,42 420,38 480,30 560,22" fill="none" stroke="#6F4A6F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+      <div class="card"><div class="card-title-row"><h4>Profit Trend</h4></div><div class="fake-chart"><svg viewBox="0 0 560 150" preserveAspectRatio="none"><polygon points="0,150 0,120 60,109 120,100 180,92 240,82 300,74 360,60 420,52 480,41 560,30 560,150" fill="#D9A24B" opacity="0.12"></polygon><polyline points="0,120 60,109 120,100 180,92 240,82 300,74 360,60 420,52 480,41 560,30" fill="none" stroke="#D9A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
