@@ -28,6 +28,9 @@ except ImportError:  # pragma: no cover
 
 app = Flask(__name__)
 app.secret_key = "jodoo-dev-secret"
+    from auth.routes import auth_bp
+    # use dashboard1 as requested
+    from dashboard1.routes import dashboard_bp as dashboard_bp
 
 COLUMN_ALIASES = {
     "product": ["product", "product name", "item", "item name", "name"],

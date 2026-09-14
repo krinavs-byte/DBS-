@@ -296,3 +296,49 @@ tr:last-child td{border:none;}
   .app-sidebar{display:none;}
   .appish.rightonly{grid-template-columns:1fr;}
 }
+/* static/style.css
+   Basic styles for dashboard, panels, and the customize modal.
+   Keep this small and easy to expand.
+*/
+:root{
+  --bg:#f7f8fa;
+  --panel-bg:#ffffff;
+  --muted:#6b7280;
+  --accent:#0066cc;
+  --gap:12px;
+}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#111;background:var(--bg)}
+a{color:var(--accent)}
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;background:#fff;padding:8px;border:1px solid #ddd}
+.header{background:#fff;border-bottom:1px solid #e6e9ee;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.header .brand{font-weight:700}
+.header .nav{display:flex;gap:12px}
+.container{max-width:1200px;margin:18px auto;padding:0 20px}
+.grid-wrap{background:transparent;padding:8px}
+.panel{background:var(--panel-bg);border:1px solid #e6e9ee;border-radius:8px;padding:12px;box-shadow:0 1px 0 rgba(0,0,0,0.02);display:flex;flex-direction:column;min-height:80px}
+.panel .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.panel .panel-title{font-weight:600}
+.panel .panel-body{flex:1;min-height:40px}
+.panel .panel-controls{display:flex;gap:8px}
+.btn{background:var(--accent);color:#fff;padding:8px 10px;border-radius:6px;border:none;cursor:pointer}
+.btn.secondary{background:#edf2f7;color:#111}
+.save-state{font-size:13px;color:var(--muted)}
+/* customize modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:none;align-items:center;justify-content:center;z-index:80}
+.modal{background:#fff;border-radius:8px;max-width:900px;width:95%;padding:18px;box-shadow:0 10px 40px rgba(2,6,23,0.2)}
+.modal .panel-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-height:60vh;overflow:auto}
+.panel-card{background:#fafafa;border:1px dashed #e6e9ee;padding:10px;border-radius:6px}
+.small{font-size:13px;color:var(--muted)}
+/* responsive */
+@media (max-width:900px){.container{padding:0 12px}.modal{max-width:95%}}
+@media (max-width:700px){.panel{padding:8px}.modal{width:98%}.modal .panel-list{grid-template-columns:1fr}.header .nav{display:none}}
+/* GridStack integration helpers */
+.grid-stack-item{display:flex;margin-bottom:8px}
+.grid-stack-item .panel{width:100%}
+/* focus styles for accessibility */
+[tabindex]:focus{outline:3px solid rgba(0,102,204,0.18);outline-offset:2px}
+/* visually-hidden for aria-live announcer */
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+/* conflict modal tweaks */
+#conflict-backdrop .modal{max-width:520px}

@@ -1,10 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const chart = document.getElementById('landing-chart');
-  if (chart) {
-    chart.innerHTML = miniLineChart([30, 45, 38, 60, 52, 70, 65, 80], '#6F4A6F');
-  }
 // static/script.js
-
 document.addEventListener("DOMContentLoaded", function() {
   function getCookie(name) {
     const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
@@ -12,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const grid = document.getElementById("dashboard-grid");
+  // initial layout:
   const layoutEl = document.getElementById("layout-json");
   let layout = layoutEl ? JSON.parse(layoutEl.textContent) : null;
 
@@ -27,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   async function renderPanels(panels) {
-    if (!grid) return;
     grid.innerHTML = "";
     (panels || []).forEach(p => {
       const el = document.createElement("div");
@@ -36,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
       el.innerHTML = `<h3>${p.id}</h3><div class="panel-body">Loading...</div>`;
       grid.appendChild(el);
       fetch(`/api/panels/${p.id}`).then(r => r.json()).then(j => {
-        el.querySelector(".panel-body").textContent = JSON.stringify(j.data || j);
+        el.querySelector(".panel-body").textContent = JSON.stringify(j);
       }).catch(e => {
         el.querySelector(".panel-body").textContent = "Error loading";
       });
@@ -48,11 +42,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!layout) layout = { panels: [ {id: "kpi_strip"}, {id:"stock_alerts"} ] };
     await renderPanels(layout.panels);
 
-    if (typeof Sortable !== "undefined" && grid) {
+    // Make grid sortable (Sortables already included via CDN in base.html)
+    if (typeof Sortable !== "undefined") {
       Sortable.create(grid, { animation: 150 });
     }
   })();
 
+  // customize modal toggle
   document.getElementById("open-customize")?.addEventListener("click", () => {
     document.getElementById("modal-backdrop")?.classList.add("show");
   });
@@ -60,16 +56,22 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("modal-backdrop")?.classList.remove("show");
   });
 
+  // Save handler
   document.querySelectorAll("#save-layout").forEach(btn => {
     btn.addEventListener("click", async () => {
-      if (!grid) return;
+      // build layout_json from DOM order (basic: store ids in order)
       const panels = Array.from(grid.children).map((child, idx) => ({
         id: child.dataset.panelId,
         position: { x: 0, y: idx, w: 1, h: 1 }
       }));
       const payload = { layout_json: { panels: panels }, version: layout.version || 1 };
-      const csrf = getCookie("csrf_token");
+      // get layout id from hidden data in page: server set via layout_id if present
+      const layoutRoot = document.getElementById("dashboard-grid").closest(".grid-wrap") || document.getElementById("layout-root");
       const layoutId = document.getElementById("layout-json")?.dataset?.layoutId || null;
+
+      // CSRF token from cookie
+      const csrf = getCookie("csrf_token");
+
       try {
         let res;
         if (layoutId) {
@@ -94,7 +96,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (res.status === 200 || res.status === 201) {
           alert("Layout saved");
           const j = await res.json();
+          // update current layout info
           layout = { panels: panels, version: j.version || (layout.version||1) + 1 };
+          // hide modal
           document.getElementById("modal-backdrop")?.classList.remove("show");
         } else if (res.status === 409) {
           const j = await res.json();
@@ -108,22 +112,4 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
-
 });
-
-function miniLineChart(vals, color) {
-  const w = 560;
-  const h = 150;
-  const max = Math.max(...vals);
-  const min = Math.min(...vals);
-  const pts = vals.map((v, i) => {
-    const x = (i / (vals.length - 1)) * w;
-    const y = h - ((v - min) / (max - min || 1)) * (h - 20) - 10;
-    return x + ',' + y;
-  }).join(' ');
-  const area = `0,${h} ${pts} ${w},${h}`;
-  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-    <polygon points="${area}" fill="${color}" opacity="0.12"></polygon>
-    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
-  </svg>`;
-}
