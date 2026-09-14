@@ -385,24 +385,60 @@ Jodo — Project Implementation Tracker (Extended + Required Details)
 | T097 | Code freeze — no new features after this point | Repo | P1 | Pending | — | — | No | — |
 | T098 | Each person reads and can explain every task they are listed as Completed By | Viva prep | All | Pending | — | — | No | — |
 | T099 | Final submission checklist verified against CIA III Section 27 | Docs | P1 | Pending | — | — | No | — |
-| T100 | Create `templates/questionnaire.html` — multi-step onboarding questions matching the prototype stepper flow | Frontend | P3 | In Progress | — | — | Yes | — |
-| T101 | Add `GET /onboarding` and `POST /onboarding` routes in `app.py` — render and submit the questionnaire | Backend | P2 | In Progress | — | — | Yes | — |
-| T102 | Store questionnaire answers in the session as a dictionary under `session["onboarding"]` | Backend/Auth | P2 | In Progress | — | — | Yes | — |
-| T103 | Update the login route to redirect users to `/onboarding` instead of directly to the dashboard | Backend/Auth | P2 | In Progress | — | — | Yes | — |
-| T104 | Create `templates/upload_data.html` — optional data-upload step matching the onboarding prototype | Frontend | P3 | In Progress | — | — | Yes | — |
-| T105 | Add `GET /upload-data` and `POST /upload-data` routes in `app.py` — render the upload screen and redirect to the dashboard | Backend | P2 | In Progress | — | — | Yes | — |
-| T106 | Update the questionnaire completion redirect to send users to `/upload-data` instead of straight to the dashboard | Backend/Auth | P2 | In Progress | — | — | Yes | — |
-| T107 | Parse uploaded CSV files in the `/upload-data` route using Python's built-in `csv` module | Backend | P2 | In Progress | — | — | Yes | — |
-| T108 | Validate uploaded CSV columns and header names before storing any stock data | Backend | P2 | In Progress | — | — | Yes | — |
-| T109 | Store parsed stock data in the session under `session["uploaded_stock"]` | Backend/Auth | P2 | In Progress | — | — | Yes | — |
-| T110 | Update `dashboard_page()` and `inventory_page()` to use uploaded stock data when present and fall back to `mock_data.py` otherwise | Backend/Frontend | P2 | In Progress | — | — | Yes | — |
-| T111 | Add `.xlsx` file support to the upload route for stock/inventory uploads | Backend | P2 | In Progress | — | — | Yes | — |
-| T112 | Add flexible/alias-based column name matching for uploaded stock CSV/XLSX files | Backend | P2 | In Progress | — | — | Yes | — |
-| T113 | Add `openpyxl` to `requirements.txt` for `.xlsx` parsing support | Dependencies | P2 | In Progress | — | — | Yes | — |
-| T114 | Add sales/transaction column alias matching to the upload route | Backend | P2 | In Progress | — | — | Yes | — |
-| T115 | Add file-type auto-detection (stock vs. sales) before validation | Backend | P2 | In Progress | — | — | Yes | — |
-| T116 | Store parsed sales data in the session | Backend/Auth | P2 | In Progress | — | — | Yes | — |
-| T117 | Update `dashboard_page()`, `sales_page()`, and `analytics_page()` to use uploaded sales data when present | Backend/Frontend | P2 | In Progress | — | — | Yes | — |
+| T092 | Full end-to-end walkthrough — user login → dashboard → inventory → Jule chat → logout | Testing | P4 | Pending | — | — | No | — |
+| T093 | Full end-to-end walkthrough — manager login → manager dashboard → user management → logout | Testing | P4 | Pending | — | — | No | — |
+| T094 | Verify all DB tables have appropriate indexes and data after running `seed.py` | Testing | P2 | Pending | — | — | No | — |
+| T095 | Verify `docs/project-implementation.md` — every completed task has a commit reference | Docs | P1 | Pending | — | — | No | — |
+| T096 | Code freeze — no new features after this point (release candidate) | Repo | P1 | Pending | — | — | No | — |
+| T097 | Each person reads and can explain every task they are listed as Completed By | Viva prep | All | Pending | — | — | No | — |
+| T098 | Final submission checklist verified against CIA III Section 27 | Docs | P1 | Pending | — | — | No | — |
+| T099 | Create release artifacts (tagged release, release notes, deployment notes) | Repo | P1 | Pending | — | — | No | — |
+
+---
+
+## Phase 10 — Operations, Production & SRE (New)
+
+*Goal: the system is deployable, observable, secure and maintainable in production.*
+
+| Task ID | Task | Component | Assigned To | Status | Completed By | Date Completed | AI Assistance | Evidence |
+|---|---|---|---|---|---|---|---|---|
+| T100 | Add Dockerfile(s) and docker-compose for local development | DevOps | P1 | Pending | — | — | No | — |
+| T101 | Add production Docker image configuration (Gunicorn + workers) | DevOps | P1 | Pending | — | — | No | — |
+| T102 | Add GitHub Actions CI: lint, tests, build image, push to registry (or CI stub) | CI | P1 | Pending | — | — | No | — |
+| T103 | Add deployment pipeline (manual/automated) to chosen hosting (Heroku / Render / ECS / Cloud Run) | DevOps | P1 | Pending | — | — | No | — |
+| T104 | Add DB migrations to CI and release process (Alembic) | DB/CI | P2 | Pending | — | — | Yes | — |
+| T105 | Add Redis for caching and session store; configure in app factory | Infra | P2 | Pending | — | — | Yes | — |
+| T106 | Add structured logging and Sentry integration for error monitoring | Infra | P1 | Pending | — | — | Yes | — |
+| T107 | Add Prometheus metrics export and Grafana dashboard templates | Infra | P1 | Pending | — | — | Yes | — |
+| T108 | Add backup & restore scripts and scheduled backups for DB | Ops | P1 | Pending | — | — | No | — |
+| T109 | Add load testing plan (k6/Locust) and performance baselining | QA | P1 | Pending | — | — | No | — |
+| T110 | Add secrets management guidance (do not store secrets in repo) and CI secret setup | Security | P1 | Pending | — | — | No | — |
+| T111 | Add rollback and emergency runbook for incidents | Ops | P1 | Pending | — | — | No | — |
+| T112 | Add routine maintenance tasks and upgrade plan for dependencies | Ops | P1 | Pending | — | — | No | — |
+
+---
+
+## Supplemental tasks — Quality, Security & Ops (Required details & acceptance criteria)
+
+These items were added to prevent risky assumptions and to make implementation unambiguous. Each includes a brief acceptance criterion.
+
+| Task ID | Task & Acceptance Criteria |
+|---|---|
+| T113 | DashboardLayout JSON Schema and Panel Registry — Define a JSON Schema file (repo/docs/schemas/dashboard_layout.schema.json) that lists allowed panel IDs, panel settings schema, max panels, allowed w/h values. Acceptance: Server validates payload against this schema; invalid payloads return 400. |
+| T114 | OpenAPI / API contract — Create OpenAPI spec covering /api/dashboard/layouts, /api/panels/{id}, auth endpoints, /health, /version and host interactive docs at /api/docs. Acceptance: API docs match implemented endpoints; CI runs a smoke test against docs. |
+| T115 | Optimistic locking for layout saves — Add `version` (integer) or use `updated_at`. API rejects stale updates with 409. Acceptance: concurrent save test included that confirms 409 on conflict. |
+| T116 | Authentication details & secure storage — Implement password hashing (bcrypt/argon2), session cookie security (SameSite, Secure) and CSRF protection. Acceptance: login/reset flows work; test asserts password hashes not stored in plain text; CSRF tokens required for form posts. |
+| T117 | Migration testing in CI — CI job runs `alembic upgrade head` against a fresh DB, seeds, and runs tests. Acceptance: migrations apply cleanly and CI job succeeds. |
+| T118 | Test coverage gates — Define targets (unit: ≥70% core logic). CI fails PRs that drop below threshold. Acceptance: coverage report added to CI. |
+| T119 | Rate limiting for expensive endpoints — Add rate limiting to /api/agent and layout save endpoints with documented limits (e.g., 60/min user). Acceptance: endpoint returns 429 when limit exceeded; tests in CI. |
+| T120 | Cache keys & invalidation policy — Document Redis keys for panel caches and implement invalidation when related data changes (e.g., transfer created). Acceptance: cached panel returns updated data after invalidation test. |
+| T121 | Structured logging & correlation IDs — Add middleware to generate a request id and include in logs; integrate Sentry for exceptions. Acceptance: errors in Sentry include request id and user context; logs are JSON. |
+| T122 | Backup & restore runbook — Add automated backup script and one documented restore test (steps & time). Acceptance: a tested restore completes and app boots using restored DB. |
+| T123 | Monitoring & alerts — Define metrics (latency, error rate, agent usage) and create Grafana alerts and a simple runbook for the alert. Acceptance: at least three alerts (high error rate, high latency, low disk) are configured and documented. |
+| T124 | Load test baseline — Run a baseline load test (k6 or Locust) against the dashboard flows and document RPS & bottlenecks. Acceptance: baseline report added to docs with recommendations. |
+| T125 | Dependency & secret scanning — Enable Dependabot and CI secret scanning; create policy to block critical vulnerabilities. Acceptance: Dependabot enabled and CI checks run. |
+| T126 | Privacy & PII retention policy + delete workflow — Document PII fields and implement account deletion workflow that removes PII from DB (or marks for deletion). Acceptance: account deletion test verifies PII removal/retention as per policy. |
+| T127 | Audit logs for AI and destructive actions — Record who/when/what for actions (raise_reorder, delete_layout). Acceptance: auditing table exists; actions can be queried and show user+timestamp+result. |
 
 ---
 
