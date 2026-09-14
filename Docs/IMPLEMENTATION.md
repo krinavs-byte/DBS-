@@ -304,6 +304,24 @@ flowchart TD
 | T097 | Code freeze — no new features after this point | Repo | P1 | Pending | — | — | No | — |
 | T098 | Each person reads and can explain every task they are listed as Completed By | Viva prep | All | Pending | — | — | No | — |
 | T099 | Final submission checklist verified against CIA III Section 27 | Docs | P1 | Pending | — | — | No | — |
+| T100 | Create `templates/questionnaire.html` — multi-step onboarding questions matching the prototype stepper flow | Frontend | P3 | In Progress | — | — | Yes | — |
+| T101 | Add `GET /onboarding` and `POST /onboarding` routes in `app.py` — render and submit the questionnaire | Backend | P2 | In Progress | — | — | Yes | — |
+| T102 | Store questionnaire answers in the session as a dictionary under `session["onboarding"]` | Backend/Auth | P2 | In Progress | — | — | Yes | — |
+| T103 | Update the login route to redirect users to `/onboarding` instead of directly to the dashboard | Backend/Auth | P2 | In Progress | — | — | Yes | — |
+| T104 | Create `templates/upload_data.html` — optional data-upload step matching the onboarding prototype | Frontend | P3 | In Progress | — | — | Yes | — |
+| T105 | Add `GET /upload-data` and `POST /upload-data` routes in `app.py` — render the upload screen and redirect to the dashboard | Backend | P2 | In Progress | — | — | Yes | — |
+| T106 | Update the questionnaire completion redirect to send users to `/upload-data` instead of straight to the dashboard | Backend/Auth | P2 | In Progress | — | — | Yes | — |
+| T107 | Parse uploaded CSV files in the `/upload-data` route using Python's built-in `csv` module | Backend | P2 | In Progress | — | — | Yes | — |
+| T108 | Validate uploaded CSV columns and header names before storing any stock data | Backend | P2 | In Progress | — | — | Yes | — |
+| T109 | Store parsed stock data in the session under `session["uploaded_stock"]` | Backend/Auth | P2 | In Progress | — | — | Yes | — |
+| T110 | Update `dashboard_page()` and `inventory_page()` to use uploaded stock data when present and fall back to `mock_data.py` otherwise | Backend/Frontend | P2 | In Progress | — | — | Yes | — |
+| T111 | Add `.xlsx` file support to the upload route for stock/inventory uploads | Backend | P2 | In Progress | — | — | Yes | — |
+| T112 | Add flexible/alias-based column name matching for uploaded stock CSV/XLSX files | Backend | P2 | In Progress | — | — | Yes | — |
+| T113 | Add `openpyxl` to `requirements.txt` for `.xlsx` parsing support | Dependencies | P2 | In Progress | — | — | Yes | — |
+| T114 | Add sales/transaction column alias matching to the upload route | Backend | P2 | In Progress | — | — | Yes | — |
+| T115 | Add file-type auto-detection (stock vs. sales) before validation | Backend | P2 | In Progress | — | — | Yes | — |
+| T116 | Store parsed sales data in the session | Backend/Auth | P2 | In Progress | — | — | Yes | — |
+| T117 | Update `dashboard_page()`, `sales_page()`, and `analytics_page()` to use uploaded sales data when present | Backend/Frontend | P2 | In Progress | — | — | Yes | — |
 
 ---
 

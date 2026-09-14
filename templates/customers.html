@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Jodoo Customers{% endblock %}
+
+{% block content %}
+<div class="appish" style="grid-template-columns:230px 1fr;">
+  <div class="app-sidebar">
+    <div class="side-logo"><span class="dot" style="width:20px;height:20px;"></span>Jodoo</div>
+    <div>
+      <a class="side-nav-item" href="{{ url_for('dashboard_page') }}"><span class="ic">🏠</span>Dashboard</a>
+      <a class="side-nav-item active" href="{{ url_for('customers_page') }}"><span class="ic">👥</span>Customers</a>
+      <a class="side-nav-item" href="{{ url_for('sales_page') }}"><span class="ic">💰</span>Sales</a>
+      <a class="side-nav-item" href="{{ url_for('inventory_page') }}"><span class="ic">📦</span>Inventory</a>
+      <a class="side-nav-item" href="{{ url_for('team_page') }}"><span class="ic">👨‍💼</span>Team</a>
+      <a class="side-nav-item" href="{{ url_for('analytics_page') }}"><span class="ic">📊</span>Analytics</a>
+      <a class="side-nav-item" href="{{ url_for('network_page') }}"><span class="ic">🌐</span>Jodoo Network</a>
+      <a class="side-nav-item" href="{{ url_for('settings_page') }}"><span class="ic">⚙️</span>Settings</a>
+    </div>
+    <div class="side-bottom-card">
+      <h6>🤖 Hi! I'm Jule</h6>
+      <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Your AI business assistant, always here to help.</p>
+      <a class="btn btn-primary btn-sm" style="width:100%;" href="{{ url_for('network_page') }}">Chat with Jule</a>
+    </div>
+  </div>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="search-bar">🔍 Search customers… <span style="margin-left:auto;color:var(--muted);">⌘K</span></div>
+      <div class="top-icon">✨</div>
+      <div class="top-icon">🔔<span class="badge-dot">3</span></div>
+      <div class="top-icon">✉️</div>
+      <div class="profile-chip"><span class="avatar">A</span><div><div class="nm">Ananya</div><div class="rl">Admin</div></div></div>
+    </div>
+
+    <div class="card-title-row" style="margin-bottom:16px;"><h2 style="font-size:20px;">Customers</h2><button class="btn btn-primary btn-sm">+ Add Customer</button></div>
+    <div class="kpi-strip" style="grid-template-columns:repeat(3,1fr);">
+      <div class="card kpi"><div class="label">Total Customers</div><div class="value">{{ customers|length }}</div><div class="delta">↑ 9.3%</div></div>
+      <div class="card kpi"><div class="label">New This Month</div><div class="value">64</div><div class="delta">↑ 4.1%</div></div>
+      <div class="card kpi"><div class="label">Avg. Lifetime Value</div><div class="value">₹42,500</div><div class="delta">↑ 6.0%</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title-row"><h4>All Customers</h4><span class="link-sm">Showing 1–{{ customers|length }} of {{ customers|length }}</span></div>
+      <table>
+        <tr><th>Customer</th><th>Email</th><th>Orders</th><th>Spent</th><th>Status</th><th>Segment</th></tr>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.orders }}</td>
+          <td>₹{{ '{:,.0f}'.format(customer.spent) }}</td>
+          <td><span class="pill {% if customer.status == 'active' %}green{% elif customer.status == 'vip' %}amber{% else %}red{% endif %}">{{ customer.status }}</span></td>
+          <td>{{ customer.segment }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
